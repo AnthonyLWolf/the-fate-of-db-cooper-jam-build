@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgu8hvhdien4h"]
+
+[ext_resource type="Script" uid="uid://dojlbddrg2bp7" path="res://Scripts/cooper_player.gd" id="1_270ak"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xwft5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_270ak"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xwft5"]
+radius = 54.589375
+
+[node name="CooperPlayer" type="CharacterBody2D"]
+script = ExtResource("1_270ak")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_xwft5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_270ak")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_xwft5")

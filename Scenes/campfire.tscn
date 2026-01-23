@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bynh34all6880"]
+
+[ext_resource type="Script" uid="uid://b37fl6fic68b6" path="res://Scripts/campfire.gd" id="1_kfptp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qcxes"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kfptp"]
+radius = 131.21738
+
+[node name="Campfire" type="Node2D"]
+script = ExtResource("1_kfptp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qcxes")
+
+[node name="WarmthArea" type="Area2D" parent="AnimatedSprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/WarmthArea"]
+shape = SubResource("CircleShape2D_kfptp")
