@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cgu8hvhdien4h"]
 
-[ext_resource type="Script" uid="uid://dojlbddrg2bp7" path="res://Scripts/cooper_player.gd" id="1_270ak"]
+[ext_resource type="Script" uid="uid://dojlbddrg2bp7" path="res://Scripts/cooper_player.gd" id="1_wf0wr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xwft5"]
 
@@ -10,7 +10,7 @@
 radius = 54.589375
 
 [node name="CooperPlayer" type="CharacterBody2D"]
-script = ExtResource("1_270ak")
+script = ExtResource("1_wf0wr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_xwft5")

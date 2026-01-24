@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameManager="*res://Scripts/Singletons/game_manager.gd"
+StateMachine="*res://Scripts/Singletons/state_machine.gd"
 AudioManager="*res://Scenes/Singletons/audio_manager.tscn"
 SignalBus="*res://Scripts/Singletons/signal_bus.gd"
 GameConstants="*res://Scripts/Singletons/game_constants.gd"
