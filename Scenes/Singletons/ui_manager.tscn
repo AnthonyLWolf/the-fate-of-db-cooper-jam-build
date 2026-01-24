@@ -1,12 +1,153 @@
-[gd_scene load_steps=2 format=3 uid="uid://djb4ll76lnwam"]
+[gd_scene load_steps=10 format=3 uid="uid://djb4ll76lnwam"]
 
 [ext_resource type="Script" uid="uid://dc5ucpt6j2dlj" path="res://Scripts/Singletons/ui_manager.gd" id="1_pgdt0"]
+[ext_resource type="FontFile" uid="uid://dg2rks2w45mwb" path="res://Assets/Fonts/Ghost Factory.ttf" id="3_7vhew"]
+[ext_resource type="Texture2D" uid="uid://quk7x22bprun" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/logspritePLACEHOLDER.png" id="4_a8i84"]
+[ext_resource type="Texture2D" uid="uid://didhjtrrmftjc" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/tentspritePLACEHOLDER.png" id="5_lceoh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbmfk"]
+bg_color = Color(0.14536136, 0.30987722, 0.44640958, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.6745098, 0.8156863, 0.9372549, 0.7490196)
+shadow_size = 5
+shadow_offset = Vector2(3.34, 3.7)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r2bs2"]
+bg_color = Color(0.67483234, 0.8166017, 0.9354636, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.24705882, 0.46666667, 0.9882353, 0.9607843)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4j5c5"]
+bg_color = Color(0.8235294, 0.38039216, 0.24705882, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.41584444, 0.16285923, 0.085531734, 1)
+shadow_size = 5
+shadow_offset = Vector2(3.34, 3.7)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ux1tn"]
+bg_color = Color(0.9607843, 0.6509804, 0.34901962, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.3019608, 0.14117648, 0.20784314, 1)
+shadow_size = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_veyyk"]
+font = ExtResource("3_7vhew")
+font_size = 96
+font_color = Color(0.6745098, 0.8156863, 0.9372549, 1)
 
 [node name="UIManager" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -6.0
+offset_right = -25.0
+offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pgdt0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer"]
+offset_left = 56.0
+offset_top = 83.0
+offset_right = 1802.0
+offset_bottom = 1037.7462
+
+[node name="Bars" type="HBoxContainer" parent="CanvasLayer/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColdBar" type="ProgressBar" parent="CanvasLayer/BoxContainer/Bars"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(51.485, 500)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_qbmfk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_r2bs2")
+value = 32.0
+rounded = true
+fill_mode = 3
+show_percentage = false
+
+[node name="FireBar" type="ProgressBar" parent="CanvasLayer/BoxContainer/Bars"]
+visible = false
+custom_minimum_size = Vector2(51.485, 500)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_4j5c5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ux1tn")
+value = 32.0
+rounded = true
+fill_mode = 3
+show_percentage = false
+
+[node name="Counters" type="HBoxContainer" parent="CanvasLayer"]
+offset_left = 53.0
+offset_top = 48.0
+offset_right = 1806.0
+offset_bottom = 149.0
+
+[node name="CountersLeft" type="HBoxContainer" parent="CanvasLayer/Counters"]
+layout_mode = 2
+theme_override_constants/separation = 69
+
+[node name="WoodCounter" type="HBoxContainer" parent="CanvasLayer/Counters/CountersLeft"]
+layout_mode = 2
+
+[node name="WoodCounterLabel" type="Label" parent="CanvasLayer/Counters/CountersLeft/WoodCounter"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_veyyk")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Counters/CountersLeft/WoodCounter"]
+layout_mode = 2
+texture = ExtResource("4_a8i84")
+expand_mode = 2
+
+[node name="LeafCounter" type="HBoxContainer" parent="CanvasLayer/Counters/CountersLeft"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Counters/CountersLeft/LeafCounter"]
+layout_mode = 2
+
+[node name="LeafCounterLabel" type="Label" parent="CanvasLayer/Counters/CountersLeft/LeafCounter"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_veyyk")
+
+[node name="CashCounter" type="HBoxContainer" parent="CanvasLayer/Counters"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_constants/separation = 20
+
+[node name="CashIcon" type="TextureRect" parent="CanvasLayer/Counters/CashCounter"]
+layout_mode = 2
+texture = ExtResource("5_lceoh")
+expand_mode = 3
+
+[node name="CashCounterLabel" type="Label" parent="CanvasLayer/Counters/CashCounter"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+label_settings = SubResource("LabelSettings_veyyk")
