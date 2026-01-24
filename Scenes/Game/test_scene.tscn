@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://8k78re1xuv7l"]
+
+[ext_resource type="Texture2D" uid="uid://wept5orkq522" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/DBbackgroundconceptPLACEHOLDER.png" id="1_f1w0d"]
+[ext_resource type="PackedScene" uid="uid://cgu8hvhdien4h" path="res://Scenes/Classes/cooper_player.tscn" id="3_f1w0d"]
+[ext_resource type="PackedScene" uid="uid://dopp8fvghm770" path="res://Scenes/Classes/fuel_stack.tscn" id="4_5kn0a"]
+[ext_resource type="Texture2D" uid="uid://didhjtrrmftjc" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/tentspritePLACEHOLDER.png" id="5_wyggh"]
+[ext_resource type="PackedScene" uid="uid://bynh34all6880" path="res://Scenes/Classes/campfire.tscn" id="5_xe4m6"]
+[ext_resource type="PackedScene" uid="uid://bgtmjntfd7k80" path="res://Scenes/Classes/fuel_resource.tscn" id="6_5kn0a"]
+
+[sub_resource type="Environment" id="Environment_f1w0d"]
+fog_light_color = Color(0.85514784, 0.0014100384, 0.9611613, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_f1w0d"]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_f1w0d")
+
+[node name="DBbackgroundconceptPlaceholder" type="Sprite2D" parent="."]
+position = Vector2(964, 539)
+scale = Vector2(0.4282222, 0.35933334)
+texture = ExtResource("1_f1w0d")
+
+[node name="TentspritePlaceholder" type="Sprite2D" parent="."]
+position = Vector2(1362.0001, 933)
+scale = Vector2(0.27924547, 0.27924547)
+texture = ExtResource("5_wyggh")
+
+[node name="CooperPlayer" parent="." instance=ExtResource("3_f1w0d")]
+z_index = 1
+position = Vector2(662, 888)
+
+[node name="CameraTransform" parent="CooperPlayer" index="3"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="ForestFloor" type="StaticBody2D" parent="."]
+position = Vector2(987, 1034)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ForestFloor"]
+shape = SubResource("WorldBoundaryShape2D_f1w0d")
+
+[node name="FuelStack" parent="." instance=ExtResource("4_5kn0a")]
+position = Vector2(914, 974)
+
+[node name="Campfire" parent="." instance=ExtResource("5_xe4m6")]
+position = Vector2(1114, 945)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(662, 888)
+zoom = Vector2(1.2, 1.2)
+process_callback = 0
+limit_left = 8
+limit_top = 7
+limit_right = 1920
+limit_bottom = 1072
+position_smoothing_enabled = true
+position_smoothing_speed = 1.0
+editor_draw_limits = true
+
+[node name="FuelResource" parent="." instance=ExtResource("6_5kn0a")]
+position = Vector2(301, 959)
+
+[editable path="CooperPlayer"]

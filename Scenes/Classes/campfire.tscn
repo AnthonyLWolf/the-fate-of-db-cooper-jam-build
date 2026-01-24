@@ -1,19 +1,63 @@
-[gd_scene load_steps=4 format=3 uid="uid://bynh34all6880"]
+[gd_scene load_steps=8 format=3 uid="uid://bynh34all6880"]
 
 [ext_resource type="Script" uid="uid://b37fl6fic68b6" path="res://Scripts/campfire.gd" id="1_kfptp"]
+[ext_resource type="Texture2D" uid="uid://kad4e0dce1kf" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/firespritePLACEHOLDER.png" id="2_txjls"]
+[ext_resource type="FontFile" uid="uid://dg2rks2w45mwb" path="res://Assets/Fonts/Ghost Factory.ttf" id="3_hn5ug"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qcxes"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_txjls")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gqtmc"]
+font = ExtResource("3_hn5ug")
+font_size = 261
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kfptp"]
-radius = 131.21738
+radius = 415.23608
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_txjls"]
+radius = 122.03688
 
 [node name="Campfire" type="Node2D"]
 script = ExtResource("1_kfptp")
+intensity = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_qcxes")
+animation = &"idle"
 
-[node name="WarmthArea" type="Area2D" parent="AnimatedSprite2D"]
+[node name="InteractLabel" type="Label" parent="AnimatedSprite2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -610.0
+offset_right = -297.0
+offset_bottom = -983.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "E"
+label_settings = SubResource("LabelSettings_gqtmc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/WarmthArea"]
+[node name="WarmthArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WarmthArea"]
+position = Vector2(-2, -44)
 shape = SubResource("CircleShape2D_kfptp")
+debug_color = Color(0.842405, 0.37628525, 0.17186674, 0.41960785)
+
+[node name="InteractionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_txjls")
+
+[connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]

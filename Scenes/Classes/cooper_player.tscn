@@ -1,24 +1,43 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgu8hvhdien4h"]
+[gd_scene load_steps=6 format=3 uid="uid://cgu8hvhdien4h"]
 
 [ext_resource type="Script" uid="uid://dojlbddrg2bp7" path="res://Scripts/cooper_player.gd" id="1_wf0wr"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xwft5"]
+[ext_resource type="Texture2D" uid="uid://br4k2n8mr0cs0" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/dbspritePLACEHOLDER.png" id="2_6kyu3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_270ak"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6kyu3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xwft5"]
+radius = 22.0
+height = 120.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xwft5"]
-radius = 54.589375
+radius = 76.41989
 
-[node name="CooperPlayer" type="CharacterBody2D"]
+[node name="CooperPlayer" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_wf0wr")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_270ak")
+animation = &"idle"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.6060002, 9.635993)
+scale = Vector2(1.6060002, 1.6059989)
 shape = SubResource("CapsuleShape2D_xwft5")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_270ak")
-
 [node name="InteractionArea" type="Area2D" parent="."]
+scale = Vector2(1.6060002, 1.6059989)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("CircleShape2D_xwft5")
+
+[node name="CameraTransform" type="RemoteTransform2D" parent="."]
