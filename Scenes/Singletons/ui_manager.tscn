@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://djb4ll76lnwam"]
+
+[ext_resource type="Script" uid="uid://dc5ucpt6j2dlj" path="res://Scripts/Singletons/ui_manager.gd" id="1_pgdt0"]
+
+[node name="UIManager" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_pgdt0")
