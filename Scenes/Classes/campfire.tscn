@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bynh34all6880"]
+[gd_scene load_steps=25 format=3 uid="uid://bynh34all6880"]
 
 [ext_resource type="Script" uid="uid://b37fl6fic68b6" path="res://Scripts/campfire.gd" id="1_kfptp"]
 [ext_resource type="Texture2D" uid="uid://dca0rowinqt7o" path="res://Assets/Sprites/Campfire/DBfire1.png" id="2_p4mpn"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://ccse3w5q44n35" path="res://Assets/Sprites/Campfire/DBsmolder3.png" id="15_p3u68"]
 [ext_resource type="Texture2D" uid="uid://fyi6d4go8qtq" path="res://Assets/Sprites/Campfire/DBsmolder4.png" id="16_he5d4"]
 [ext_resource type="AudioStream" uid="uid://1kfgq88ht86g" path="res://Assets/Audio/SFX/ENV/FIRE  NIGHTTIME.mp3" id="18_7gmes"]
+[ext_resource type="Texture2D" uid="uid://bc6v50m08wf70" path="res://Assets/Sprites/lighttexture.png" id="19_u651g"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gqtmc"]
 font = ExtResource("3_hn5ug")
@@ -64,7 +65,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("12_cfnti")
 }],
-"loop": true,
+"loop": false,
 "name": &"base",
 "speed": 5.0
 }, {
@@ -72,7 +73,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("13_1eon5")
 }],
-"loop": true,
+"loop": false,
 "name": &"daytimeash",
 "speed": 5.0
 }, {
@@ -136,7 +137,7 @@ scale = Vector2(0.076, 0.076)
 sprite_frames = SubResource("SpriteFrames_qcxes")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.9603318
+frame_progress = 0.8224038
 offset = Vector2(0, -650)
 
 [node name="BaseSprite" type="AnimatedSprite2D" parent="."]
@@ -144,10 +145,11 @@ y_sort_enabled = true
 position = Vector2(1.0000001, -24.000004)
 scale = Vector2(0.087, 0.087)
 sprite_frames = SubResource("SpriteFrames_vtsli")
-animation = &"daytimeash"
+animation = &"smoulder"
 autoplay = "base"
 
 [node name="WarmthArea" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WarmthArea"]
 position = Vector2(2, -1)
@@ -155,6 +157,7 @@ shape = SubResource("CircleShape2D_kfptp")
 debug_color = Color(0.842405, 0.37628525, 0.17186674, 0.41960785)
 
 [node name="InteractionArea" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("CircleShape2D_txjls")
@@ -163,6 +166,13 @@ shape = SubResource("CircleShape2D_txjls")
 position = Vector2(-1, 33)
 stream = ExtResource("18_7gmes")
 attenuation = 2.0
+
+[node name="CampLightOuter" type="PointLight2D" parent="."]
+color = Color(0.6, 0.3137255, 0.09803922, 1)
+energy = 1.6
+shadow_color = Color(0.4216586, 0.31151327, 0.31830615, 0)
+texture = ExtResource("19_u651g")
+texture_scale = 0.8
 
 [connection signal="body_entered" from="WarmthArea" to="." method="_on_warmth_area_body_entered"]
 [connection signal="body_exited" from="WarmthArea" to="." method="_on_warmth_area_body_exited"]

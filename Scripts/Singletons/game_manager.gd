@@ -7,7 +7,7 @@ var wood_count : int = 0
 var leaf_count : int = 0
 
 # Cash variables
-var cash_count : int = 200000
+var cash_count : int = GameConstants.STARTING_CASH
 var display_cash : int = cash_count
 var new_cash : int = cash_count # Initialises all cash valuables to the same value
 
@@ -26,7 +26,7 @@ enum GameState {
 	WIN,
 	LOSS
 }
-var current_state : GameState = GameState.DAYTIME:
+var current_state : GameState = GameState.GAMESTART:
 	set(value):
 		current_state = value
 		_on_phase_changed(value) # Runs every time a variable is assigned
@@ -47,18 +47,18 @@ func _ready() -> void:
 	
 	# Connects endgame signals
 	SignalBus.froze_to_death.connect(_freeze_player)
-	
-	# Grabs player for end conditions
-	player = get_tree().get_first_node_in_group("Player")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	print(GameManager.current_state)
+	
 	if day == GameConstants.MAX_DAYS && current_state != GameState.WIN:
 		current_state = GameState.WIN
 		survived = true
 		SceneController.load_scene(SceneController.game_over_screen)
 		
 
+# Runs logic depending on state...?
 func _on_phase_changed(new_state : GameState):
 	match new_state:
 		GameState.DAYTIME:
@@ -87,17 +87,11 @@ func _start_phase_transition():
 
 # Endgame functions
 func _freeze_player():
+	# Grabs player for end conditions
+	player = get_tree().get_first_node_in_group("Player")
+	
 	current_state = GameState.LOSS
 	froze_to_death = true
-	
-	# Plays death animation
-	player.animated_sprite_2d.play("freeze")
-	await player.animated_sprite_2d.animation_finished
-	player.animated_sprite_2d.play("death")
-	await player.animated_sprite_2d.animation_finished
-	
-	# Loads game over screen
-	SceneController.load_scene(SceneController.game_over_screen)
 
 func _out_of_cash():
 	current_state = GameState.LOSS
@@ -105,6 +99,21 @@ func _out_of_cash():
 	SignalBus.send_dialogue.emit("Damn! I'm out of dough.")
 	await get_tree().create_timer(1.5).timeout
 	SceneController.load_scene(SceneController.game_over_screen)
+
+# Resets all data for a fresh start
+func reset_game():
+	previous_phase = GameManager.GameState.GAMESTART # NOTE: Technically incorrect, but necessary to avoid flow bugs and refactoring
+	UiManager.hide_all_labels()
+	day = 1
+	wood_count = 0
+	leaf_count = 0
+	cash_count = GameConstants.STARTING_CASH
+	display_cash = cash_count
+	new_cash = cash_count
+	update_ui_counters()
+	out_of_cash = false
+	froze_to_death = false
+	survived = false
 
 func update_ui_counters():
 	# UiManager.cash_counter_label.text = str(cash_count)

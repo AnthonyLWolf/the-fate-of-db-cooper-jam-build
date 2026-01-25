@@ -4,12 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://quk7x22bprun" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/logspritePLACEHOLDER.png" id="2_qke0g"]
 [ext_resource type="FontFile" uid="uid://dg2rks2w45mwb" path="res://Assets/Fonts/Ghost Factory.ttf" id="3_df7x5"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_cvtb0"]
-font = ExtResource("3_df7x5")
-font_size = 261
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_0xjnw"]
 radius = 51.009804
+
+[sub_resource type="LabelSettings" id="LabelSettings_cvtb0"]
+font = ExtResource("3_df7x5")
+font_size = 72
 
 [node name="FuelResource" type="Node2D"]
 y_sort_enabled = true
@@ -19,23 +19,33 @@ script = ExtResource("1_n8vbs")
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_qke0g")
 
-[node name="InteractLabel" type="Label" parent="Sprite2D"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -85.0
-offset_top = -455.0
-offset_right = -317.0
-offset_bottom = -419.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "E"
-label_settings = SubResource("LabelSettings_cvtb0")
-
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["Pickup"]]
 shape = SubResource("CircleShape2D_0xjnw")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -22.0
+offset_top = -73.0
+offset_right = 18.0
+offset_bottom = -33.0
+
+[node name="InteractLabel" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -19.0
+offset_top = -49.0
+offset_right = 24.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "E"
+label_settings = SubResource("LabelSettings_cvtb0")
+horizontal_alignment = 1
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

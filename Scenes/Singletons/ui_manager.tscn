@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://djb4ll76lnwam"]
+[gd_scene load_steps=14 format=3 uid="uid://djb4ll76lnwam"]
 
 [ext_resource type="Script" uid="uid://dc5ucpt6j2dlj" path="res://Scripts/Singletons/ui_manager.gd" id="1_pgdt0"]
 [ext_resource type="FontFile" uid="uid://dg2rks2w45mwb" path="res://Assets/Fonts/Ghost Factory.ttf" id="3_7vhew"]
-[ext_resource type="Texture2D" uid="uid://quk7x22bprun" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/logspritePLACEHOLDER.png" id="4_a8i84"]
+[ext_resource type="Texture2D" uid="uid://dxjp5c44t38sj" path="res://Assets/Sprites/Resources/woodpileFULL.png" id="3_a8i84"]
+[ext_resource type="Texture2D" uid="uid://c0ccha1agrq2k" path="res://Assets/Sprites/Resources/leafstashFULL.png" id="4_lceoh"]
 [ext_resource type="FontFile" uid="uid://dxwegbkjgdcue" path="res://Assets/Fonts/Adventurer.ttf" id="5_7vhew"]
 [ext_resource type="Texture2D" uid="uid://didhjtrrmftjc" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/tentspritePLACEHOLDER.png" id="5_lceoh"]
 
@@ -122,6 +123,7 @@ theme_override_constants/separation = 69
 
 [node name="WoodCounter" type="HBoxContainer" parent="CanvasLayer/Counters/CountersLeft"]
 layout_mode = 2
+theme_override_constants/separation = 14
 
 [node name="WoodCounterLabel" type="Label" parent="CanvasLayer/Counters/CountersLeft/WoodCounter"]
 unique_name_in_owner = true
@@ -130,21 +132,26 @@ text = "0"
 label_settings = SubResource("LabelSettings_veyyk")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Counters/CountersLeft/WoodCounter"]
+custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
-texture = ExtResource("4_a8i84")
+texture = ExtResource("3_a8i84")
 expand_mode = 2
 
 [node name="LeafCounter" type="HBoxContainer" parent="CanvasLayer/Counters/CountersLeft"]
 layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Counters/CountersLeft/LeafCounter"]
-layout_mode = 2
+theme_override_constants/separation = 19
 
 [node name="LeafCounterLabel" type="Label" parent="CanvasLayer/Counters/CountersLeft/LeafCounter"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 label_settings = SubResource("LabelSettings_veyyk")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Counters/CountersLeft/LeafCounter"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+texture = ExtResource("4_lceoh")
+expand_mode = 2
 
 [node name="CashCounter" type="HBoxContainer" parent="CanvasLayer/Counters"]
 layout_mode = 2

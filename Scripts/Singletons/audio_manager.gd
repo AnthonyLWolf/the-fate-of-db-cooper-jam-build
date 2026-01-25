@@ -18,7 +18,7 @@ const game_over_fire_sfx = preload("res://Assets/Audio/SFX/GAMEPLAY SOUND/FIRE O
 const burn_resource_sfx = preload("res://Assets/Audio/SFX/GAMEPLAY SOUND/FIRE ON.mp3")
 const nighttime_transition_sfx = preload("res://Assets/Audio/SFX/GAMEPLAY SOUND/IT_S THE NIGHT TIME SOUND TRANSITION DAY_NIGHT.mp3")
 const leaves_sfx = preload("res://Assets/Audio/SFX/GAMEPLAY SOUND/LEAVES.mp3")
-const cash_sfx = preload("res://Assets/Audio/SFX/GAMEPLAY SOUND/MONEY.mp3")
+const cash_sfx = preload("res://Assets/Audio/SFX/GAMEPLAY SOUND/MONEY SOUND.mp3")
 const fire_on_sfx = preload("res://Assets/Audio/SFX/GAMEPLAY SOUND/SOUND FIRE ON MAIN MENU(_).mp3")
 const wood_sfx = preload("res://Assets/Audio/SFX/GAMEPLAY SOUND/WOOD .mp3")
 
@@ -71,12 +71,10 @@ func fade_to_night():
 	var tween = create_tween().set_parallel(true) # Fade both at once
 	tween.tween_property(daytime_music_player, "volume_db", -80, 2.0) # Fade out
 	tween.tween_property(nighttime_music_player, "volume_db", 0, 2.0) # Fade in
-	await tween.finished.connect(tween.free)
 	daytime_music_player.stop()
 
 func fade_to_day():
 	var tween = create_tween().set_parallel(true) # Fade both at once
 	tween.tween_property(nighttime_music_player, "volume_db", -80, 2.0) # Fade out
 	tween.tween_property(daytime_music_player, "volume_db", 0, 2.0) # Fade in
-	await tween.finished.connect(tween.free)
 	nighttime_music_player.stop()

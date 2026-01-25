@@ -41,7 +41,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_agnsg")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 5.0
 }, {
@@ -88,7 +88,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("12_os4yt")
 }],
-"loop": true,
+"loop": false,
 "name": &"freeze",
 "speed": 5.0
 }, {
@@ -186,6 +186,7 @@ font_size = 23
 [node name="CooperPlayer" type="CharacterBody2D" groups=["Player"]]
 z_index = 5
 script = ExtResource("1_wf0wr")
+daytime_acceleration = 100.0
 
 [node name="ItemHeld" type="Sprite2D" parent="."]
 position = Vector2(-1.9999998, -138)
@@ -197,7 +198,6 @@ scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_270ak")
 animation = &"walk_night"
 autoplay = "idle"
-frame_progress = 0.88485986
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.6060002, 9.635993)
@@ -235,5 +235,9 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="PlayerSFX" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(0.99999994, 0.99999994)
+bus = &"SFX"
+
+[node name="BreathSFX" type="AudioStreamPlayer2D" parent="."]
 scale = Vector2(0.99999994, 0.99999994)
 bus = &"SFX"

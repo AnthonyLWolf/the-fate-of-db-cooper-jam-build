@@ -62,14 +62,14 @@ func spawn_resources(current_day : int):
 		
 		# Picks side and initiates coordinate calculation
 		var side = 1 if randf() > 0.5 else -1
-		var origin = campfire.global_position
+		var origin = Vector2(campfire.global_position.x, campfire.global_position.y + 50)
 		var base_distance = 800 + (i * step_size)
 		
 		# Makes the chunks less like a straight line
 		var jitter = randf_range(-step_size * 0.8, step_size * 0.8)
 		var final_distance = (base_distance + jitter) * side
 		# var horizontal_offset = distance * side # Adds an offset from the campfire, origin added later
-		var vertical_offset = randf_range(-50, 30) # Adds vertical offset for a little perspective variety
+		var vertical_offset = randf_range(-50, 50) # Adds vertical offset for a little perspective variety
 		
 		# Sets position and performs spawn
 		item.global_position = origin + Vector2(final_distance, vertical_offset)
@@ -83,16 +83,35 @@ func send_daily_dialogue():
 			SignalBus.send_dialogue.emit("Looks like it'll be night soon. Gotta find something to keep me warm.")
 		2:
 			SignalBus.send_dialogue.emit("New day... Tonight may be worse. Gotta find more stuff.")
-		5:
+		3:
 			SignalBus.send_dialogue.emit("I think the blizzard's getting worse. Tonight will be tough.")
-		6:
+		4:
 			SignalBus.send_dialogue.emit("Just one more day. C'mon.")
 
 func _on_daytime_timer_timeout() -> void:
 	player.is_movement_locked = true
 	SignalBus.daytime_end.emit()
 	SignalBus.transition.emit()
-	var day_end_dialogue = "It's getting late. Better head back..."
+	var day_end_dialogue : String
+	
+	# Handles item fate if too far from home
+	## Drops items
+	if player.distance_from_home >= 10:
+		day_end_dialogue = "It's getting late. Better head back... I'll have to drop whatever I'm carrying."
+		# Resets player inventory
+		for resource in player.inventory:
+			player.inventory[resource] = 0
+	## Keeps items
+	elif player.distance_from_home < 10:
+		day_end_dialogue = "It's getting late. The camp is close... I can keep whatever I'm carrying."
+		if player.inventory["wood"] > 0:
+			GameManager.wood_count += player.inventory["wood"]
+		if player.inventory["leaves"] > 0:
+			GameManager.leaf_count += player.inventory["leaves"]
+		# Resets player inventory
+		for resource in player.inventory:
+			player.inventory[resource] = 0
+	
 	SignalBus.send_dialogue.emit(day_end_dialogue)
 	await get_tree().create_timer(3.0).timeout
 	AudioManager.stop_all_players()

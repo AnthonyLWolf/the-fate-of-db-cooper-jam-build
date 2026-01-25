@@ -33,15 +33,15 @@ unique_name_in_owner = true
 position = Vector2(1288, 871)
 
 [node name="FuelStack" parent="." instance=ExtResource("3_olxus")]
-position = Vector2(761, 967)
+position = Vector2(913, 961)
 is_wood = true
 
 [node name="FuelStack2" parent="." instance=ExtResource("3_olxus")]
-position = Vector2(508, 977)
+position = Vector2(1830, 925)
 is_leaves = true
 
 [node name="FuelStack3" parent="." instance=ExtResource("3_olxus")]
-position = Vector2(1607, 961)
+position = Vector2(1584, 957)
 is_cash = true
 
 [node name="Camera2D" parent="." instance=ExtResource("4_sy7ho")]

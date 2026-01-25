@@ -6,10 +6,12 @@ extends CharacterBody2D
 @onready var player_weight_label: Label = $PlayerWeightLabel
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var player_sfx: AudioStreamPlayer2D = $PlayerSFX
+@onready var breath_sfx: AudioStreamPlayer2D = $BreathSFX
 
 
 # Player variables
-@export var speed = 300.0
+@export var base_speed = 300.0
+@export var daytime_acceleration = 200.0
 @export var acceleration = 0.5
 @export var jump_velocity = -400.0
 
@@ -18,6 +20,8 @@ var carrying_items = false
 var holding_item = false
 var is_movement_locked = false
 var distance_from_home : int = 0
+var frozen = false
+var dying = false
 
 var inventory = {
 	"wood": 0,
@@ -30,11 +34,24 @@ func _ready() -> void:
 	SignalBus.send_dialogue.connect(_display_dialogue)
 	item_held.visible = false
 	dialogue_label.visible = false
+	
+	if GameManager.current_state == GameManager.GameState.DAYTIME:
+		base_speed += daytime_acceleration
 
 func _physics_process(delta: float) -> void:
 	
+	if frozen && !dying:
+		dying = true
+		animated_sprite_2d.play("freeze")
+		await get_tree().create_timer(3.0).timeout
+		animated_sprite_2d.position += Vector2(0.0,50)
+		animated_sprite_2d.play("death")
+		# Loads game over screen
+		SceneController.load_scene(SceneController.game_over_screen)
+		return
+	
 	# Locks movement
-	if is_movement_locked:
+	if is_movement_locked && !frozen:
 		player_sfx.stop()
 		animated_sprite_2d.play("idle")
 		velocity.y += get_gravity().y * delta
@@ -56,7 +73,7 @@ func _physics_process(delta: float) -> void:
 		elif GameManager.current_state == GameManager.GameState.NIGHTTIME:
 			animated_sprite_2d.play("walk_night")
 			
-		velocity.x = direction * speed
+		velocity.x = direction * base_speed
 		animated_sprite_2d.scale = Vector2(0.1, 0.1)
 		if direction > 0:
 			animated_sprite_2d.flip_h = false
@@ -80,9 +97,9 @@ func _physics_process(delta: float) -> void:
 				player_sfx.seek(8.0)
 	else:
 		player_sfx.stop()
-		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.x = move_toward(velocity.x, 0, base_speed)
 		animated_sprite_2d.scale = Vector2(0.12, 0.12)
-		animated_sprite_2d.play("idle")
+		if !frozen: animated_sprite_2d.play("idle")
 
 	move_and_slide()
 	
@@ -109,6 +126,13 @@ func pickup_item(fuel_type: String, sender: Node2D):
 			SignalBus.send_dialogue.emit("I'm too heavy. Gotta take some stuff back!")
 		# Picks up item
 		else:
+			# Plays matching sound effect
+			if fuel_type == "wood":
+				AudioManager.play_sfx(AudioManager.wood_sfx, 0.63)
+			elif fuel_type == "leaves":
+				AudioManager.play_sfx(AudioManager.leaves_sfx, 0.70)
+			
+			# Marks player as carrying items and frees the resource from the spawn point
 			carrying_items = true
 			sender.queue_free()
 			

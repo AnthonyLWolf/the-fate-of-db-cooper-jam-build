@@ -15,6 +15,7 @@ func _process(delta: float) -> void:
 
 
 func _nighttime_setup():
+	GameManager.update_ui_counters()
 	# Handles music
 	if AudioManager.nighttime_music_player.playing:
 		AudioManager.nighttime_music_player.stop()
@@ -36,13 +37,14 @@ func play_ambience_sfx():
 	AudioManager.base_ambience_player.stream = AudioManager.forest_night_env
 	AudioManager.base_ambience_player.play()
 	
+	# Ambience Layers
 	if GameManager.day >= 2:
 		AudioManager.wind_layer.stop()
 		AudioManager.wind_layer.play()
-	if GameManager.day >= 4:
+	if GameManager.day >= 3:
 		AudioManager.storm_layer.stop()
 		AudioManager.storm_layer.play()
-	if GameManager.day >= 6:
+	if GameManager.day >= 4:
 		AudioManager.wolves_layer.stop()
 		AudioManager.wolves_layer.play()
 

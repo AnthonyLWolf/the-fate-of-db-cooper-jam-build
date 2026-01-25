@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dsgms5utqvxdd"]
+[gd_scene load_steps=13 format=3 uid="uid://dsgms5utqvxdd"]
 
 [ext_resource type="Texture2D" uid="uid://wept5orkq522" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/DBbackgroundconceptPLACEHOLDER.png" id="1_765h4"]
 [ext_resource type="Script" uid="uid://cafdbo1ehdt7y" path="res://Scripts/nighttime.gd" id="1_sku2a"]
@@ -9,6 +9,20 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_64dvf"]
 size = Vector2(40776, 77.5)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_sku2a"]
+polygon = PackedVector2Array(1804, 808, 1859, 832, 1882, 819, 1901, 887, 1896, 926, 1842, 949, 1805, 967)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vvxqm"]
+polygon = PackedVector2Array(638, 103, 605, 102, 560, 546, 576, 624)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qypt8"]
+polygon = PackedVector2Array(1373, 785, 1334, 696, 1314, 620, 1339, 498, 1357, 373, 1373, 298, 1383, 304, 1362, 498, 1343, 626, 1396, 753, 1376, 795)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4m666"]
+polygon = PackedVector2Array(232, 915, 251, 815, 243, 723, 205, 880, 194, 935)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_64dvf"]
 
 [node name="Nighttime" type="Node2D"]
 script = ExtResource("1_sku2a")
@@ -34,16 +48,24 @@ color = Color(0.41604817, 0.4536335, 0.6383827, 1)
 unique_name_in_owner = true
 position = Vector2(1165, 892)
 
+[node name="InteractLabel" parent="Campfire/Control" index="0"]
+anchor_top = -0.7
+
+[node name="CampLightInner" parent="Campfire" index="7"]
+color = Color(0.73090917, 0.33479613, 0.06453732, 1)
+energy = 2.08
+texture_scale = 0.2
+
 [node name="WoodStack" parent="." instance=ExtResource("3_vvxqm")]
-position = Vector2(403, 974)
+position = Vector2(571, 966)
 is_wood = true
 
 [node name="LeavesStack" parent="." instance=ExtResource("3_vvxqm")]
-position = Vector2(593, 977)
+position = Vector2(1727, 960)
 is_leaves = true
 
 [node name="CashStack" parent="." instance=ExtResource("3_vvxqm")]
-position = Vector2(1430, 957)
+position = Vector2(1480, 956)
 is_cash = true
 
 [node name="Camera2D" parent="." instance=ExtResource("4_qypt8")]
@@ -55,7 +77,6 @@ position = Vector2(995, 924)
 
 [node name="AnimatedSprite2D" parent="CooperPlayer" index="1"]
 animation = &"idle"
-frame_progress = 0.0
 
 [node name="CameraTransform" parent="CooperPlayer" index="4"]
 remote_path = NodePath("../../Camera2D")
@@ -70,6 +91,24 @@ shape = SubResource("RectangleShape2D_64dvf")
 wait_time = 60.0
 one_shot = true
 
+[node name="NightTimeOccluders" type="Node2D" parent="."]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="NightTimeOccluders"]
+occluder = SubResource("OccluderPolygon2D_sku2a")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="NightTimeOccluders"]
+occluder = SubResource("OccluderPolygon2D_vvxqm")
+
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="NightTimeOccluders"]
+occluder = SubResource("OccluderPolygon2D_qypt8")
+
+[node name="LightOccluder2D4" type="LightOccluder2D" parent="NightTimeOccluders"]
+occluder = SubResource("OccluderPolygon2D_4m666")
+
+[node name="LightOccluder2D5" type="LightOccluder2D" parent="NightTimeOccluders"]
+occluder = SubResource("OccluderPolygon2D_64dvf")
+
 [connection signal="timeout" from="NightTimeTimer" to="." method="_on_night_time_timer_timeout"]
 
+[editable path="Campfire"]
 [editable path="CooperPlayer"]

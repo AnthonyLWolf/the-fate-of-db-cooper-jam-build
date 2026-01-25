@@ -64,16 +64,22 @@ func _process(delta: float) -> void:
 			
 			UiManager.cold_bar.value = cold_amount
 			
-			# Checks if player is freezing to death
+			# Checks if player is freezing to death and plays sound if so
 			if cold_amount >= 75 && !player_freezing:
 				player_freezing = true
-				AudioManager.play_sfx(AudioManager.player_cold_breath, 0.0)
+				player.breath_sfx.stream = AudioManager.player_cold_breath
+				player.breath_sfx.play(0.2)
 			
 			# Instantly checks if cold amount warrants a game over each frame
-			if cold_amount >= GameConstants.MAX_COLD_AMOUNT:
+			if cold_amount >= GameConstants.MAX_COLD_AMOUNT && !player.frozen:
+				player.frozen = true
+				player.breath_sfx.stop()
 				SignalBus.froze_to_death.emit()
 				base_sprite.play("smoulder")
 				return
+			
+			if player.frozen:
+				fire_intensity -= warmth_decay_rate
 			
 			# Animates shape radius based on fire intensity
 			intensity_ratio = fire_intensity / GameConstants.MAX_WARMTH_RADIUS
@@ -96,6 +102,8 @@ func _process(delta: float) -> void:
 			# Cold mechanic
 			if !player_in_warmth_range:
 				cold_amount += cold_multiplier * delta
+			if player_in_warmth_range:
+				cold_amount -= (cold_multiplier / 2) * delta
 				
 			# Handles burning of fuel
 			if Input.is_action_just_pressed("interact") && player_in_interaction_range && player.holding_item:
@@ -109,13 +117,13 @@ func _process(delta: float) -> void:
 
 
 func _on_interaction_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
+	if body.is_in_group("Player") && GameManager.current_state == GameManager.GameState.NIGHTTIME:
 		interact_label.visible = true
 		player_in_interaction_range = true
 
 
 func _on_interaction_area_body_exited(body: Node2D) -> void:
-	if body.is_in_group("Player"):
+	if body.is_in_group("Player") && GameManager.current_state == GameManager.GameState.NIGHTTIME:
 		interact_label.visible = false
 		player_in_interaction_range = false
 

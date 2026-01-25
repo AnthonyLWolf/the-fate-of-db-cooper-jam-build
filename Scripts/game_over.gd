@@ -6,8 +6,8 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# TEST
-	GameManager.out_of_cash = true
+	UiManager.hide_all_labels()
+	
 	if GameManager.out_of_cash || GameManager.froze_to_death:
 		AudioManager.play_sfx(AudioManager.game_over_fire_sfx, 2.6)
 		night_tint.visible = true
@@ -24,13 +24,16 @@ func _ready() -> void:
 
 
 func _on_play_again_button_pressed() -> void:
-	GameManager.day = 1
-	GameManager.cash_count = GameConstants.STARTING_CASH
+	GameManager.reset_game()
+	AudioManager.stop_all_players()
 	GameManager.current_state = GameManager.GameState.GAMESTART
 	SceneController.load_scene(SceneController.transition_screen)
 
 
 func _on_main_menu_button_pressed() -> void:
+	GameManager.reset_game()
+	AudioManager.stop_all_players()
+	GameManager.current_state = GameManager.GameState.GAMESTART
 	SceneController.load_scene(SceneController.main_menu_screen)
 
 

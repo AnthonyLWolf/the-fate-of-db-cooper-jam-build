@@ -4,6 +4,7 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	UiManager.hide_all_labels()
+	await get_tree().create_timer(0.5).timeout
 	get_tree().change_scene_to_file(SceneController.main_menu_screen)
 
 
