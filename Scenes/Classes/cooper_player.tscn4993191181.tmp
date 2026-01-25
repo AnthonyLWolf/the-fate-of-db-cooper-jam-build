@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgu8hvhdien4h"]
+[gd_scene load_steps=6 format=3 uid="uid://cgu8hvhdien4h"]
 
 [ext_resource type="Script" uid="uid://dojlbddrg2bp7" path="res://Scripts/cooper_player.gd" id="1_wf0wr"]
 [ext_resource type="Texture2D" uid="uid://br4k2n8mr0cs0" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/dbspritePLACEHOLDER.png" id="2_6kyu3"]
-[ext_resource type="Texture2D" uid="uid://quk7x22bprun" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/logspritePLACEHOLDER.png" id="2_kvkwn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_270ak"]
 animations = [{
@@ -24,11 +23,6 @@ radius = 76.41989
 
 [node name="CooperPlayer" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_wf0wr")
-
-[node name="ItemHeld" type="Sprite2D" parent="."]
-position = Vector2(-1.9999998, -138)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_kvkwn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.1, 0.1)

@@ -140,14 +140,14 @@ layout_mode = 2
 size_flags_horizontal = 10
 theme_override_constants/separation = 20
 
-[node name="CashIcon" type="TextureRect" parent="CanvasLayer/Counters/CashCounter"]
-layout_mode = 2
-texture = ExtResource("5_lceoh")
-expand_mode = 3
-
 [node name="CashCounterLabel" type="Label" parent="CanvasLayer/Counters/CashCounter"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 text = "0"
 label_settings = SubResource("LabelSettings_veyyk")
+
+[node name="CashIcon" type="TextureRect" parent="CanvasLayer/Counters/CashCounter"]
+layout_mode = 2
+texture = ExtResource("5_lceoh")
+expand_mode = 3

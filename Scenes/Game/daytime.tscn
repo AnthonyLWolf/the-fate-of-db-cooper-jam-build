@@ -1,3 +1,49 @@
-[gd_scene format=3 uid="uid://b8m24wgkbuv37"]
+[gd_scene load_steps=7 format=3 uid="uid://b8m24wgkbuv37"]
+
+[ext_resource type="Texture2D" uid="uid://wept5orkq522" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/DBbackgroundconceptPLACEHOLDER.png" id="1_v7ddp"]
+[ext_resource type="PackedScene" uid="uid://bynh34all6880" path="res://Scenes/Classes/campfire.tscn" id="2_iosov"]
+[ext_resource type="PackedScene" uid="uid://dopp8fvghm770" path="res://Scenes/Classes/fuel_stack.tscn" id="3_olxus"]
+[ext_resource type="PackedScene" uid="uid://d4ha2e6nrr8sc" path="res://Scenes/Classes/player_camera.tscn" id="4_sy7ho"]
+[ext_resource type="PackedScene" uid="uid://cgu8hvhdien4h" path="res://Scenes/Classes/cooper_player.tscn" id="5_xoeny"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v7ddp"]
+size = Vector2(1958, 86)
 
 [node name="Daytime" type="Node2D"]
+
+[node name="DBbackgroundconceptPlaceholder" type="Sprite2D" parent="."]
+position = Vector2(972, 544.5)
+scale = Vector2(0.4431111, 0.3916667)
+texture = ExtResource("1_v7ddp")
+
+[node name="Campfire" parent="." instance=ExtResource("2_iosov")]
+position = Vector2(1293, 981)
+
+[node name="FuelStack" parent="." instance=ExtResource("3_olxus")]
+position = Vector2(761, 967)
+is_wood = true
+
+[node name="FuelStack2" parent="." instance=ExtResource("3_olxus")]
+position = Vector2(508, 977)
+is_leaves = true
+
+[node name="FuelStack3" parent="." instance=ExtResource("3_olxus")]
+position = Vector2(1607, 961)
+is_cash = true
+
+[node name="Camera2D" parent="." instance=ExtResource("4_sy7ho")]
+position = Vector2(995, 924)
+
+[node name="CooperPlayer" parent="." instance=ExtResource("5_xoeny")]
+position = Vector2(995, 924)
+
+[node name="CameraTransform" parent="CooperPlayer" index="4"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(982, 1074)
+shape = SubResource("RectangleShape2D_v7ddp")
+
+[editable path="CooperPlayer"]

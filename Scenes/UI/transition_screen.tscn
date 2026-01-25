@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cxoue60lds0v5"]
+
+[node name="TransitionScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
