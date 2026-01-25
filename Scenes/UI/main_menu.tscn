@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://iwhobf0k08w0"]
+[gd_scene load_steps=9 format=3 uid="uid://iwhobf0k08w0"]
 
 [ext_resource type="Texture2D" uid="uid://wept5orkq522" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/DBbackgroundconceptPLACEHOLDER.png" id="1_o14dv"]
 [ext_resource type="Script" uid="uid://qik5olocp0rx" path="res://Scripts/main_menu.gd" id="1_u7lva"]
 [ext_resource type="FontFile" uid="uid://dg2rks2w45mwb" path="res://Assets/Fonts/Ghost Factory.ttf" id="2_u7lva"]
 [ext_resource type="FontFile" uid="uid://dxwegbkjgdcue" path="res://Assets/Fonts/Adventurer.ttf" id="3_mrfpk"]
+[ext_resource type="AudioStream" uid="uid://42sy6vbj8b1t" path="res://Assets/Audio/SFX/ENV/FIRE & FOREST DAYTIME .mp3" id="5_mrfpk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4pqbp"]
 font = ExtResource("2_u7lva")
@@ -100,6 +101,10 @@ theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_gih0s")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_k33u3")
 text = "QUIT"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_mrfpk")
+autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/HBoxContainer/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/HBoxContainer/HowToPlayButton" to="." method="_on_how_to_play_button_pressed"]

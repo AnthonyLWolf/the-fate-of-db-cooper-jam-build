@@ -1,6 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://c2y2f3cftc1ib"]
+[gd_scene load_steps=5 format=3 uid="uid://c2y2f3cftc1ib"]
 
 [ext_resource type="Script" uid="uid://ehtpyl01jf0d" path="res://Scripts/Singletons/audio_manager.gd" id="1_tf8dp"]
+[ext_resource type="AudioStream" uid="uid://babdsk8yhd4jw" path="res://Assets/Audio/SFX/ENV/WIND IN TREES .mp3" id="2_e3nsn"]
+[ext_resource type="AudioStream" uid="uid://c6jysbmwy12yl" path="res://Assets/Audio/SFX/ENV/STORM.mp3" id="3_8twvr"]
+[ext_resource type="AudioStream" uid="uid://cktfs1nx1hmur" path="res://Assets/Audio/SFX/ENV/WOLVES CALLING NIGHT .mp3" id="4_n87ct"]
 
 [node name="AudioManager" type="Node2D"]
 script = ExtResource("1_tf8dp")
+
+[node name="DaytimeMusicPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+
+[node name="NighttimeMusicPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+
+[node name="AmbiencePlayer" type="Node" parent="."]
+
+[node name="BaseAmbience" type="AudioStreamPlayer" parent="AmbiencePlayer"]
+
+[node name="WindLayer" type="AudioStreamPlayer" parent="AmbiencePlayer"]
+stream = ExtResource("2_e3nsn")
+
+[node name="StormLayer" type="AudioStreamPlayer" parent="AmbiencePlayer"]
+stream = ExtResource("3_8twvr")
+
+[node name="WolvesLayer" type="AudioStreamPlayer" parent="AmbiencePlayer"]
+stream = ExtResource("4_n87ct")
+
+[node name="SFXPlayers" type="Node" parent="."]

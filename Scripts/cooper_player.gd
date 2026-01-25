@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var dialogue_label: Label = $PlayerDialogueLabel
 @onready var player_weight_label: Label = $PlayerWeightLabel
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var player_sfx: AudioStreamPlayer2D = $PlayerSFX
 
 
 # Player variables
@@ -14,6 +15,7 @@ extends CharacterBody2D
 
 var current_weight : int = 0
 var carrying_items = false
+var holding_item = false
 var is_movement_locked = false
 var distance_from_home : int = 0
 
@@ -33,6 +35,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Locks movement
 	if is_movement_locked:
+		player_sfx.stop()
 		animated_sprite_2d.play("idle")
 		velocity.y += get_gravity().y * delta
 		velocity.x = 0
@@ -47,8 +50,13 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	var direction := Input.get_axis("left", "right")
 	if direction:
+		# Handles animation by day phase
+		if GameManager.current_state == GameManager.GameState.DAYTIME:
+			animated_sprite_2d.play("walk_day")
+		elif GameManager.current_state == GameManager.GameState.NIGHTTIME:
+			animated_sprite_2d.play("walk_night")
+			
 		velocity.x = direction * speed
-		animated_sprite_2d.play("walk")
 		animated_sprite_2d.scale = Vector2(0.1, 0.1)
 		if direction > 0:
 			animated_sprite_2d.flip_h = false
@@ -56,7 +64,22 @@ func _physics_process(delta: float) -> void:
 		if direction < 0:
 			animated_sprite_2d.flip_h = true
 			player_weight_label.position = Vector2(50, -85)
+			
+		# Handles SFX
+		if GameManager.current_state == GameManager.GameState.DAYTIME:
+			if !player_sfx.playing:
+				player_sfx.stream = AudioManager.player_footstep_hard_sfx
+				player_sfx.play(13.1)
+			if player_sfx.get_playback_position() >= 17.50:
+				player_sfx.seek(13.25)
+		if GameManager.current_state == GameManager.GameState.NIGHTTIME:
+			if !player_sfx.playing:
+				player_sfx.stream = AudioManager.player_foostep_soft_sfx
+				player_sfx.play(7.9)
+			if player_sfx.get_playback_position() >= 10.71:
+				player_sfx.seek(8.0)
 	else:
+		player_sfx.stop()
 		velocity.x = move_toward(velocity.x, 0, speed)
 		animated_sprite_2d.scale = Vector2(0.12, 0.12)
 		animated_sprite_2d.play("idle")

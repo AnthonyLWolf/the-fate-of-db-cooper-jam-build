@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bkctws6vfxr0q"
+path="res://.godot/imported/FIRE OFF (GAME OVER).mp3-478386cc40eb1db80324a0f044d64f3b.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/GAMEPLAY SOUND/FIRE OFF (GAME OVER).mp3"
+dest_files=["res://.godot/imported/FIRE OFF (GAME OVER).mp3-478386cc40eb1db80324a0f044d64f3b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -47,6 +47,7 @@ func hide_all_labels():
 	counters.visible = false
 	daytime_counter_label.visible = false
 	cold_bar.visible = false
+	distance_counter_label.visible = false
 
 func show_nighttime_labels():
 	counters.visible = true

@@ -6,7 +6,10 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# TEST
+	GameManager.out_of_cash = true
 	if GameManager.out_of_cash || GameManager.froze_to_death:
+		AudioManager.play_sfx(AudioManager.game_over_fire_sfx, 2.6)
 		night_tint.visible = true
 		
 		if GameManager.out_of_cash:

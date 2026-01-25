@@ -1,23 +1,98 @@
-[gd_scene load_steps=8 format=3 uid="uid://bynh34all6880"]
+[gd_scene load_steps=24 format=3 uid="uid://bynh34all6880"]
 
 [ext_resource type="Script" uid="uid://b37fl6fic68b6" path="res://Scripts/campfire.gd" id="1_kfptp"]
-[ext_resource type="Texture2D" uid="uid://kad4e0dce1kf" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/firespritePLACEHOLDER.png" id="2_txjls"]
+[ext_resource type="Texture2D" uid="uid://dca0rowinqt7o" path="res://Assets/Sprites/Campfire/DBfire1.png" id="2_p4mpn"]
+[ext_resource type="Texture2D" uid="uid://bein655lv51b4" path="res://Assets/Sprites/Campfire/DBfire2.png" id="3_1eon5"]
 [ext_resource type="FontFile" uid="uid://dg2rks2w45mwb" path="res://Assets/Fonts/Ghost Factory.ttf" id="3_hn5ug"]
+[ext_resource type="Texture2D" uid="uid://c7sux6rn8uyk1" path="res://Assets/Sprites/Campfire/DBfire3.png" id="4_7gmes"]
+[ext_resource type="Texture2D" uid="uid://ckx4m005b7owh" path="res://Assets/Sprites/Campfire/DBfire4.png" id="5_u651g"]
+[ext_resource type="Texture2D" uid="uid://brkka38l2pwoo" path="res://Assets/Sprites/Campfire/DBfire5.png" id="6_wthjg"]
+[ext_resource type="Texture2D" uid="uid://boplbb45cgvqt" path="res://Assets/Sprites/Campfire/DBfire6.png" id="7_ho0ra"]
+[ext_resource type="Texture2D" uid="uid://bxqincywv7b7" path="res://Assets/Sprites/Campfire/DBfire7.png" id="8_ys3ej"]
+[ext_resource type="Texture2D" uid="uid://bh2q4ol0xn7io" path="res://Assets/Sprites/Campfire/DBfire8.png" id="9_ppuef"]
+[ext_resource type="Texture2D" uid="uid://b7d6eddvexc6e" path="res://Assets/Sprites/Campfire/DBfire9.png" id="10_pa40k"]
+[ext_resource type="Texture2D" uid="uid://c42nu4r7n3t61" path="res://Assets/Sprites/Campfire/DBfireBASE.png" id="12_cfnti"]
+[ext_resource type="Texture2D" uid="uid://j5l3t58jw04r" path="res://Assets/Sprites/Campfire/DBash.png" id="13_1eon5"]
+[ext_resource type="Texture2D" uid="uid://8g2t1jd35sqj" path="res://Assets/Sprites/Campfire/DBsmolder1.png" id="13_b88dt"]
+[ext_resource type="Texture2D" uid="uid://cko3wstvmjjpu" path="res://Assets/Sprites/Campfire/DBsmolder2.png" id="14_tmrjs"]
+[ext_resource type="Texture2D" uid="uid://ccse3w5q44n35" path="res://Assets/Sprites/Campfire/DBsmolder3.png" id="15_p3u68"]
+[ext_resource type="Texture2D" uid="uid://fyi6d4go8qtq" path="res://Assets/Sprites/Campfire/DBsmolder4.png" id="16_he5d4"]
+[ext_resource type="AudioStream" uid="uid://1kfgq88ht86g" path="res://Assets/Audio/SFX/ENV/FIRE  NIGHTTIME.mp3" id="18_7gmes"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gqtmc"]
+font = ExtResource("3_hn5ug")
+font_size = 76
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qcxes"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_txjls")
+"texture": ExtResource("2_p4mpn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1eon5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7gmes")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_u651g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wthjg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ho0ra")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ys3ej")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ppuef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_pa40k")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 12.0
 }]
 
-[sub_resource type="LabelSettings" id="LabelSettings_gqtmc"]
-font = ExtResource("3_hn5ug")
-font_size = 261
+[sub_resource type="SpriteFrames" id="SpriteFrames_vtsli"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_cfnti")
+}],
+"loop": true,
+"name": &"base",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_1eon5")
+}],
+"loop": true,
+"name": &"daytimeash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_b88dt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_tmrjs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_p3u68")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_he5d4")
+}],
+"loop": true,
+"name": &"smoulder",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kfptp"]
 radius = 216.17816
@@ -28,23 +103,49 @@ radius = 122.03688
 [node name="Campfire" type="Node2D"]
 script = ExtResource("1_kfptp")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-sprite_frames = SubResource("SpriteFrames_qcxes")
-animation = &"idle"
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="InteractLabel" type="Label" parent="AnimatedSprite2D"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -80.0
-offset_top = -610.0
-offset_right = -297.0
-offset_bottom = -983.0
+[node name="InteractLabel" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.05
+anchor_top = 2.85
+anchor_right = 0.25
+anchor_bottom = -0.7
+offset_left = -85.0
+offset_top = -290.0
+offset_right = 84.0
+offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "E"
 label_settings = SubResource("LabelSettings_gqtmc")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="FlameSprite" type="AnimatedSprite2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(1, 39)
+scale = Vector2(0.076, 0.076)
+sprite_frames = SubResource("SpriteFrames_qcxes")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.9603318
+offset = Vector2(0, -650)
+
+[node name="BaseSprite" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(1.0000001, -24.000004)
+scale = Vector2(0.087, 0.087)
+sprite_frames = SubResource("SpriteFrames_vtsli")
+animation = &"daytimeash"
+autoplay = "base"
 
 [node name="WarmthArea" type="Area2D" parent="."]
 
@@ -57,6 +158,11 @@ debug_color = Color(0.842405, 0.37628525, 0.17186674, 0.41960785)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("CircleShape2D_txjls")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-1, 33)
+stream = ExtResource("18_7gmes")
+attenuation = 2.0
 
 [connection signal="body_entered" from="WarmthArea" to="." method="_on_warmth_area_body_entered"]
 [connection signal="body_exited" from="WarmthArea" to="." method="_on_warmth_area_body_exited"]

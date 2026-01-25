@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://1kfgq88ht86g"
+path="res://.godot/imported/FIRE  NIGHTTIME.mp3-4209f00215455e6bd9cb4b2c5c84bfc5.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/ENV/FIRE  NIGHTTIME.mp3"
+dest_files=["res://.godot/imported/FIRE  NIGHTTIME.mp3-4209f00215455e6bd9cb4b2c5c84bfc5.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

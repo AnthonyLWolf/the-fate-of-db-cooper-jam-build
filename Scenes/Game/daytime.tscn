@@ -30,7 +30,7 @@ texture = ExtResource("1_v7ddp")
 
 [node name="Campfire" parent="." instance=ExtResource("2_iosov")]
 unique_name_in_owner = true
-position = Vector2(1293, 981)
+position = Vector2(1288, 871)
 
 [node name="FuelStack" parent="." instance=ExtResource("3_olxus")]
 position = Vector2(761, 967)

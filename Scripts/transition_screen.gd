@@ -16,6 +16,7 @@ func _ready() -> void:
 		phase_label.text = "DAYTIME"
 	
 	# Allows time for the transition
+	AudioManager.play_sfx(AudioManager.fire_on_sfx, 0.0)
 	await get_tree().create_timer(0.5).timeout
 	transition_timer.start(GameConstants.TRANSITION_LENGTH)
 	await get_tree().create_timer(1.0).timeout
@@ -31,14 +32,17 @@ func _process(delta: float) -> void:
 func _next_phase() -> void:
 	if GameManager.day != GameConstants.MAX_DAYS:
 		match GameManager.previous_phase:
-			GameManager.GameState.GAMESTART:
+			GameManager.GameState.GAMESTART: # Start the game
 				GameManager.current_state = GameManager.GameState.DAYTIME
+				AudioManager.fade_to_day()
 				SceneController.load_scene(SceneController.daytime_scene)
-			GameManager.GameState.DAYTIME:
+			GameManager.GameState.DAYTIME: # Transition to nighttime logic
 				GameManager.current_state = GameManager.GameState.NIGHTTIME
+				AudioManager.fade_to_night()
 				SceneController.load_scene(SceneController.nighttime_scene)
-			GameManager.GameState.NIGHTTIME:
+			GameManager.GameState.NIGHTTIME: # Transition to daytime logic
 				GameManager.current_state = GameManager.GameState.DAYTIME
+				AudioManager.fade_to_day()
 				SceneController.load_scene(SceneController.daytime_scene)
 
 

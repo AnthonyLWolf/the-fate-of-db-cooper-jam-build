@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://42sy6vbj8b1t"
+path="res://.godot/imported/FIRE & FOREST DAYTIME .mp3-bcf5e509f143cc465fe2dbf7cd756958.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/ENV/FIRE & FOREST DAYTIME .mp3"
+dest_files=["res://.godot/imported/FIRE & FOREST DAYTIME .mp3-bcf5e509f143cc465fe2dbf7cd756958.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

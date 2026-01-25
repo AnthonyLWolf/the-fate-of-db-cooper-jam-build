@@ -18,8 +18,23 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	UiManager.daytime_counter_label.text = str(int(daytime_timer.time_left))
 
-# Set up spawns, start timer
+# Set up spawns, start timer, start ambient and music
 func daytime_setup() -> void:
+	# Handles music
+	if AudioManager.daytime_music_player.playing:
+		AudioManager.daytime_music_player.stop()
+	
+	if !AudioManager.daytime_music_player.playing:
+		AudioManager.daytime_music_player.stream = AudioManager.daytime_track
+		AudioManager.daytime_music_player.play()
+	
+	# Plays daytime forest ambience
+	if AudioManager.base_ambience_player.playing:
+		AudioManager.base_ambience_player.stop()
+	if !AudioManager.base_ambience_player.playing:
+		AudioManager.base_ambience_player.stream = AudioManager.forest_day_env
+		AudioManager.base_ambience_player.play()
+		
 	# Spawns resources at random distance from the campfire
 	spawn_resources(GameManager.day)
 	
@@ -80,4 +95,5 @@ func _on_daytime_timer_timeout() -> void:
 	var day_end_dialogue = "It's getting late. Better head back..."
 	SignalBus.send_dialogue.emit(day_end_dialogue)
 	await get_tree().create_timer(3.0).timeout
+	AudioManager.stop_all_players()
 	SceneController.load_scene(SceneController.transition_screen)
