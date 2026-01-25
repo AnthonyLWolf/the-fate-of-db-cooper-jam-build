@@ -12,6 +12,7 @@ font_size = 261
 radius = 51.009804
 
 [node name="FuelResource" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_n8vbs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

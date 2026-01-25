@@ -3,10 +3,10 @@
 [node name="Camera2D" type="Camera2D"]
 zoom = Vector2(1.2, 1.2)
 process_callback = 0
-limit_left = 8
+limit_left = -20000
 limit_top = 7
-limit_right = 1920
-limit_bottom = 1072
+limit_right = 20000
+limit_bottom = 1100
 position_smoothing_enabled = true
 position_smoothing_speed = 1.0
 editor_draw_limits = true

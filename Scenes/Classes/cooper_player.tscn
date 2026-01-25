@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cgu8hvhdien4h"]
+[gd_scene load_steps=18 format=3 uid="uid://cgu8hvhdien4h"]
 
 [ext_resource type="Script" uid="uid://dojlbddrg2bp7" path="res://Scripts/cooper_player.gd" id="1_wf0wr"]
 [ext_resource type="Texture2D" uid="uid://br4k2n8mr0cs0" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/dbspritePLACEHOLDER.png" id="2_6kyu3"]
@@ -64,6 +64,10 @@ radius = 76.41989
 font = ExtResource("4_rkfyh")
 font_size = 32
 
+[sub_resource type="LabelSettings" id="LabelSettings_fl532"]
+font = ExtResource("4_rkfyh")
+font_size = 23
+
 [node name="CooperPlayer" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_wf0wr")
 
@@ -99,6 +103,17 @@ offset_right = 159.0
 offset_bottom = -141.0
 text = "Hello!!!"
 label_settings = SubResource("LabelSettings_kvkwn")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PlayerWeightLabel" type="Label" parent="."]
+offset_left = -238.0
+offset_top = -85.0
+offset_right = -39.0
+offset_bottom = 28.0
+text = "Hello!!!"
+label_settings = SubResource("LabelSettings_fl532")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2

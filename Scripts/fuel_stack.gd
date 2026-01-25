@@ -38,55 +38,56 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
-	# TODO: DAYTIME ONLY!!!
-	if Input.is_action_just_pressed("interact") && player_in_range:
-		for resource in player.inventory:
-			print(player.inventory[resource])
-			if player.inventory[resource] > 0:
-				for i in player.inventory[resource]:
-					add_to_stack(resource)
-				GameManager.update_ui_counters()
-				
-	# TODO: NIGHTTIME BEHAVIOUR
-	if Input.is_action_just_pressed("confirm") && player_in_range:
-		
-		# Handles picking up and putting back items if the stack is not empty
-		if stack_count > 0:
-			if !player.holding_item:
-				player.holding_item = true
-				if is_wood && GameManager.wood_count > 0:
-					player.item_held.texture = log_texture
-					player.item_held.visible = true
-					player.inventory["wood"] += 1
-					stack_count -= 1
-				if is_leaves && GameManager.leaf_count > 0:
-					player.item_held.texture = leaves_texture
-					player.item_held.visible = true
-					player.inventory["leaves"] += 1
-					stack_count -= 1
-				if is_cash && GameManager.cash_count > 0:
-					player.item_held.texture = tent_texture
-					player.item_held.visible = true
-					player.inventory["cash"] += 1
-					stack_count -= 1
-			# Handles putting back items if they're not used
-			else:
-				if is_wood && GameManager.wood_count > 0:
-					player.item_held.visible = false
-					player.inventory["wood"] -= 1
-					stack_count += 1
-					player.holding_item = false
-				if is_leaves && GameManager.leaf_count > 0:
-					player.item_held.visible = false
-					player.inventory["leaves"] -= 1
-					stack_count += 1
-					player.holding_item = false
-				if is_cash && GameManager.cash_count > 0:
-					player.item_held.visible = false
-					player.inventory["cash"] -= 1
-					player.holding_item = false
-		else:
-			print("The stack is empty!")
+	# Daytime behaviour: pick up items
+	match GameManager.current_state:
+		GameManager.GameState.DAYTIME:
+			if Input.is_action_just_pressed("interact") && player_in_range:
+				for resource in player.inventory:
+					print(player.inventory[resource])
+					if player.inventory[resource] > 0:
+						for i in player.inventory[resource]:
+							add_to_stack(resource)
+						GameManager.update_ui_counters()
+		# Nighttime behaviour: take from stack
+		GameManager.GameState.NIGHTTIME:
+			if Input.is_action_just_pressed("interact") && player_in_range:
+				# Handles picking up and putting back items if the stack is not empty
+				if stack_count > 0:
+					if !player.holding_item:
+						player.holding_item = true
+						if is_wood && GameManager.wood_count > 0:
+							player.item_held.texture = log_texture
+							player.item_held.visible = true
+							player.inventory["wood"] += 1
+							stack_count -= 1
+						if is_leaves && GameManager.leaf_count > 0:
+							player.item_held.texture = leaves_texture
+							player.item_held.visible = true
+							player.inventory["leaves"] += 1
+							stack_count -= 1
+						if is_cash && GameManager.cash_count > 0:
+							player.item_held.texture = tent_texture
+							player.item_held.visible = true
+							player.inventory["cash"] += 1
+							stack_count -= 1
+					# Handles putting back items if they're not used
+					else:
+						if is_wood && GameManager.wood_count > 0:
+							player.item_held.visible = false
+							player.inventory["wood"] -= 1
+							stack_count += 1
+							player.holding_item = false
+						if is_leaves && GameManager.leaf_count > 0:
+							player.item_held.visible = false
+							player.inventory["leaves"] -= 1
+							stack_count += 1
+							player.holding_item = false
+						if is_cash && GameManager.cash_count > 0:
+							player.item_held.visible = false
+							player.inventory["cash"] -= 1
+							player.holding_item = false
+				else:
+					print("The stack is empty!")
 
 func add_to_stack(fuel_type: String):
 	match fuel_type:
@@ -100,6 +101,9 @@ func add_to_stack(fuel_type: String):
 				player.inventory[fuel_type] -= 1
 				stack_count += 1
 				GameManager.leaf_count += 1
+	await get_tree().create_timer(0.5)
+	if player.inventory["wood"] <= 0 && player.inventory["leaves"] <= 0:
+		player.carrying_items = false
 
 
 func update_cash(burned_cash : int):
