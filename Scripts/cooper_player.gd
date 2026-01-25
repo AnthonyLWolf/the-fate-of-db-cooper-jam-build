@@ -3,6 +3,7 @@ extends CharacterBody2D
 # References
 @onready var item_held: Sprite2D = $ItemHeld
 @onready var dialogue_label: Label = $PlayerDialogueLabel
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 # Player variables
 @export var speed = 300.0
@@ -28,6 +29,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	# Locks movement
 	if is_movement_locked:
+		animated_sprite_2d.play("idle")
 		velocity.y += get_gravity().y * delta
 		velocity.x = 0
 		move_and_slide()
@@ -37,17 +39,18 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# Handle jump.
-	if Input.is_action_just_pressed("confirm") and is_on_floor():
-		velocity.y = jump_velocity
-
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("left", "right")
 	if direction:
 		velocity.x = direction * speed
+		animated_sprite_2d.play("walk")
+		if direction > 0:
+			animated_sprite_2d.flip_h = false
+		if direction < 0:
+			animated_sprite_2d.flip_h = true
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
+		animated_sprite_2d.play("idle")
 
 	move_and_slide()
 

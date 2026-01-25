@@ -27,6 +27,7 @@ func daytime_setup() -> void:
 func _on_daytime_timer_timeout() -> void:
 	player.is_movement_locked = true
 	SignalBus.daytime_end.emit()
+	SignalBus.transition.emit()
 	var day_end_dialogue = "It's getting late. Better head back..."
 	SignalBus.send_dialogue.emit(day_end_dialogue)
 	await get_tree().create_timer(3.0).timeout

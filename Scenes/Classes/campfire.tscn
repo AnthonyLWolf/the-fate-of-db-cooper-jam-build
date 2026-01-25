@@ -20,7 +20,7 @@ font = ExtResource("3_hn5ug")
 font_size = 261
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kfptp"]
-radius = 415.23608
+radius = 216.17816
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_txjls"]
 radius = 122.03688
@@ -49,7 +49,7 @@ label_settings = SubResource("LabelSettings_gqtmc")
 [node name="WarmthArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WarmthArea"]
-position = Vector2(-2, -44)
+position = Vector2(2, -1)
 shape = SubResource("CircleShape2D_kfptp")
 debug_color = Color(0.842405, 0.37628525, 0.17186674, 0.41960785)
 
@@ -58,5 +58,7 @@ debug_color = Color(0.842405, 0.37628525, 0.17186674, 0.41960785)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("CircleShape2D_txjls")
 
+[connection signal="body_entered" from="WarmthArea" to="." method="_on_warmth_area_body_entered"]
+[connection signal="body_exited" from="WarmthArea" to="." method="_on_warmth_area_body_exited"]
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]

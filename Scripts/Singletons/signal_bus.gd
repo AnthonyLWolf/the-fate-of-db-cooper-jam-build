@@ -11,6 +11,7 @@ signal daytime_start
 signal daytime_end
 signal nighttime_start
 signal nighttime_end
+signal transition
 
 signal send_dialogue
 

@@ -11,7 +11,6 @@ var cash_count : int = 200000
 var display_cash : int = cash_count
 var new_cash : int = cash_count # Initialises all cash valuables to the same value
 
-var cold_amount : float = 50.0
 
 enum GameState {
 	DAYTIME,
@@ -24,6 +23,7 @@ var current_state : GameState = GameState.DAYTIME:
 	set(value):
 		current_state = value
 		_on_phase_changed(value) # Runs every time a variable is assigned
+var previous_phase : GameState
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -32,6 +32,10 @@ func _ready() -> void:
 		update_ui_counters()
 		)
 	SignalBus.cash_burned.connect(update_new_cash)
+	SignalBus.nighttime_end.connect(func(): day += 1)
+	SignalBus.transition.connect(_start_transition)
+	SignalBus.nighttime_end.connect(func(): previous_phase = GameState.NIGHTTIME)
+	SignalBus.daytime_end.connect(func(): previous_phase = GameState.DAYTIME)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -58,6 +62,9 @@ func cash_check():
 		display_cash = 0
 		SignalBus.out_of_cash.emit()
 		game_over()
+
+func _start_transition():
+	current_state = GameState.TRANSITION
 
 func game_over():
 	#TODO: End condition
