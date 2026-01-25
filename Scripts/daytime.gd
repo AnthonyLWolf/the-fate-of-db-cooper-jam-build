@@ -27,6 +27,9 @@ func daytime_setup() -> void:
 	player = get_tree().get_first_node_in_group("Player")
 	
 	# Starts daytime timer
+	await get_tree().create_timer(1.0).timeout
+	send_daily_dialogue()
+	await get_tree().create_timer(3.0).timeout
 	daytime_timer.start(GameConstants.DAYTIME_LENGTH)
 
 func spawn_resources(current_day : int):
@@ -56,6 +59,19 @@ func spawn_resources(current_day : int):
 		# Sets position and performs spawn
 		item.global_position = origin + Vector2(final_distance, vertical_offset)
 		fuel_resources_container.add_child(item)
+
+func send_daily_dialogue():
+	match GameManager.day:
+		1:
+			SignalBus.send_dialogue.emit("Sh*t. That was a rough landing.")
+			await get_tree().create_timer(3.0).timeout
+			SignalBus.send_dialogue.emit("Looks like it'll be night soon. Gotta find something to keep me warm.")
+		2:
+			SignalBus.send_dialogue.emit("New day... Tonight may be worse. Gotta find more stuff.")
+		5:
+			SignalBus.send_dialogue.emit("I think the blizzard's getting worse. Tonight will be tough.")
+		6:
+			SignalBus.send_dialogue.emit("Just one more day. C'mon.")
 
 func _on_daytime_timer_timeout() -> void:
 	player.is_movement_locked = true

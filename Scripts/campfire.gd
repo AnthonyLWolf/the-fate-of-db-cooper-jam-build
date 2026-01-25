@@ -3,6 +3,7 @@ extends Node2D
 # References
 @onready var interact_label: Label = $AnimatedSprite2D/InteractLabel
 @onready var warmth_shape: CircleShape2D = $WarmthArea/CollisionShape2D.shape
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 
 # Variables
@@ -32,8 +33,13 @@ func _process(delta: float) -> void:
 	
 	match GameManager.current_state:
 		GameManager.GameState.DAYTIME:
-			pass
+			pass # Animate differently
 		GameManager.GameState.NIGHTTIME: # Handles nighttime behaviour
+			# Instantly checks if cold amount warrants a game over each frame
+			if cold_amount >= GameConstants.MAX_COLD_AMOUNT:
+				SignalBus.froze_to_death.emit()
+				return
+			
 			# Animates shape radius based on fire intensity
 			intensity_ratio = fire_intensity / GameConstants.MAX_WARMTH_RADIUS
 			fire_intensity -= warmth_decay_rate * delta

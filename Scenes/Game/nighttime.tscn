@@ -31,6 +31,7 @@ texture = ExtResource("1_765h4")
 color = Color(0.41604817, 0.4536335, 0.6383827, 1)
 
 [node name="Campfire" parent="." instance=ExtResource("2_sku2a")]
+unique_name_in_owner = true
 position = Vector2(1129, 949)
 
 [node name="WoodStack" parent="." instance=ExtResource("3_vvxqm")]

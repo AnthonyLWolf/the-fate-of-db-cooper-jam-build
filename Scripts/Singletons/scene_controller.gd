@@ -6,6 +6,8 @@ extends Node
 var daytime_scene = "res://Scenes/Game/daytime.tscn"
 var nighttime_scene = "res://Scenes/Game/nighttime.tscn"
 var transition_screen = "res://Scenes/UI/transition_screen.tscn"
+var game_over_screen = "res://Scenes/UI/game_over.tscn"
+var main_menu_screen = "res://Scenes/UI/main_menu.tscn"
 
 func _ready() -> void:
 	pass

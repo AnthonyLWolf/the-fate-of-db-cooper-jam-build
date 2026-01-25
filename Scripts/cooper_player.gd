@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var player_weight_label: Label = $PlayerWeightLabel
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
+
 # Player variables
 @export var speed = 300.0
 @export var acceleration = 0.5
@@ -14,6 +15,7 @@ extends CharacterBody2D
 var current_weight : int = 0
 var carrying_items = false
 var is_movement_locked = false
+var distance_from_home : int = 0
 
 var inventory = {
 	"wood": 0,
@@ -28,6 +30,7 @@ func _ready() -> void:
 	dialogue_label.visible = false
 
 func _physics_process(delta: float) -> void:
+	
 	# Locks movement
 	if is_movement_locked:
 		animated_sprite_2d.play("idle")
@@ -46,6 +49,7 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = direction * speed
 		animated_sprite_2d.play("walk")
+		animated_sprite_2d.scale = Vector2(0.1, 0.1)
 		if direction > 0:
 			animated_sprite_2d.flip_h = false
 			player_weight_label.position = Vector2(-238, -85)
@@ -54,6 +58,7 @@ func _physics_process(delta: float) -> void:
 			player_weight_label.position = Vector2(50, -85)
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
+		animated_sprite_2d.scale = Vector2(0.12, 0.12)
 		animated_sprite_2d.play("idle")
 
 	move_and_slide()
@@ -63,6 +68,9 @@ func _physics_process(delta: float) -> void:
 		player_weight_label.visible = true
 	elif !carrying_items:
 		player_weight_label.visible = false
+		
+	# Calculate distance from campfire
+	calculate_distance(%Campfire)
 
 # Handles different pickups based on the inventory
 func pickup_item(fuel_type: String, sender: Node2D):
@@ -72,9 +80,11 @@ func pickup_item(fuel_type: String, sender: Node2D):
 		# Temporary variable to check weight without affecting actual weight
 		var weight_check = (inventory["wood"] * GameConstants.WOOD_WEIGHT) + (inventory["leaves"] * GameConstants.LEAF_WEIGHT)
 		
+		# Rejects pick-up attempt
 		if (weight_check > GameConstants.MAX_PLAYER_WEIGHT):
 			inventory[fuel_type] -= 1
-			
+			SignalBus.send_dialogue.emit("I'm too heavy. Gotta take some stuff back!")
+		# Picks up item
 		else:
 			carrying_items = true
 			sender.queue_free()
@@ -85,6 +95,21 @@ func pickup_item(fuel_type: String, sender: Node2D):
 	
 	# Updates current_weight
 	current_weight = (inventory["wood"] * GameConstants.WOOD_WEIGHT) + (inventory["leaves"] * GameConstants.LEAF_WEIGHT)
+
+func calculate_distance(home : Node2D):
+	var player_position = global_position.x
+	var home_position = home.global_position.x
+	
+	distance_from_home = (home_position - player_position) / 100
+	
+	if distance_from_home < 0:
+		distance_from_home = -distance_from_home
+	
+	if distance_from_home > 7:
+		UiManager.distance_counter_label.visible = true
+		UiManager.distance_counter_label.text = "Home: %dm away" % distance_from_home
+	else:
+		UiManager.distance_counter_label.visible = false
 
 func _display_dialogue(text : String):
 	dialogue_label.visible = true

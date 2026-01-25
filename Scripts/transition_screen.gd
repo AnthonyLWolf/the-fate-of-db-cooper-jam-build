@@ -12,7 +12,7 @@ func _ready() -> void:
 	day_label.text = "DAY " + str(GameManager.day)
 	if GameManager.previous_phase == GameManager.GameState.DAYTIME:
 		phase_label.text = "NIGHTTIME"
-	if GameManager.previous_phase == GameManager.GameState.NIGHTTIME:
+	if GameManager.previous_phase == GameManager.GameState.NIGHTTIME || GameManager.current_state == GameManager.GameState.GAMESTART:
 		phase_label.text = "DAYTIME"
 	
 	# Allows time for the transition
@@ -25,17 +25,21 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(GameManager.previous_phase)
+	pass
 
-## BUG: GAME ONLY LOADS NIGHTTIME, check why
+# IMPORTANT NOTE: THIS IS WHAT STARTS THE GAMEPLAY
 func _next_phase() -> void:
-	match GameManager.previous_phase:
-		GameManager.GameState.DAYTIME:
-			GameManager.current_state = GameManager.GameState.NIGHTTIME
-			SceneController.load_scene(SceneController.nighttime_scene)
-		GameManager.GameState.NIGHTTIME:
-			GameManager.current_state = GameManager.GameState.DAYTIME
-			SceneController.load_scene(SceneController.daytime_scene)
+	if GameManager.day != GameConstants.MAX_DAYS:
+		match GameManager.previous_phase:
+			GameManager.GameState.GAMESTART:
+				GameManager.current_state = GameManager.GameState.DAYTIME
+				SceneController.load_scene(SceneController.daytime_scene)
+			GameManager.GameState.DAYTIME:
+				GameManager.current_state = GameManager.GameState.NIGHTTIME
+				SceneController.load_scene(SceneController.nighttime_scene)
+			GameManager.GameState.NIGHTTIME:
+				GameManager.current_state = GameManager.GameState.DAYTIME
+				SceneController.load_scene(SceneController.daytime_scene)
 
 
 func _on_transition_timer_timeout() -> void:

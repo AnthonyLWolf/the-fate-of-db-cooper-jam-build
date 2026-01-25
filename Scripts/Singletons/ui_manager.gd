@@ -6,6 +6,7 @@ extends Control
 @onready var leaf_counter_label: Label = %LeafCounterLabel
 @onready var cash_counter_label: Label = %CashCounterLabel
 @onready var counters: HBoxContainer = $CanvasLayer/Counters
+@onready var distance_counter_label: Label = %DistanceCounterLabel
 
 var labels
 
@@ -26,6 +27,8 @@ func _ready() -> void:
 		leaf_counter_label,
 		cash_counter_label
 	]
+	
+	distance_counter_label.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

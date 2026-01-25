@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://djb4ll76lnwam"]
+[gd_scene load_steps=13 format=3 uid="uid://djb4ll76lnwam"]
 
 [ext_resource type="Script" uid="uid://dc5ucpt6j2dlj" path="res://Scripts/Singletons/ui_manager.gd" id="1_pgdt0"]
 [ext_resource type="FontFile" uid="uid://dg2rks2w45mwb" path="res://Assets/Fonts/Ghost Factory.ttf" id="3_7vhew"]
 [ext_resource type="Texture2D" uid="uid://quk7x22bprun" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/logspritePLACEHOLDER.png" id="4_a8i84"]
+[ext_resource type="FontFile" uid="uid://dxwegbkjgdcue" path="res://Assets/Fonts/Adventurer.ttf" id="5_7vhew"]
 [ext_resource type="Texture2D" uid="uid://didhjtrrmftjc" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/tentspritePLACEHOLDER.png" id="5_lceoh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbmfk"]
@@ -51,6 +52,11 @@ font_color = Color(0.6745098, 0.8156863, 0.9372549, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_r2bs2"]
 font = ExtResource("3_7vhew")
 font_size = 171
+font_color = Color(0.6745098, 0.8156863, 0.9372549, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a8i84"]
+font = ExtResource("5_7vhew")
+font_size = 51
 font_color = Color(0.6745098, 0.8156863, 0.9372549, 1)
 
 [node name="UIManager" type="Control"]
@@ -170,3 +176,18 @@ layout_mode = 2
 size_flags_horizontal = 6
 text = "30"
 label_settings = SubResource("LabelSettings_r2bs2")
+
+[node name="DistanceCounter" type="HBoxContainer" parent="CanvasLayer"]
+offset_left = 1303.0
+offset_top = 949.0
+offset_right = 1877.0
+offset_bottom = 1032.0
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="DistanceCounterLabel" type="Label" parent="CanvasLayer/DistanceCounter"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+text = "DISTANCE FROM HOME"
+label_settings = SubResource("LabelSettings_a8i84")

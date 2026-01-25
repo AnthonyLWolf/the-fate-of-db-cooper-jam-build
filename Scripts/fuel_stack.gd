@@ -101,7 +101,7 @@ func add_to_stack(fuel_type: String):
 				player.inventory[fuel_type] -= 1
 				stack_count += 1
 				GameManager.leaf_count += 1
-	await get_tree().create_timer(0.5)
+	await get_tree().create_timer(0.5).timeout
 	if player.inventory["wood"] <= 0 && player.inventory["leaves"] <= 0:
 		player.carrying_items = false
 

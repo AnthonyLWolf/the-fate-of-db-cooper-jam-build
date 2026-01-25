@@ -21,10 +21,14 @@ func _nighttime_setup():
 
 
 func _on_night_time_timer_timeout() -> void:
-	player.is_movement_locked = true
 	SignalBus.nighttime_end.emit()
-	SignalBus.transition.emit()
-	var night_end_dialogue = "Dawn's breaking. I should get more fuel."
-	SignalBus.send_dialogue.emit(night_end_dialogue)
-	await get_tree().create_timer(3.0).timeout
-	SceneController.load_scene(SceneController.transition_screen)
+	if GameManager.day != GameConstants.MAX_DAYS:
+		player.is_movement_locked = true
+		SignalBus.transition.emit()
+		var night_end_dialogue = "Dawn's breaking. I should get more fuel."
+		SignalBus.send_dialogue.emit(night_end_dialogue)
+		await get_tree().create_timer(3.0).timeout
+		SceneController.load_scene(SceneController.transition_screen)
+	else:
+		return
+	

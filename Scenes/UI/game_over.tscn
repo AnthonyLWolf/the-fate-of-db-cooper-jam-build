@@ -1,28 +1,28 @@
-[gd_scene load_steps=8 format=3 uid="uid://iwhobf0k08w0"]
+[gd_scene load_steps=8 format=3 uid="uid://csukumyyn3u87"]
 
-[ext_resource type="Texture2D" uid="uid://wept5orkq522" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/DBbackgroundconceptPLACEHOLDER.png" id="1_o14dv"]
-[ext_resource type="Script" uid="uid://qik5olocp0rx" path="res://Scripts/main_menu.gd" id="1_u7lva"]
-[ext_resource type="FontFile" uid="uid://dg2rks2w45mwb" path="res://Assets/Fonts/Ghost Factory.ttf" id="2_u7lva"]
-[ext_resource type="FontFile" uid="uid://dxwegbkjgdcue" path="res://Assets/Fonts/Adventurer.ttf" id="3_mrfpk"]
+[ext_resource type="Texture2D" uid="uid://wept5orkq522" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/DBbackgroundconceptPLACEHOLDER.png" id="1_ok6i5"]
+[ext_resource type="Script" uid="uid://boiuqf0edn212" path="res://Scripts/game_over.gd" id="1_wpovb"]
+[ext_resource type="FontFile" uid="uid://dg2rks2w45mwb" path="res://Assets/Fonts/Ghost Factory.ttf" id="2_4p3hf"]
+[ext_resource type="FontFile" uid="uid://dxwegbkjgdcue" path="res://Assets/Fonts/Adventurer.ttf" id="3_wpovb"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_4pqbp"]
-font = ExtResource("2_u7lva")
-font_size = 186
+[sub_resource type="LabelSettings" id="LabelSettings_agfx5"]
+font = ExtResource("2_4p3hf")
+font_size = 86
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gih0s"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pkuq6"]
 bg_color = Color(0.03137255, 0.09019608, 0.18431373, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k33u3"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5i2ib"]
 bg_color = Color(0.13725491, 0.25490198, 0.37254903, 1)
 
-[node name="MainMenu" type="Control"]
+[node name="GameOver" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_u7lva")
+script = ExtResource("1_wpovb")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -30,7 +30,7 @@ offset_left = -50.0
 offset_top = -43.0
 offset_right = 1936.0
 offset_bottom = 1281.0
-texture = ExtResource("1_o14dv")
+texture = ExtResource("1_ok6i5")
 expand_mode = 1
 
 [node name="NightTint" type="CanvasModulate" parent="TextureRect"]
@@ -52,15 +52,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GameTitleLabel" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="EndGameLabel" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
 custom_minimum_size = Vector2(1200, 300)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-text = "THE FALL OF
-COOPER"
-label_settings = SubResource("LabelSettings_4pqbp")
+text = "and so cooper ran out of cash.
+perhaps this is how the story ends..."
+label_settings = SubResource("LabelSettings_agfx5")
 horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
@@ -73,34 +75,34 @@ custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-theme_override_fonts/font = ExtResource("3_mrfpk")
+theme_override_fonts/font = ExtResource("3_wpovb")
 theme_override_font_sizes/font_size = 45
-theme_override_styles/normal = SubResource("StyleBoxFlat_gih0s")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_k33u3")
-text = "START"
+theme_override_styles/normal = SubResource("StyleBoxFlat_pkuq6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5i2ib")
+text = "PLAY AGAIN"
 
-[node name="HowToPlayButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+[node name="MainMenuButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-theme_override_fonts/font = ExtResource("3_mrfpk")
+theme_override_fonts/font = ExtResource("3_wpovb")
 theme_override_font_sizes/font_size = 45
-theme_override_styles/normal = SubResource("StyleBoxFlat_gih0s")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_k33u3")
-text = "HOW TO PLAY"
+theme_override_styles/normal = SubResource("StyleBoxFlat_pkuq6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5i2ib")
+text = "MAIN MENU"
 
 [node name="QuitButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-theme_override_fonts/font = ExtResource("3_mrfpk")
+theme_override_fonts/font = ExtResource("3_wpovb")
 theme_override_font_sizes/font_size = 45
-theme_override_styles/normal = SubResource("StyleBoxFlat_gih0s")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_k33u3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_pkuq6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5i2ib")
 text = "QUIT"
 
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/HBoxContainer/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/HBoxContainer/HowToPlayButton" to="." method="_on_how_to_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/HBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
