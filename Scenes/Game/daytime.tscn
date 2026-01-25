@@ -8,17 +8,28 @@
 [ext_resource type="PackedScene" uid="uid://cgu8hvhdien4h" path="res://Scenes/Classes/cooper_player.tscn" id="5_xoeny"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v7ddp"]
-size = Vector2(1958, 86)
+size = Vector2(41959, 86)
 
 [node name="Daytime" type="Node2D"]
 script = ExtResource("1_iosov")
 
+[node name="ForestParallax" type="Parallax2D" parent="."]
+repeat_size = Vector2(1888.25, 0)
+repeat_times = 7
+
+[node name="ForestParallaxLayer" type="Sprite2D" parent="ForestParallax"]
+position = Vector2(-97, 541.00006)
+scale = Vector2(0.41961113, 0.39216664)
+texture = ExtResource("1_v7ddp")
+
 [node name="DBbackgroundconceptPlaceholder" type="Sprite2D" parent="."]
-position = Vector2(972, 544.5)
-scale = Vector2(0.4431111, 0.3916667)
+visible = false
+position = Vector2(1403, 541)
+scale = Vector2(0.24711111, 0.392)
 texture = ExtResource("1_v7ddp")
 
 [node name="Campfire" parent="." instance=ExtResource("2_iosov")]
+unique_name_in_owner = true
 position = Vector2(1293, 981)
 
 [node name="FuelStack" parent="." instance=ExtResource("3_olxus")]
@@ -45,12 +56,14 @@ remote_path = NodePath("../../Camera2D")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(982, 1074)
+position = Vector2(48, 1076)
 shape = SubResource("RectangleShape2D_v7ddp")
 
 [node name="DaytimeTimer" type="Timer" parent="."]
 wait_time = 30.0
 one_shot = true
+
+[node name="FuelResources" type="Node2D" parent="."]
 
 [connection signal="timeout" from="DaytimeTimer" to="." method="_on_daytime_timer_timeout"]
 
