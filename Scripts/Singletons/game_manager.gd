@@ -1,10 +1,5 @@
 extends Node2D
 
-# Scene references
-var daytime_scene = "res://Scenes/Game/daytime.tscn"
-var nighttime_scene = "res://Scenes/Game/nighttime.tscn"
-var transition_screen = 
-
 
 # Global variables
 var day : int = 1
@@ -19,13 +14,13 @@ var new_cash : int = cash_count # Initialises all cash valuables to the same val
 var cold_amount : float = 50.0
 
 enum GameState {
-	DAY,
-	NIGHT,
+	DAYTIME,
+	NIGHTTIME,
 	TRANSITION,
 	WIN,
 	LOSS
 }
-var current_state : GameState = GameState.DAY:
+var current_state : GameState = GameState.DAYTIME:
 	set(value):
 		current_state = value
 		_on_phase_changed(value) # Runs every time a variable is assigned
@@ -44,12 +39,12 @@ func _process(delta: float) -> void:
 
 func _on_phase_changed(new_state : GameState):
 	match new_state:
-		GameState.DAY:
-			print("DAYTIME!")
+		GameState.DAYTIME:
+			SignalBus.daytime_start.emit()
 		GameState.TRANSITION:
 			print("TRANSITIONING!")
-		GameState.NIGHT:
-			print("NIGHTTIME!")
+		GameState.NIGHTTIME:
+			SignalBus.nighttime_start.emit()
 
 func update_new_cash(cash_burned):
 	new_cash -= cash_burned

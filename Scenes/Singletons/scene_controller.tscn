@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg1lyiru7bx3c"]
+
+[ext_resource type="Script" uid="uid://cx0etxgh3l2uq" path="res://Scripts/Singletons/scene_controller.gd" id="1_vjeju"]
+
+[node name="SceneController" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vjeju")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1939.0
+offset_bottom = 1091.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.07450981, 0.19215687, 0.2901961, 0)

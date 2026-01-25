@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://b8m24wgkbuv37"]
 
-[ext_resource type="Script" uid="uid://ngcnbh81hc13" path="res://Scripts/daytime.gd" id="1_iosov"]
+[ext_resource type="Script" uid="uid://ngcnbh81hc13" path="res://Scenes/Game/daytime.gd" id="1_iosov"]
 [ext_resource type="Texture2D" uid="uid://wept5orkq522" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/DBbackgroundconceptPLACEHOLDER.png" id="1_v7ddp"]
 [ext_resource type="PackedScene" uid="uid://bynh34all6880" path="res://Scenes/Classes/campfire.tscn" id="2_iosov"]
 [ext_resource type="PackedScene" uid="uid://dopp8fvghm770" path="res://Scenes/Classes/fuel_stack.tscn" id="3_olxus"]

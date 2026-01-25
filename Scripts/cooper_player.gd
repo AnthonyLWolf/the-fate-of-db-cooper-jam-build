@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 # References
 @onready var item_held: Sprite2D = $ItemHeld
+@onready var dialogue_label: Label = $PlayerDialogueLabel
 
 # Player variables
 @export var speed = 300.0
@@ -10,6 +11,7 @@ extends CharacterBody2D
 
 var current_weight : int = 0
 var holding_item = false
+var is_movement_locked = false
 
 var inventory = {
 	"wood": 0,
@@ -19,9 +21,18 @@ var inventory = {
 
 func _ready() -> void:
 	SignalBus.pickup_requested.connect(pickup_item)
+	SignalBus.send_dialogue.connect(_display_dialogue)
 	item_held.visible = false
+	dialogue_label.visible = false
 
 func _physics_process(delta: float) -> void:
+	# Locks movement
+	if is_movement_locked:
+		velocity.y += get_gravity().y * delta
+		velocity.x = 0
+		move_and_slide()
+		return
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -67,3 +78,10 @@ func pickup_item(fuel_type: String, sender: Node2D):
 	# Updates current_weight
 	current_weight = (inventory["wood"] * GameConstants.WOOD_WEIGHT) + (inventory["leaves"] * GameConstants.LEAF_WEIGHT)
 	print(current_weight)
+
+func _display_dialogue(text : String):
+	dialogue_label.visible = true
+	dialogue_label.text = text
+	await get_tree().create_timer(3.0).timeout
+	dialogue_label.text = ""
+	dialogue_label.visible = false

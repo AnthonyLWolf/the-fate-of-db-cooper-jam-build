@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgu8hvhdien4h"]
+[gd_scene load_steps=9 format=3 uid="uid://cgu8hvhdien4h"]
 
 [ext_resource type="Script" uid="uid://dojlbddrg2bp7" path="res://Scripts/cooper_player.gd" id="1_wf0wr"]
 [ext_resource type="Texture2D" uid="uid://br4k2n8mr0cs0" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/dbspritePLACEHOLDER.png" id="2_6kyu3"]
 [ext_resource type="Texture2D" uid="uid://quk7x22bprun" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/logspritePLACEHOLDER.png" id="2_kvkwn"]
+[ext_resource type="FontFile" uid="uid://dxwegbkjgdcue" path="res://Assets/Fonts/Adventurer.ttf" id="4_rkfyh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_270ak"]
 animations = [{
@@ -21,6 +22,10 @@ height = 120.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xwft5"]
 radius = 76.41989
+
+[sub_resource type="LabelSettings" id="LabelSettings_kvkwn"]
+font = ExtResource("4_rkfyh")
+font_size = 32
 
 [node name="CooperPlayer" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_wf0wr")
@@ -47,3 +52,14 @@ scale = Vector2(1.6060002, 1.6059989)
 shape = SubResource("CircleShape2D_xwft5")
 
 [node name="CameraTransform" type="RemoteTransform2D" parent="."]
+
+[node name="PlayerDialogueLabel" type="Label" parent="."]
+offset_left = -159.0
+offset_top = -254.0
+offset_right = 159.0
+offset_bottom = -141.0
+text = "Hello!!!"
+label_settings = SubResource("LabelSettings_kvkwn")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

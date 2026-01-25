@@ -18,17 +18,22 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if !player_in_warmth_range:
-		GameManager.cold_amount += delta
 	
-	if Input.is_action_just_pressed("interact") && player_in_interaction_range && player.holding_item:
-		
-		if GameManager.wood_count > 0 || GameManager.leaf_count > 0 || GameManager.cash_count > 0:
-			if intensity < 100:
-				for resource in player.inventory:
-					if player.inventory[resource] > 0:
-						player.inventory[resource] -= 1
-						burn_fuel(resource)
+	match GameManager.current_state:
+		GameManager.GameState.DAYTIME:
+			pass
+		GameManager.GameState.NIGHTTIME: # Handles nighttime behaviour
+			if !player_in_warmth_range:
+				GameManager.cold_amount += delta
+			
+			if Input.is_action_just_pressed("interact") && player_in_interaction_range && player.holding_item:
+				
+				if GameManager.wood_count > 0 || GameManager.leaf_count > 0 || GameManager.cash_count > 0:
+					if intensity < 100:
+						for resource in player.inventory:
+							if player.inventory[resource] > 0:
+								player.inventory[resource] -= 1
+								burn_fuel(resource)
 
 
 func _on_interaction_area_body_entered(body: Node2D) -> void:
