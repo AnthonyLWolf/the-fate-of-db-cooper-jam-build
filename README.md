@@ -1,4 +1,4 @@
-# micro-jam-game-winter
+# The Fate of D.B. Cooper: Micro Jam 052 (Winter) - Game Project
 
 ## This is a smol game I developed with an artist and a composer for the Micro Jam 052 with the theme of Winter.
 
