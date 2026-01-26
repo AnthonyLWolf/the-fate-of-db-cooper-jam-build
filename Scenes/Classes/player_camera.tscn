@@ -1,4 +1,20 @@
-[gd_scene format=3 uid="uid://d4ha2e6nrr8sc"]
+[gd_scene load_steps=4 format=3 uid="uid://d4ha2e6nrr8sc"]
+
+[ext_resource type="Script" uid="uid://c8xjomsqmf32l" path="res://Scenes/Classes/player_camera.gd" id="1_h5y82"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h5y82"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1000, 1000, 1)
+gravity = Vector3(-50, 30, 0)
+scale_max = 2.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s0ghu"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1000, 1000, 1)
+gravity = Vector3(-1000, 200, 0)
+scale_max = 3.0
 
 [node name="Camera2D" type="Camera2D"]
 zoom = Vector2(1.2, 1.2)
@@ -10,3 +26,21 @@ limit_bottom = 1100
 position_smoothing_enabled = true
 position_smoothing_speed = 1.0
 editor_draw_limits = true
+script = ExtResource("1_h5y82")
+
+[node name="SoftSnow" type="GPUParticles2D" parent="." groups=["Emitters"]]
+z_index = 6
+position = Vector2(11, 12)
+amount = 2000
+lifetime = 2.0
+preprocess = 2.0
+process_material = SubResource("ParticleProcessMaterial_h5y82")
+
+[node name="Blizzard" type="GPUParticles2D" parent="." groups=["Emitters"]]
+z_index = 6
+position = Vector2(11, 12)
+amount = 2000
+lifetime = 2.0
+preprocess = 2.0
+speed_scale = 5.0
+process_material = SubResource("ParticleProcessMaterial_s0ghu")

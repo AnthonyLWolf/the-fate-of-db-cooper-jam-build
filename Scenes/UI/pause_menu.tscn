@@ -1,0 +1,101 @@
+[gd_scene load_steps=6 format=3 uid="uid://j2r4fuktajm2"]
+
+[ext_resource type="Script" uid="uid://btx6brq5loust" path="res://Scripts/pause_menu.gd" id="1_rrvs5"]
+[ext_resource type="FontFile" uid="uid://dg2rks2w45mwb" path="res://Assets/Fonts/Ghost Factory.ttf" id="2_8rf44"]
+[ext_resource type="FontFile" uid="uid://dxwegbkjgdcue" path="res://Assets/Fonts/Adventurer.ttf" id="3_r2i2h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_r2i2h"]
+font = ExtResource("2_8rf44")
+font_size = 116
+
+[sub_resource type="LabelSettings" id="LabelSettings_oykix"]
+font = ExtResource("2_8rf44")
+font_size = 56
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+layer = 100
+script = ExtResource("1_rrvs5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = -1
+anchor_left = 0.12708333
+anchor_top = 0.11574074
+anchor_right = 0.87291664
+anchor_bottom = 0.8842593
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.07058824, 0.15686275, 0.22745098, 0.6666667)
+metadata/_edit_use_anchors_ = true
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 353.77783
+offset_top = 199.0
+offset_right = -353.77783
+offset_bottom = -199.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 49
+
+[node name="PauseContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="PausedLabel" type="Label" parent="CenterContainer/VBoxContainer/PauseContainer"]
+layout_mode = 2
+text = "PAUSED"
+label_settings = SubResource("LabelSettings_r2i2h")
+horizontal_alignment = 1
+
+[node name="Resume" type="Button" parent="CenterContainer/VBoxContainer/PauseContainer"]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_r2i2h")
+theme_override_font_sizes/font_size = 31
+text = "Resume"
+
+[node name="VolContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VolumeLabel" type="Label" parent="CenterContainer/VBoxContainer/VolContainer"]
+layout_mode = 2
+text = "VOLUME"
+label_settings = SubResource("LabelSettings_oykix")
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="CenterContainer/VBoxContainer/VolContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+
+[node name="QuitButtonContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 19
+
+[node name="MenuButton" type="Button" parent="CenterContainer/VBoxContainer/QuitButtonContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_r2i2h")
+theme_override_font_sizes/font_size = 31
+text = "Main Menu"
+
+[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer/QuitButtonContainer"]
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_r2i2h")
+theme_override_font_sizes/font_size = 31
+text = "Quit"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButtonContainer/MenuButton" to="." method="_on_menu_button_pressed"]

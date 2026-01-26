@@ -1,11 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://djb4ll76lnwam"]
+[gd_scene load_steps=15 format=3 uid="uid://djb4ll76lnwam"]
 
 [ext_resource type="Script" uid="uid://dc5ucpt6j2dlj" path="res://Scripts/Singletons/ui_manager.gd" id="1_pgdt0"]
 [ext_resource type="FontFile" uid="uid://dg2rks2w45mwb" path="res://Assets/Fonts/Ghost Factory.ttf" id="3_7vhew"]
 [ext_resource type="Texture2D" uid="uid://dxjp5c44t38sj" path="res://Assets/Sprites/Resources/woodpileFULL.png" id="3_a8i84"]
 [ext_resource type="Texture2D" uid="uid://c0ccha1agrq2k" path="res://Assets/Sprites/Resources/leafstashFULL.png" id="4_lceoh"]
 [ext_resource type="FontFile" uid="uid://dxwegbkjgdcue" path="res://Assets/Fonts/Adventurer.ttf" id="5_7vhew"]
-[ext_resource type="Texture2D" uid="uid://didhjtrrmftjc" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/tentspritePLACEHOLDER.png" id="5_lceoh"]
+[ext_resource type="Texture2D" uid="uid://bnt0p4jr0mku0" path="res://Assets/Sprites/Tent-Cash/cashicon.png" id="5_a8i84"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbmfk"]
 bg_color = Color(0.14536136, 0.30987722, 0.44640958, 1)
@@ -25,6 +25,13 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 shadow_color = Color(0.24705882, 0.46666667, 0.9882353, 0.9607843)
 shadow_size = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_lceoh"]
+font = ExtResource("5_7vhew")
+font_size = 31
+font_color = Color(0.6745098, 0.8156863, 0.9372549, 1)
+shadow_size = 6
+shadow_color = Color(0.14509805, 0.30980393, 0.44705883, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4j5c5"]
 bg_color = Color(0.8235294, 0.38039216, 0.24705882, 1)
@@ -49,16 +56,22 @@ shadow_size = 5
 font = ExtResource("3_7vhew")
 font_size = 96
 font_color = Color(0.6745098, 0.8156863, 0.9372549, 1)
+shadow_size = 11
+shadow_color = Color(0.14509805, 0.30980393, 0.44705883, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_r2bs2"]
 font = ExtResource("3_7vhew")
 font_size = 171
 font_color = Color(0.6745098, 0.8156863, 0.9372549, 1)
+shadow_size = 6
+shadow_color = Color(0.14509805, 0.30980393, 0.44705883, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_a8i84"]
 font = ExtResource("5_7vhew")
 font_size = 51
 font_color = Color(0.6745098, 0.8156863, 0.9372549, 1)
+shadow_size = 6
+shadow_color = Color(0.09527562, 0.22017172, 0.3178911, 1)
 
 [node name="UIManager" type="Control"]
 layout_mode = 3
@@ -84,6 +97,7 @@ offset_bottom = 1037.7462
 [node name="Bars" type="HBoxContainer" parent="CanvasLayer/BoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 34
 
 [node name="ColdBar" type="ProgressBar" parent="CanvasLayer/BoxContainer/Bars"]
 unique_name_in_owner = true
@@ -97,6 +111,15 @@ value = 32.0
 rounded = true
 fill_mode = 3
 show_percentage = false
+
+[node name="Label" type="Label" parent="CanvasLayer/BoxContainer/Bars/ColdBar"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 219.0
+offset_right = 239.0
+offset_bottom = 258.0
+text = "Cold"
+label_settings = SubResource("LabelSettings_lceoh")
 
 [node name="FireBar" type="ProgressBar" parent="CanvasLayer/BoxContainer/Bars"]
 visible = false
@@ -167,7 +190,7 @@ label_settings = SubResource("LabelSettings_veyyk")
 
 [node name="CashIcon" type="TextureRect" parent="CanvasLayer/Counters/CashCounter"]
 layout_mode = 2
-texture = ExtResource("5_lceoh")
+texture = ExtResource("5_a8i84")
 expand_mode = 3
 
 [node name="DayTimeCounter" type="HBoxContainer" parent="CanvasLayer"]

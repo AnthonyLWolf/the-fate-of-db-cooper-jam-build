@@ -114,7 +114,7 @@ offset_bottom = 40.0
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.05
-anchor_top = 2.85
+anchor_top = -0.7
 anchor_right = 0.25
 anchor_bottom = -0.7
 offset_left = -85.0
@@ -170,6 +170,15 @@ attenuation = 2.0
 [node name="CampLightOuter" type="PointLight2D" parent="."]
 color = Color(0.6, 0.3137255, 0.09803922, 1)
 energy = 1.6
+shadow_enabled = true
+shadow_color = Color(0.4216586, 0.31151327, 0.31830615, 0)
+texture = ExtResource("19_u651g")
+texture_scale = 0.8
+
+[node name="CampLightInner" type="PointLight2D" parent="."]
+color = Color(0.6, 0.3137255, 0.09803922, 1)
+energy = 1.6
+shadow_enabled = true
 shadow_color = Color(0.4216586, 0.31151327, 0.31830615, 0)
 texture = ExtResource("19_u651g")
 texture_scale = 0.8

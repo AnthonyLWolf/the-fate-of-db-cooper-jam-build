@@ -1,82 +1,152 @@
-[gd_scene load_steps=13 format=3 uid="uid://dsgms5utqvxdd"]
+[gd_scene load_steps=17 format=3 uid="uid://dsgms5utqvxdd"]
 
-[ext_resource type="Texture2D" uid="uid://wept5orkq522" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/DBbackgroundconceptPLACEHOLDER.png" id="1_765h4"]
 [ext_resource type="Script" uid="uid://cafdbo1ehdt7y" path="res://Scripts/nighttime.gd" id="1_sku2a"]
+[ext_resource type="Texture2D" uid="uid://bhbo1wd3ypfm2" path="res://Assets/Sprites/Background/BGbackdrop.png" id="2_4m666"]
 [ext_resource type="PackedScene" uid="uid://bynh34all6880" path="res://Scenes/Classes/campfire.tscn" id="2_sku2a"]
+[ext_resource type="Texture2D" uid="uid://dymf7yp4knxe0" path="res://Assets/Sprites/Background/BGfartrees.png" id="3_64dvf"]
 [ext_resource type="PackedScene" uid="uid://dopp8fvghm770" path="res://Scenes/Classes/fuel_stack.tscn" id="3_vvxqm"]
+[ext_resource type="Texture2D" uid="uid://brdl71bvs3u4x" path="res://Assets/Sprites/Background/BGmidtrees.png" id="4_odigx"]
 [ext_resource type="PackedScene" uid="uid://d4ha2e6nrr8sc" path="res://Scenes/Classes/player_camera.tscn" id="4_qypt8"]
 [ext_resource type="PackedScene" uid="uid://cgu8hvhdien4h" path="res://Scenes/Classes/cooper_player.tscn" id="5_4m666"]
+[ext_resource type="Texture2D" uid="uid://cl08vmbg080wt" path="res://Assets/Sprites/Background/BGforeground.png" id="5_wpcm0"]
+[ext_resource type="Texture2D" uid="uid://bc6v50m08wf70" path="res://Assets/Sprites/lighttexture.png" id="6_64dvf"]
+[ext_resource type="PackedScene" uid="uid://j2r4fuktajm2" path="res://Scenes/UI/pause_menu.tscn" id="11_odigx"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_avkl6"]
+polygon = PackedVector2Array(1524, 855, 1535, 814, 1561, 729, 1558, 686, 1575, 626, 1545, 373, 1602, 602, 1590, 649, 1576, 730, 1549, 821, 1556, 878, 1544, 929, 1504, 934)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lkhd1"]
+polygon = PackedVector2Array(1302, 813, 1290, 735, 1266, 661, 1242, 600, 1211, 557, 1100, 470, 1290, 663, 1312, 784, 1317, 810, 1326, 863, 1306, 869)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_15src"]
+polygon = PackedVector2Array(667, 875, 637, 769, 631, 708, 651, 631, 685, 587, 709, 560, 742, 545, 767, 532, 832, 469, 784, 535, 735, 563, 698, 611, 657, 711, 660, 812)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_x74px"]
+polygon = PackedVector2Array(403, 830, 394, 785, 372, 706, 353, 613, 375, 467, 351, 463, 322, 610, 339, 668, 361, 748, 372, 854, 372, 880, 389, 898, 427, 930, 416, 873)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_64dvf"]
 size = Vector2(40776, 77.5)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_sku2a"]
-polygon = PackedVector2Array(1804, 808, 1859, 832, 1882, 819, 1901, 887, 1896, 926, 1842, 949, 1805, 967)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vvxqm"]
-polygon = PackedVector2Array(638, 103, 605, 102, 560, 546, 576, 624)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qypt8"]
-polygon = PackedVector2Array(1373, 785, 1334, 696, 1314, 620, 1339, 498, 1357, 373, 1373, 298, 1383, 304, 1362, 498, 1343, 626, 1396, 753, 1376, 795)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4m666"]
-polygon = PackedVector2Array(232, 915, 251, 815, 243, 723, 205, 880, 194, 935)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_64dvf"]
-
 [node name="Nighttime" type="Node2D"]
 script = ExtResource("1_sku2a")
 
-[node name="ForestParallax" type="Parallax2D" parent="."]
-repeat_size = Vector2(1888.25, 0)
-repeat_times = 7
+[node name="ParallaxLayers" type="Node2D" parent="."]
+position = Vector2(5, 37)
 
-[node name="ForestParallaxLayer" type="Sprite2D" parent="ForestParallax"]
-position = Vector2(-97, 541.00006)
-scale = Vector2(0.41961113, 0.39216664)
-texture = ExtResource("1_765h4")
+[node name="1_Sky" type="Parallax2D" parent="ParallaxLayers"]
+scroll_scale = Vector2(0.1, 0.1)
+repeat_size = Vector2(1920, 0)
+repeat_times = 2
 
-[node name="DBbackgroundconceptPlaceholder" type="Sprite2D" parent="."]
-position = Vector2(958.5, 543.50006)
-scale = Vector2(0.43311107, 0.38633335)
-texture = ExtResource("1_765h4")
+[node name="1_Sky" type="Sprite2D" parent="ParallaxLayers/1_Sky"]
+position = Vector2(973, 549)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_4m666")
+
+[node name="2_Far" type="Parallax2D" parent="ParallaxLayers"]
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(1920, 0)
+repeat_times = 2
+
+[node name="2_Far" type="Sprite2D" parent="ParallaxLayers/2_Far"]
+position = Vector2(961, 539)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_64dvf")
+
+[node name="3_Mid" type="Parallax2D" parent="ParallaxLayers"]
+scroll_scale = Vector2(0.5, 0.5)
+repeat_size = Vector2(1920, 0)
+repeat_times = 2
+
+[node name="3_Mid" type="Sprite2D" parent="ParallaxLayers/3_Mid"]
+position = Vector2(961, 551)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_odigx")
+
+[node name="4_Fore" type="Parallax2D" parent="ParallaxLayers"]
+repeat_size = Vector2(3840, 0)
+
+[node name="BGForeground" type="Sprite2D" parent="ParallaxLayers/4_Fore"]
+position = Vector2(1, 550)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_wpcm0")
+
+[node name="BGForeground_Mirrored" type="Sprite2D" parent="ParallaxLayers/4_Fore"]
+position = Vector2(1921, 551)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_wpcm0")
+flip_h = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.41604817, 0.4536335, 0.6383827, 1)
+color = Color(0.27251634, 0.3033276, 0.45514232, 1)
+
+[node name="NightTimeOccluders" type="Node2D" parent="."]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="NightTimeOccluders"]
+z_index = 1
+occluder = SubResource("OccluderPolygon2D_avkl6")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="NightTimeOccluders"]
+z_index = 1
+occluder = SubResource("OccluderPolygon2D_lkhd1")
+
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="NightTimeOccluders"]
+z_index = 1
+occluder = SubResource("OccluderPolygon2D_15src")
+
+[node name="LightOccluder2D4" type="LightOccluder2D" parent="NightTimeOccluders"]
+z_index = 1
+occluder = SubResource("OccluderPolygon2D_x74px")
+
+[node name="CampLightOuter" type="PointLight2D" parent="NightTimeOccluders"]
+position = Vector2(963, 519)
+color = Color(0.6, 0.3137255, 0.09803922, 0.627451)
+energy = 1.85
+shadow_enabled = true
+texture = ExtResource("6_64dvf")
+texture_scale = 0.2
 
 [node name="Campfire" parent="." instance=ExtResource("2_sku2a")]
 unique_name_in_owner = true
-position = Vector2(1165, 892)
+position = Vector2(958, 941)
 
-[node name="InteractLabel" parent="Campfire/Control" index="0"]
-anchor_top = -0.7
+[node name="WarmthArea" parent="Campfire" index="3"]
+visible = true
+
+[node name="InteractionArea" parent="Campfire" index="4"]
+visible = true
+
+[node name="CampLightOuter" parent="Campfire" index="6"]
+position = Vector2(8, 12)
+color = Color(0.6, 0.3137255, 0.09803922, 0.627451)
+energy = 2.0
+shadow_color = Color(0, 0, 0, 0)
 
 [node name="CampLightInner" parent="Campfire" index="7"]
-color = Color(0.73090917, 0.33479613, 0.06453732, 1)
-energy = 2.08
-texture_scale = 0.2
+color = Color(0.85490197, 0.48235294, 0.12941177, 0.7647059)
+energy = 2.0
+shadow_enabled = false
+shadow_color = Color(0.14623713, 0.09620259, 0.09973722, 0)
+texture_scale = 0.1
 
 [node name="WoodStack" parent="." instance=ExtResource("3_vvxqm")]
-position = Vector2(571, 966)
+position = Vector2(351, 981)
 is_wood = true
 
 [node name="LeavesStack" parent="." instance=ExtResource("3_vvxqm")]
-position = Vector2(1727, 960)
+position = Vector2(1520, 978)
 is_leaves = true
 
 [node name="CashStack" parent="." instance=ExtResource("3_vvxqm")]
-position = Vector2(1480, 956)
+position = Vector2(1273, 974)
 is_cash = true
 
 [node name="Camera2D" parent="." instance=ExtResource("4_qypt8")]
-position = Vector2(995, 924)
+position = Vector2(700, 924)
 limit_bottom = 1107
 
 [node name="CooperPlayer" parent="." instance=ExtResource("5_4m666")]
-position = Vector2(995, 924)
-
-[node name="AnimatedSprite2D" parent="CooperPlayer" index="1"]
-animation = &"idle"
+position = Vector2(700, 924)
 
 [node name="CameraTransform" parent="CooperPlayer" index="4"]
 remote_path = NodePath("../../Camera2D")
@@ -91,22 +161,8 @@ shape = SubResource("RectangleShape2D_64dvf")
 wait_time = 60.0
 one_shot = true
 
-[node name="NightTimeOccluders" type="Node2D" parent="."]
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="NightTimeOccluders"]
-occluder = SubResource("OccluderPolygon2D_sku2a")
-
-[node name="LightOccluder2D2" type="LightOccluder2D" parent="NightTimeOccluders"]
-occluder = SubResource("OccluderPolygon2D_vvxqm")
-
-[node name="LightOccluder2D3" type="LightOccluder2D" parent="NightTimeOccluders"]
-occluder = SubResource("OccluderPolygon2D_qypt8")
-
-[node name="LightOccluder2D4" type="LightOccluder2D" parent="NightTimeOccluders"]
-occluder = SubResource("OccluderPolygon2D_4m666")
-
-[node name="LightOccluder2D5" type="LightOccluder2D" parent="NightTimeOccluders"]
-occluder = SubResource("OccluderPolygon2D_64dvf")
+[node name="PauseMenu" parent="." instance=ExtResource("11_odigx")]
+visible = false
 
 [connection signal="timeout" from="NightTimeTimer" to="." method="_on_night_time_timer_timeout"]
 

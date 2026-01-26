@@ -48,9 +48,9 @@ func daytime_setup() -> void:
 	daytime_timer.start(GameConstants.DAYTIME_LENGTH)
 
 func spawn_resources(current_day : int):
-	var base_count = 60
+	var base_count = 30
 	var spawn_count = base_count - (current_day * (current_day - 1))
-	spawn_count = max(spawn_count, 30)
+	spawn_count = max(spawn_count, 20)
 	
 	# Divides the forest in chunks to avoid spawn clusters
 	var forest_width = 10000
@@ -78,13 +78,13 @@ func spawn_resources(current_day : int):
 func send_daily_dialogue():
 	match GameManager.day:
 		1:
-			SignalBus.send_dialogue.emit("Sh*t. That was a rough landing.")
+			SignalBus.send_dialogue.emit("Well. That was a rough landing.")
 			await get_tree().create_timer(3.0).timeout
 			SignalBus.send_dialogue.emit("Looks like it'll be night soon. Gotta find something to keep me warm.")
 		2:
-			SignalBus.send_dialogue.emit("New day... Tonight may be worse. Gotta find more stuff.")
+			SignalBus.send_dialogue.emit("New day. Tonight may be worse. Gotta find more stuff.")
 		3:
-			SignalBus.send_dialogue.emit("I think the blizzard's getting worse. Tonight will be tough.")
+			SignalBus.send_dialogue.emit("I think the blizzard's getting worse. Tonight will be rough.")
 		4:
 			SignalBus.send_dialogue.emit("Just one more day. C'mon.")
 
@@ -103,7 +103,7 @@ func _on_daytime_timer_timeout() -> void:
 			player.inventory[resource] = 0
 	## Keeps items
 	elif player.distance_from_home < 10:
-		day_end_dialogue = "It's getting late. The camp is close... I can keep whatever I'm carrying."
+		day_end_dialogue = "It's getting late. Camp is close... I'll keep whatever I'm carrying."
 		if player.inventory["wood"] > 0:
 			GameManager.wood_count += player.inventory["wood"]
 		if player.inventory["leaves"] > 0:

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dopp8fvghm770"]
+[gd_scene load_steps=8 format=3 uid="uid://dopp8fvghm770"]
 
 [ext_resource type="Script" uid="uid://dxrqt6nffib2c" path="res://Scripts/fuel_stack.gd" id="1_6lo15"]
 [ext_resource type="Texture2D" uid="uid://quk7x22bprun" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/logspritePLACEHOLDER.png" id="1_kbk1r"]
 [ext_resource type="FontFile" uid="uid://dg2rks2w45mwb" path="res://Assets/Fonts/Ghost Factory.ttf" id="3_5tuqa"]
+[ext_resource type="FontFile" uid="uid://dxwegbkjgdcue" path="res://Assets/Fonts/Adventurer.ttf" id="4_wcjbu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6lo15"]
 radius = 50.08992
@@ -10,6 +11,10 @@ radius = 50.08992
 [sub_resource type="LabelSettings" id="LabelSettings_wcjbu"]
 font = ExtResource("3_5tuqa")
 font_size = 72
+
+[sub_resource type="LabelSettings" id="LabelSettings_t23dv"]
+font = ExtResource("4_wcjbu")
+font_size = 32
 
 [node name="FuelStack" type="Node2D"]
 script = ExtResource("1_6lo15")
@@ -23,7 +28,7 @@ texture = ExtResource("1_kbk1r")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_6lo15")
 
-[node name="Control" type="Control" parent="."]
+[node name="InteractLabelContainer" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -38.0
@@ -31,7 +36,7 @@ offset_top = -152.0
 offset_right = 38.0
 offset_bottom = -59.0
 
-[node name="InteractLabel" type="Label" parent="Control"]
+[node name="InteractLabel" type="Label" parent="InteractLabelContainer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,6 +49,30 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "E"
 label_settings = SubResource("LabelSettings_wcjbu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StashLabelContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -37.0
+offset_top = 21.0
+offset_right = 39.0
+offset_bottom = 114.0
+
+[node name="StashLabel" type="Label" parent="StashLabelContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -11.0
+offset_top = -8.0
+offset_right = 11.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "E"
+label_settings = SubResource("LabelSettings_t23dv")
 horizontal_alignment = 1
 vertical_alignment = 1
 

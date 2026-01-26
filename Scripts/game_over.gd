@@ -2,11 +2,13 @@ extends Control
 
 @onready var night_tint: CanvasModulate = $TextureRect/NightTint
 @onready var end_game_label: Label = $CanvasLayer/Control/VBoxContainer/EndGameLabel
+@onready var score_label: Label = $CanvasLayer/Control/VBoxContainer/ScoreLabel
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	UiManager.hide_all_labels()
+	score_label.hide()
 	
 	if GameManager.out_of_cash || GameManager.froze_to_death:
 		AudioManager.play_sfx(AudioManager.game_over_fire_sfx, 2.6)
@@ -21,7 +23,8 @@ func _ready() -> void:
 	if GameManager.survived:
 		night_tint.visible = false
 		end_game_label.text = "Congratulations!\nYou helped Cooper survive the blizzard\nand leave the forest.\nPerhaps this is how the story went."
-
+		score_label.show()
+		score_label.text = "You managed to keep: $" + str(GameManager.cash_count)
 
 func _on_play_again_button_pressed() -> void:
 	GameManager.reset_game()

@@ -2,7 +2,9 @@ extends Node2D
 
 # References
 @onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var interact_label: Label = $Control/InteractLabel
+@onready var interact_label: Label = $InteractLabelContainer/InteractLabel
+@onready var stash_label: Label = $StashLabelContainer/StashLabel
+
 
 # Textures for the held item
 const LEAFICON = preload("uid://dppwq62j2gkju")
@@ -14,11 +16,16 @@ const WOODPILETARP_MID = preload("uid://c6c4qgavqrcas")
 const WOODPILETARP_FULL = preload("uid://csq4ix2ufs7lh")
 # const WOODPILE_MID = preload("uid://0ke2xuwfjdi8")
 # const WOODPILE_FULL = preload("uid://dxjp5c44t38sj")
-const CASH_TEXTURE = null
-const TENT_TEXTURE = preload("res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/tentspritePLACEHOLDER.png")
+
+const CASH_TENT_EMPTY = preload("res://Assets/Sprites/Tent-Cash/tent.png")
+const CASH_TENT_LOW = preload("res://Assets/Sprites/Tent-Cash/tentLOWCASH.png")
+const CASH_TENT_MID = preload("res://Assets/Sprites/Tent-Cash/tentMIDCASH.png")
+const CASH_TENT_FULL = preload("res://Assets/Sprites/Tent-Cash/tentFULLCASH.png")
+
 
 const LEAFRESOURCE = preload("uid://c6g56fsi18a65")
 const WOODRESOURCE = preload("uid://cr86omdoj0ia6")
+const CASHRESOURCE = preload("res://Assets/Sprites/Tent-Cash/cashicon.png")
 
 # Handles stack type
 @export var is_wood = false
@@ -38,10 +45,13 @@ func _ready() -> void:
 	
 	if is_wood:
 		stack_count = GameManager.wood_count
+		stash_label.text = "Wood"
 	if is_leaves:
 		stack_count = GameManager.leaf_count
+		stash_label.text = "Leaves"
 	if is_cash:
-		sprite_2d.texture = TENT_TEXTURE
+		sprite_2d.texture = CASH_TENT_FULL
+		stash_label.visible = false
 		stack_count = GameManager.cash_count
 		
 	check_stash()
@@ -84,7 +94,9 @@ func _process(delta: float) -> void:
 							AudioManager.play_sfx(AudioManager.leaves_sfx, 0.70)
 							check_stash()
 						if is_cash && GameManager.cash_count > 0:
-							player.item_held.texture = TENT_TEXTURE
+							player.item_held.texture = CASHRESOURCE
+							player.item_held.scale = Vector2(0.1, 0.1)
+							player.item_held.position += Vector2(0, -5.0)
 							player.item_held.visible = true
 							player.inventory["cash"] += 1
 							# AudioManager.play_sfx(AudioManager.cash_sfx, 0.05)
@@ -128,7 +140,6 @@ func add_to_stack(fuel_type: String):
 				GameManager.leaf_count += 1
 				check_stash()
 	await get_tree().create_timer(0.5).timeout
-	print(fuel_type + ": " + str(stack_count))
 	if player.inventory["wood"] <= 0 && player.inventory["leaves"] <= 0:
 		player.carrying_items = false
 
@@ -136,6 +147,7 @@ func add_to_stack(fuel_type: String):
 func update_cash(burned_cash : int):
 	if self.is_cash:
 		stack_count -= burned_cash
+		check_stash()
 
 func check_stash():
 	if is_wood:
@@ -159,8 +171,19 @@ func check_stash():
 			sprite_2d.texture = LEAFSTASH_FULL
 			sprite_2d.scale = Vector2(0.1, 0.1)
 	elif is_cash:
-		sprite_2d.texture = TENT_TEXTURE
-		stack_count = GameManager.cash_count
+		var cash_left = GameManager.cash_count
+		if cash_left >= 10000:
+			sprite_2d.texture = CASH_TENT_FULL
+			sprite_2d.scale = Vector2(0.1, 0.1)
+		elif cash_left < 10000:
+			sprite_2d.texture = CASH_TENT_MID
+			sprite_2d.scale = Vector2(0.1, 0.1)
+		elif cash_left < 5000:
+			sprite_2d.texture = CASH_TENT_LOW
+			sprite_2d.scale = Vector2(0.1, 0.1)
+		elif cash_left <= 0:
+			sprite_2d.texture = CASH_TENT_EMPTY
+		stack_count = cash_left
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if GameManager.current_state == GameManager.GameState.DAYTIME && self.is_cash:

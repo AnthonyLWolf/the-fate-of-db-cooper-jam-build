@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://csukumyyn3u87"]
+[gd_scene load_steps=9 format=3 uid="uid://csukumyyn3u87"]
 
 [ext_resource type="Texture2D" uid="uid://wept5orkq522" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/DBbackgroundconceptPLACEHOLDER.png" id="1_ok6i5"]
 [ext_resource type="Script" uid="uid://boiuqf0edn212" path="res://Scripts/game_over.gd" id="1_wpovb"]
@@ -14,6 +14,9 @@ bg_color = Color(0.03137255, 0.09019608, 0.18431373, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5i2ib"]
 bg_color = Color(0.13725491, 0.25490198, 0.37254903, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w88jv"]
+bg_color = Color(0.18719208, 0.33196062, 0.48181367, 1)
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -64,6 +67,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(1200, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "SCORE"
+label_settings = SubResource("LabelSettings_agfx5")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -79,6 +93,7 @@ theme_override_fonts/font = ExtResource("3_wpovb")
 theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_pkuq6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_5i2ib")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w88jv")
 text = "PLAY AGAIN"
 
 [node name="MainMenuButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
@@ -90,6 +105,7 @@ theme_override_fonts/font = ExtResource("3_wpovb")
 theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_pkuq6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_5i2ib")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w88jv")
 text = "MAIN MENU"
 
 [node name="QuitButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
@@ -101,6 +117,7 @@ theme_override_fonts/font = ExtResource("3_wpovb")
 theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_pkuq6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_5i2ib")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w88jv")
 text = "QUIT"
 
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/HBoxContainer/PlayAgainButton" to="." method="_on_play_again_button_pressed"]

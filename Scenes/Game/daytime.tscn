@@ -1,11 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8m24wgkbuv37"]
+[gd_scene load_steps=12 format=3 uid="uid://b8m24wgkbuv37"]
 
 [ext_resource type="Script" uid="uid://ngcnbh81hc13" path="res://Scripts/daytime.gd" id="1_iosov"]
-[ext_resource type="Texture2D" uid="uid://wept5orkq522" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/DBbackgroundconceptPLACEHOLDER.png" id="1_v7ddp"]
+[ext_resource type="Texture2D" uid="uid://bhbo1wd3ypfm2" path="res://Assets/Sprites/Background/BGbackdrop.png" id="2_hotob"]
 [ext_resource type="PackedScene" uid="uid://bynh34all6880" path="res://Scenes/Classes/campfire.tscn" id="2_iosov"]
 [ext_resource type="PackedScene" uid="uid://dopp8fvghm770" path="res://Scenes/Classes/fuel_stack.tscn" id="3_olxus"]
+[ext_resource type="Texture2D" uid="uid://dymf7yp4knxe0" path="res://Assets/Sprites/Background/BGfartrees.png" id="3_t182o"]
+[ext_resource type="Texture2D" uid="uid://brdl71bvs3u4x" path="res://Assets/Sprites/Background/BGmidtrees.png" id="4_76hen"]
 [ext_resource type="PackedScene" uid="uid://d4ha2e6nrr8sc" path="res://Scenes/Classes/player_camera.tscn" id="4_sy7ho"]
+[ext_resource type="Texture2D" uid="uid://cl08vmbg080wt" path="res://Assets/Sprites/Background/BGforeground.png" id="5_vndmh"]
 [ext_resource type="PackedScene" uid="uid://cgu8hvhdien4h" path="res://Scenes/Classes/cooper_player.tscn" id="5_xoeny"]
+[ext_resource type="PackedScene" uid="uid://j2r4fuktajm2" path="res://Scenes/UI/pause_menu.tscn" id="10_hotob"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v7ddp"]
 size = Vector2(41959, 86)
@@ -13,42 +17,74 @@ size = Vector2(41959, 86)
 [node name="Daytime" type="Node2D"]
 script = ExtResource("1_iosov")
 
-[node name="ForestParallax" type="Parallax2D" parent="."]
-repeat_size = Vector2(1888.25, 0)
-repeat_times = 7
+[node name="ParallaxLayers" type="Node2D" parent="."]
+position = Vector2(0, 34)
 
-[node name="ForestParallaxLayer" type="Sprite2D" parent="ForestParallax"]
-position = Vector2(-97, 541.00006)
-scale = Vector2(0.41961113, 0.39216664)
-texture = ExtResource("1_v7ddp")
+[node name="1_Sky" type="Parallax2D" parent="ParallaxLayers"]
+scroll_scale = Vector2(0.1, 0.1)
+repeat_size = Vector2(1920, 0)
+repeat_times = 2
 
-[node name="DBbackgroundconceptPlaceholder" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(1403, 541)
-scale = Vector2(0.24711111, 0.392)
-texture = ExtResource("1_v7ddp")
+[node name="1_Sky" type="Sprite2D" parent="ParallaxLayers/1_Sky"]
+position = Vector2(973, 549)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_hotob")
+
+[node name="2_Far" type="Parallax2D" parent="ParallaxLayers"]
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(1920, 0)
+repeat_times = 2
+
+[node name="2_Far" type="Sprite2D" parent="ParallaxLayers/2_Far"]
+position = Vector2(961, 539)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_t182o")
+
+[node name="3_Mid" type="Parallax2D" parent="ParallaxLayers"]
+scroll_scale = Vector2(0.5, 0.5)
+repeat_size = Vector2(1920, 0)
+repeat_times = 2
+
+[node name="3_Mid" type="Sprite2D" parent="ParallaxLayers/3_Mid"]
+position = Vector2(961, 551)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_76hen")
+
+[node name="4_Fore" type="Parallax2D" parent="ParallaxLayers"]
+repeat_size = Vector2(3840, 0)
+
+[node name="BGForeground" type="Sprite2D" parent="ParallaxLayers/4_Fore"]
+position = Vector2(1, 550)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_vndmh")
+
+[node name="BGForeground_Mirrored" type="Sprite2D" parent="ParallaxLayers/4_Fore"]
+position = Vector2(1921, 551)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_vndmh")
+flip_h = true
 
 [node name="Campfire" parent="." instance=ExtResource("2_iosov")]
 unique_name_in_owner = true
-position = Vector2(1288, 871)
+position = Vector2(1914, 885)
 
 [node name="FuelStack" parent="." instance=ExtResource("3_olxus")]
-position = Vector2(913, 961)
+position = Vector2(1631, 950)
 is_wood = true
 
 [node name="FuelStack2" parent="." instance=ExtResource("3_olxus")]
-position = Vector2(1830, 925)
+position = Vector2(2456, 960)
 is_leaves = true
 
 [node name="FuelStack3" parent="." instance=ExtResource("3_olxus")]
-position = Vector2(1584, 957)
+position = Vector2(2208, 954)
 is_cash = true
 
 [node name="Camera2D" parent="." instance=ExtResource("4_sy7ho")]
-position = Vector2(995, 924)
+position = Vector2(1623, 886)
 
 [node name="CooperPlayer" parent="." instance=ExtResource("5_xoeny")]
-position = Vector2(995, 924)
+position = Vector2(1623, 886)
 
 [node name="CameraTransform" parent="CooperPlayer" index="4"]
 remote_path = NodePath("../../Camera2D")
@@ -64,6 +100,9 @@ wait_time = 30.0
 one_shot = true
 
 [node name="FuelResources" type="Node2D" parent="."]
+
+[node name="PauseMenu" parent="." instance=ExtResource("10_hotob")]
+visible = false
 
 [connection signal="timeout" from="DaytimeTimer" to="." method="_on_daytime_timer_timeout"]
 

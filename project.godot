@@ -41,6 +41,7 @@ project/assembly_name="micro-jam-2026-winter-game"
 
 Player=""
 Pickup=""
+Emitters=""
 
 [input]
 

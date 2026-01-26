@@ -2,7 +2,7 @@ extends Node2D
 
 
 # Global variables
-var day : int = 1
+var day : int = 4
 var wood_count : int = 0
 var leaf_count : int = 0
 
@@ -50,7 +50,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(GameManager.current_state)
 	
 	if day == GameConstants.MAX_DAYS && current_state != GameState.WIN:
 		current_state = GameState.WIN

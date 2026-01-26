@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://iwhobf0k08w0"]
+[gd_scene load_steps=17 format=3 uid="uid://iwhobf0k08w0"]
 
-[ext_resource type="Texture2D" uid="uid://wept5orkq522" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/DBbackgroundconceptPLACEHOLDER.png" id="1_o14dv"]
 [ext_resource type="Script" uid="uid://qik5olocp0rx" path="res://Scripts/main_menu.gd" id="1_u7lva"]
+[ext_resource type="Texture2D" uid="uid://jkygyuopd5pw" path="res://Assets/Sprites/Background/BGFull.png" id="2_mrfpk"]
 [ext_resource type="FontFile" uid="uid://dg2rks2w45mwb" path="res://Assets/Fonts/Ghost Factory.ttf" id="2_u7lva"]
 [ext_resource type="FontFile" uid="uid://dxwegbkjgdcue" path="res://Assets/Fonts/Adventurer.ttf" id="3_mrfpk"]
 [ext_resource type="AudioStream" uid="uid://42sy6vbj8b1t" path="res://Assets/Audio/SFX/ENV/FIRE & FOREST DAYTIME .mp3" id="5_mrfpk"]
@@ -15,6 +15,34 @@ bg_color = Color(0.03137255, 0.09019608, 0.18431373, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k33u3"]
 bg_color = Color(0.13725491, 0.25490198, 0.37254903, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wqme5"]
+bg_color = Color(0.2864444, 0.42314798, 0.5754906, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4pqbp"]
+bg_color = Color(0.048266537, 0.110051535, 0.20747656, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mrfpk"]
+font = ExtResource("2_u7lva")
+font_size = 111
+
+[sub_resource type="LabelSettings" id="LabelSettings_k33u3"]
+font = ExtResource("3_mrfpk")
+font_size = 38
+
+[sub_resource type="LabelSettings" id="LabelSettings_lrjdf"]
+font = ExtResource("3_mrfpk")
+font_size = 38
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mrfpk"]
+bg_color = Color(0.19215687, 0.29803923, 0.41568628, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lrjdf"]
+bg_color = Color(0.10980392, 0.1882353, 0.2901961, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gih0s"]
+font = ExtResource("3_mrfpk")
+font_size = 57
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -31,7 +59,7 @@ offset_left = -50.0
 offset_top = -43.0
 offset_right = 1936.0
 offset_bottom = 1281.0
-texture = ExtResource("1_o14dv")
+texture = ExtResource("2_mrfpk")
 expand_mode = 1
 
 [node name="NightTint" type="CanvasModulate" parent="TextureRect"]
@@ -58,8 +86,8 @@ custom_minimum_size = Vector2(1200, 300)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-text = "THE FALL OF
-COOPER"
+text = "THE FATE OF
+D.B. COOPER"
 label_settings = SubResource("LabelSettings_4pqbp")
 horizontal_alignment = 1
 
@@ -67,7 +95,7 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-theme_override_constants/separation = 173
+theme_override_constants/separation = 48
 
 [node name="StartButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(400, 100)
@@ -78,6 +106,7 @@ theme_override_fonts/font = ExtResource("3_mrfpk")
 theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_gih0s")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_k33u3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wqme5")
 text = "START"
 
 [node name="HowToPlayButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
@@ -89,7 +118,20 @@ theme_override_fonts/font = ExtResource("3_mrfpk")
 theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_gih0s")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_k33u3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wqme5")
 text = "HOW TO PLAY"
+
+[node name="CreditsButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("3_mrfpk")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_gih0s")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_k33u3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wqme5")
+text = "CREDITS"
 
 [node name="QuitButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(400, 100)
@@ -100,7 +142,151 @@ theme_override_fonts/font = ExtResource("3_mrfpk")
 theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_gih0s")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_k33u3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wqme5")
 text = "QUIT"
+
+[node name="HiddenMenus" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 51.0
+offset_top = 46.0
+offset_right = 1875.0
+offset_bottom = 1013.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HowToPanel" type="Panel" parent="CanvasLayer/HiddenMenus"]
+visible = false
+layout_mode = 0
+offset_left = 5.0
+offset_top = -12.0
+offset_right = 1821.0
+offset_bottom = 981.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4pqbp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HiddenMenus/HowToPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 96.92639
+offset_top = 53.0
+offset_right = -96.92639
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 29
+
+[node name="Title" type="Label" parent="CanvasLayer/HiddenMenus/HowToPanel/VBoxContainer"]
+layout_mode = 2
+text = "HOW TO PLAY"
+label_settings = SubResource("LabelSettings_mrfpk")
+horizontal_alignment = 2
+
+[node name="GameDescription" type="Label" parent="CanvasLayer/HiddenMenus/HowToPanel/VBoxContainer"]
+custom_minimum_size = Vector2(1750, 0)
+layout_mode = 2
+text = "On November 24, 1971, an unidentified man hijacked Northwest Orient Airlines Flight 305, flying from Portland, Oregon, to Seattle, Washington.
+
+After obtaining $200,000 in ransom and releasing the passengers, the man opened the aircraft's doors and parachuted to an uncertain fate, over a remote forest in Southwest Washington.
+
+He became known as D.B. Cooper.
+
+Congratulations. That man is now you.
+
+Can you help him wait out a blizzard while keeping all his cash?"
+label_settings = SubResource("LabelSettings_k33u3")
+autowrap_mode = 2
+
+[node name="Controls" type="Label" parent="CanvasLayer/HiddenMenus/HowToPanel/VBoxContainer"]
+custom_minimum_size = Vector2(1750, 0)
+layout_mode = 2
+text = "
+Controls:
+- WASD / Arrow keys: Move
+- E: Pick up / Deposit / Carry / Burn fuel
+
+Pro tip: Try to stay warm at night! ;)"
+label_settings = SubResource("LabelSettings_lrjdf")
+autowrap_mode = 2
+
+[node name="HowToBackButton" type="Button" parent="CanvasLayer/HiddenMenus/HowToPanel"]
+layout_mode = 0
+offset_left = 1405.0
+offset_top = 864.0
+offset_right = 1711.0
+offset_bottom = 944.0
+theme_override_fonts/font = ExtResource("3_mrfpk")
+theme_override_font_sizes/font_size = 41
+theme_override_styles/normal = SubResource("StyleBoxFlat_mrfpk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lrjdf")
+text = "Back"
+
+[node name="CreditsPanel" type="Panel" parent="CanvasLayer/HiddenMenus"]
+visible = false
+layout_mode = 0
+offset_left = 5.0
+offset_top = -12.0
+offset_right = 1821.0
+offset_bottom = 981.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4pqbp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HiddenMenus/CreditsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 96.92639
+offset_top = 53.0
+offset_right = -96.92639
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 29
+
+[node name="Title" type="Label" parent="CanvasLayer/HiddenMenus/CreditsPanel/VBoxContainer"]
+layout_mode = 2
+text = "CREDITS"
+label_settings = SubResource("LabelSettings_mrfpk")
+horizontal_alignment = 2
+
+[node name="CreditsDescription" type="Label" parent="CanvasLayer/HiddenMenus/CreditsPanel/VBoxContainer"]
+custom_minimum_size = Vector2(1750, 0)
+layout_mode = 2
+text = "\"The Fate of D.B. Cooper\" was developed in just about 2 days for the Micro Jam 052: Winter. It was inspired by the legendary story of D.B. Cooper and created by 3 people."
+label_settings = SubResource("LabelSettings_gih0s")
+autowrap_mode = 2
+
+[node name="Controls" type="Label" parent="CanvasLayer/HiddenMenus/CreditsPanel/VBoxContainer"]
+custom_minimum_size = Vector2(1750, 0)
+layout_mode = 2
+text = "
+Credits:
+- Anthony L. Wolf: Game Designer, Programmer
+- Maximilian Borchardt: Artist
+- FLAX22.22: Composer"
+label_settings = SubResource("LabelSettings_gih0s")
+autowrap_mode = 2
+
+[node name="CreditsBackButton" type="Button" parent="CanvasLayer/HiddenMenus/CreditsPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -355.0
+offset_top = -129.0
+offset_right = -49.0
+offset_bottom = -49.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_mrfpk")
+theme_override_font_sizes/font_size = 41
+theme_override_styles/normal = SubResource("StyleBoxFlat_mrfpk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lrjdf")
+text = "Back"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_mrfpk")
@@ -108,4 +294,7 @@ autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/HBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/HBoxContainer/HowToPlayButton" to="." method="_on_how_to_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/HiddenMenus/HowToPanel/HowToBackButton" to="." method="_on_how_to_back_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/HiddenMenus/CreditsPanel/CreditsBackButton" to="." method="_on_credits_back_button_pressed"]

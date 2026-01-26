@@ -6,6 +6,8 @@ extends Node2D
 @onready var flame_sprite: AnimatedSprite2D = $FlameSprite
 @onready var base_sprite: AnimatedSprite2D = $BaseSprite
 @onready var campfire_sfx_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var camplight_outer: PointLight2D = $CampLightOuter
+@onready var camplight_inner: PointLight2D = $CampLightInner
 
 # Textures
 var campfire_base_texture = preload("res://Assets/Sprites/Campfire/DBfireBASE.png")
@@ -38,7 +40,7 @@ func _ready() -> void:
 	SignalBus.ui_ready.connect(func(): UiManager.cold_bar.value = cold_amount)
 	
 	# TEST
-	#GameManager.current_state = GameManager.GameState.NIGHTTIME
+	# GameManager.current_state = GameManager.GameState.NIGHTTIME
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -47,15 +49,27 @@ func _process(delta: float) -> void:
 	match GameManager.current_state:
 		# Daytime behaviour: animated differently
 		GameManager.GameState.DAYTIME:
+			camplight_outer.visible = false
+			camplight_inner.visible = false
 			base_sprite.play("daytimeash")
 			flame_sprite.visible = false
 			
 		# Nighttime behaviour: campfire on, ability to burn
 		GameManager.GameState.NIGHTTIME:
-			
+			# Turns on the flame
 			base_sprite.play("base")
 			flame_sprite.visible = true
 			flame_sprite.play("idle")
+			camplight_outer.visible = true
+			camplight_inner.visible = true
+			
+			# Animates campfire light
+			var flicker = randf_range(-0.05, 0.05)
+			camplight_outer.energy = (intensity_ratio + flicker) * 1.5
+			
+			var light_scale_target = intensity_ratio * 0.5
+			camplight_inner.texture_scale = max(light_scale_target, 0.02)
+			camplight_inner.energy = intensity_ratio * 2.0
 			
 			# Plays campfire SFX spatially
 			if campfire_sfx_player.playing:
@@ -104,6 +118,12 @@ func _process(delta: float) -> void:
 				cold_amount += cold_multiplier * delta
 			if player_in_warmth_range:
 				cold_amount -= (cold_multiplier / 2) * delta
+			
+			# Clamping cold
+			if cold_amount < 0:
+				cold_amount = 0
+			elif cold_amount > 100:
+				cold_amount = 100
 				
 			# Handles burning of fuel
 			if Input.is_action_just_pressed("interact") && player_in_interaction_range && player.holding_item:
@@ -116,29 +136,18 @@ func _process(delta: float) -> void:
 								burn_fuel(resource)
 
 
-func _on_interaction_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player") && GameManager.current_state == GameManager.GameState.NIGHTTIME:
-		interact_label.visible = true
-		player_in_interaction_range = true
-
-
-func _on_interaction_area_body_exited(body: Node2D) -> void:
-	if body.is_in_group("Player") && GameManager.current_state == GameManager.GameState.NIGHTTIME:
-		interact_label.visible = false
-		player_in_interaction_range = false
-
 func burn_fuel(fuel_type : String):
 	player.item_held.visible = false
 	match fuel_type:
 		"wood":
-			fire_intensity += 250
+			fire_intensity += 200
 			GameManager.wood_count -= 1
 		"leaves":
-			fire_intensity += 100
+			fire_intensity += 50
 			GameManager.leaf_count -= 1
 		"cash":
 			fire_intensity += 400
-			var cash_to_burn = randi_range(10000, 20000)
+			var cash_to_burn = randi_range(15000, 25000)
 			SignalBus.cash_burned.emit(cash_to_burn)
 	
 	AudioManager.play_sfx(AudioManager.burn_resource_sfx, 0.0)
@@ -156,6 +165,17 @@ func burn_fuel(fuel_type : String):
 	
 	GameManager.update_ui_counters()
 	player.holding_item = false
+
+func _on_interaction_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player") && GameManager.current_state == GameManager.GameState.NIGHTTIME:
+		interact_label.visible = true
+		player_in_interaction_range = true
+
+
+func _on_interaction_area_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Player") && GameManager.current_state == GameManager.GameState.NIGHTTIME:
+		interact_label.visible = false
+		player_in_interaction_range = false
 
 
 func _on_warmth_area_body_entered(body: Node2D) -> void:
