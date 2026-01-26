@@ -15,6 +15,7 @@ var campfire_ash_texture = preload("res://Assets/Sprites/Campfire/DBash.png")
 
 
 # Variables
+var web_build = true # NOTE: THIS IS FOR WEB EXPORTS, turn back to false for proper build testing
 
 # Warmth variables
 var warmth_decay_rate = 10.0
@@ -40,7 +41,7 @@ func _ready() -> void:
 	SignalBus.ui_ready.connect(func(): UiManager.cold_bar.value = cold_amount)
 	
 	# TEST
-	# GameManager.current_state = GameManager.GameState.NIGHTTIME
+	GameManager.current_state = GameManager.GameState.NIGHTTIME
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -60,8 +61,14 @@ func _process(delta: float) -> void:
 			base_sprite.play("base")
 			flame_sprite.visible = true
 			flame_sprite.play("idle")
-			camplight_outer.visible = true
-			camplight_inner.visible = true
+			
+			# Disables dynamic lighting for web builds
+			if !web_build:
+				camplight_outer.visible = true
+				camplight_inner.visible = true
+			elif web_build:
+				camplight_outer.visible = false
+				camplight_inner.visible = false
 			
 			# Animates campfire light
 			var flicker = randf_range(-0.05, 0.05)

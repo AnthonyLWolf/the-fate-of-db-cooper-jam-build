@@ -15,6 +15,9 @@ emission_shape = 3
 emission_box_extents = Vector3(1000, 1000, 1)
 gravity = Vector3(-1000, 200, 0)
 scale_max = 3.0
+collision_mode = 1
+collision_friction = 0.1
+collision_bounce = 0.5
 
 [node name="Camera2D" type="Camera2D"]
 zoom = Vector2(1.2, 1.2)
@@ -29,6 +32,7 @@ editor_draw_limits = true
 script = ExtResource("1_h5y82")
 
 [node name="SoftSnow" type="GPUParticles2D" parent="." groups=["Emitters"]]
+light_mask = 2
 z_index = 6
 position = Vector2(11, 12)
 amount = 2000
@@ -37,10 +41,14 @@ preprocess = 2.0
 process_material = SubResource("ParticleProcessMaterial_h5y82")
 
 [node name="Blizzard" type="GPUParticles2D" parent="." groups=["Emitters"]]
+light_mask = 2
 z_index = 6
 position = Vector2(11, 12)
 amount = 2000
 lifetime = 2.0
 preprocess = 2.0
 speed_scale = 5.0
+trail_lifetime = 0.01
+trail_sections = 2
+trail_section_subdivisions = 2
 process_material = SubResource("ParticleProcessMaterial_s0ghu")

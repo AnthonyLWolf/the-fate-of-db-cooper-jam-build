@@ -97,13 +97,13 @@ func _on_daytime_timer_timeout() -> void:
 	# Handles item fate if too far from home
 	## Drops items
 	if player.distance_from_home >= 10:
-		day_end_dialogue = "It's getting late. Better head back... I'll have to drop whatever I'm carrying."
+		day_end_dialogue = "It's getting late. Camp's too far... I'll have to drop whatever I'm carrying."
 		# Resets player inventory
 		for resource in player.inventory:
 			player.inventory[resource] = 0
 	## Keeps items
 	elif player.distance_from_home < 10:
-		day_end_dialogue = "It's getting late. Camp is close... I'll keep whatever I'm carrying."
+		day_end_dialogue = "It's getting late. Camp's close... I'll keep whatever I'm carrying."
 		if player.inventory["wood"] > 0:
 			GameManager.wood_count += player.inventory["wood"]
 		if player.inventory["leaves"] > 0:
