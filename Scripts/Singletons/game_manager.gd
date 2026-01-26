@@ -2,7 +2,7 @@ extends Node2D
 
 
 # Global variables
-var day : int = 4
+var day : int = 1
 var wood_count : int = 0
 var leaf_count : int = 0
 

@@ -16,12 +16,16 @@ func _process(delta: float) -> void:
 func check_weather():
 		var d = GameManager.day
 		
-		if d >= 3:
+		if d >= 3 && GameManager.current_state == GameManager.GameState.NIGHTTIME:
 			# Full storm time!
 			soft_snow.emitting = false
 			blizzard.emitting = true
-		elif d >= 1:
-			# Soft snow on the first few days
+		elif d < 3 && GameManager.current_state == GameManager.GameState.NIGHTTIME:
+			# Soft snow on the first few nights
+			soft_snow.emitting = true
+			blizzard.emitting = false
+		elif d >= 1 && GameManager.current_state == GameManager.GameState.DAYTIME:
+			# Soft snow on mornings only
 			soft_snow.emitting = true
 			blizzard.emitting = false
 		else:
