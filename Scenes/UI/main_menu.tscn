@@ -146,7 +146,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_wqme5")
 text = "QUIT"
 
 [node name="HiddenMenus" type="Control" parent="CanvasLayer"]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 51.0
