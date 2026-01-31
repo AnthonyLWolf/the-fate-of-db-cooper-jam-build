@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3gak6r1j8xy6"]
+[gd_scene format=3 uid="uid://b3gak6r1j8xy6"]
 
 [ext_resource type="Script" uid="uid://dv6fml252phgn" path="res://Scripts/Singletons/game_constants.gd" id="1_3voux"]
 
-[node name="GameConstants" type="Node2D"]
+[node name="GameConstants" type="Node2D" unique_id=1694866308]
 script = ExtResource("1_3voux")

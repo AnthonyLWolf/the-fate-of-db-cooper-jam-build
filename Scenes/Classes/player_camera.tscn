@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://d4ha2e6nrr8sc"]
+[gd_scene format=3 uid="uid://d4ha2e6nrr8sc"]
 
-[ext_resource type="Script" uid="uid://c8xjomsqmf32l" path="res://Scenes/Classes/player_camera.gd" id="1_h5y82"]
+[ext_resource type="Script" uid="uid://c8xjomsqmf32l" path="res://Scripts/player_camera.gd" id="1_h5y82"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h5y82"]
 particle_flag_disable_z = true

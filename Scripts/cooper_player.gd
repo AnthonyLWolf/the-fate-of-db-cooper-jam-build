@@ -74,7 +74,6 @@ func _physics_process(delta: float) -> void:
 			animated_sprite_2d.play("walk_night")
 			
 		velocity.x = direction * base_speed
-		animated_sprite_2d.scale = Vector2(0.1, 0.1)
 		if direction > 0:
 			animated_sprite_2d.flip_h = false
 			player_weight_label.position = Vector2(-238, -85)
@@ -98,7 +97,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		player_sfx.stop()
 		velocity.x = move_toward(velocity.x, 0, base_speed)
-		animated_sprite_2d.scale = Vector2(0.12, 0.12)
 		if !frozen: animated_sprite_2d.play("idle")
 
 	move_and_slide()

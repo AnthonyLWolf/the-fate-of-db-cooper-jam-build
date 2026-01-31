@@ -4,10 +4,10 @@ extends Node2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
 # Textures
-const LEAFRESOURCE = preload("uid://c6g56fsi18a65")
-const WOODRESOURCE_1 = preload("uid://cr86omdoj0ia6")
-const WOODRESOURCE_2 = preload("uid://bygfp3qa0peuq")
-const WOODRESOURCE_3 = preload("uid://xvv548yugg3p")
+const LEAFRESOURCE = preload("res://Assets/Sprites/v1.0/resources/V2leafresource.png")
+const WOODRESOURCE_1 = preload("res://Assets/Sprites/v1.0/resources/V2woodresource1.png")
+const WOODRESOURCE_2 = preload("res://Assets/Sprites/v1.0/resources/V2woodresource2.png")
+const WOODRESOURCE_3 = preload("res://Assets/Sprites/v1.0/resources/V2woodresource3.png")
 # TODO: Cash resource
 
 var wood_textures = [
@@ -35,10 +35,8 @@ func _ready() -> void:
 		"wood":
 			var random_texture_index = randi_range(0, wood_textures.size() - 1)
 			sprite_2d.texture = wood_textures[random_texture_index]
-			sprite_2d.scale = Vector2(0.05, 0.05)
 		"leaves":
 			sprite_2d.texture = LEAFRESOURCE
-			sprite_2d.scale = Vector2(0.05, 0.05)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

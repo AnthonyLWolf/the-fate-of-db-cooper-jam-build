@@ -1,30 +1,30 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgtmjntfd7k80"]
+[gd_scene format=3 uid="uid://bgtmjntfd7k80"]
 
 [ext_resource type="Script" uid="uid://kh0lny0wmotn" path="res://Scripts/fuel_resource.gd" id="1_n8vbs"]
 [ext_resource type="Texture2D" uid="uid://quk7x22bprun" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/logspritePLACEHOLDER.png" id="2_qke0g"]
 [ext_resource type="FontFile" uid="uid://dg2rks2w45mwb" path="res://Assets/Fonts/Ghost Factory.ttf" id="3_df7x5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0xjnw"]
-radius = 51.009804
+radius = 87.14356
 
 [sub_resource type="LabelSettings" id="LabelSettings_cvtb0"]
 font = ExtResource("3_df7x5")
 font_size = 72
 
-[node name="FuelResource" type="Node2D"]
+[node name="FuelResource" type="Node2D" unique_id=51266729]
 y_sort_enabled = true
 script = ExtResource("1_n8vbs")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1312504603]
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_qke0g")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1505713043]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["Pickup"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1838794294 groups=["Pickup"]]
 shape = SubResource("CircleShape2D_0xjnw")
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=640179888]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -22.0
@@ -32,15 +32,15 @@ offset_top = -73.0
 offset_right = 18.0
 offset_bottom = -33.0
 
-[node name="InteractLabel" type="Label" parent="Control"]
+[node name="InteractLabel" type="Label" parent="Control" unique_id=93052643]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -19.0
-offset_top = -49.0
+offset_top = -79.0
 offset_right = 24.0
-offset_bottom = 4.0
+offset_bottom = -26.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "E"

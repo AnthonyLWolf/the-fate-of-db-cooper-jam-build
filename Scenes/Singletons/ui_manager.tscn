@@ -1,11 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://djb4ll76lnwam"]
+[gd_scene format=3 uid="uid://djb4ll76lnwam"]
 
 [ext_resource type="Script" uid="uid://dc5ucpt6j2dlj" path="res://Scripts/Singletons/ui_manager.gd" id="1_pgdt0"]
 [ext_resource type="FontFile" uid="uid://dg2rks2w45mwb" path="res://Assets/Fonts/Ghost Factory.ttf" id="3_7vhew"]
-[ext_resource type="Texture2D" uid="uid://dxjp5c44t38sj" path="res://Assets/Sprites/Resources/woodpileFULL.png" id="3_a8i84"]
-[ext_resource type="Texture2D" uid="uid://c0ccha1agrq2k" path="res://Assets/Sprites/Resources/leafstashFULL.png" id="4_lceoh"]
+[ext_resource type="Texture2D" uid="uid://dxjp5c44t38sj" path="res://Assets/Sprites/v0.5/Resources/woodpileFULL.png" id="3_a8i84"]
+[ext_resource type="Texture2D" uid="uid://c0ccha1agrq2k" path="res://Assets/Sprites/v0.5/Resources/leafstashFULL.png" id="4_lceoh"]
 [ext_resource type="FontFile" uid="uid://dxwegbkjgdcue" path="res://Assets/Fonts/Adventurer.ttf" id="5_7vhew"]
-[ext_resource type="Texture2D" uid="uid://bnt0p4jr0mku0" path="res://Assets/Sprites/Tent-Cash/cashicon.png" id="5_a8i84"]
+[ext_resource type="Texture2D" uid="uid://bnt0p4jr0mku0" path="res://Assets/Sprites/v0.5/Tent-Cash/cashicon.png" id="5_a8i84"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbmfk"]
 bg_color = Color(0.14536136, 0.30987722, 0.44640958, 1)
@@ -73,7 +73,7 @@ font_color = Color(0.6745098, 0.8156863, 0.9372549, 1)
 shadow_size = 6
 shadow_color = Color(0.09527562, 0.22017172, 0.3178911, 1)
 
-[node name="UIManager" type="Control"]
+[node name="UIManager" type="Control" unique_id=2034909251]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -86,20 +86,20 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pgdt0")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2018164839]
 
-[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer"]
+[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer" unique_id=931842828]
 offset_left = 56.0
 offset_top = 83.0
 offset_right = 1802.0
 offset_bottom = 1037.7462
 
-[node name="Bars" type="HBoxContainer" parent="CanvasLayer/BoxContainer"]
+[node name="Bars" type="HBoxContainer" parent="CanvasLayer/BoxContainer" unique_id=1592211469]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 34
 
-[node name="ColdBar" type="ProgressBar" parent="CanvasLayer/BoxContainer/Bars"]
+[node name="ColdBar" type="ProgressBar" parent="CanvasLayer/BoxContainer/Bars" unique_id=664925037]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(51.485, 500)
 layout_mode = 2
@@ -112,7 +112,7 @@ rounded = true
 fill_mode = 3
 show_percentage = false
 
-[node name="Label" type="Label" parent="CanvasLayer/BoxContainer/Bars/ColdBar"]
+[node name="Label" type="Label" parent="CanvasLayer/BoxContainer/Bars/ColdBar" unique_id=190387697]
 layout_mode = 0
 offset_left = 90.0
 offset_top = 219.0
@@ -121,7 +121,7 @@ offset_bottom = 258.0
 text = "Cold"
 label_settings = SubResource("LabelSettings_lceoh")
 
-[node name="FireBar" type="ProgressBar" parent="CanvasLayer/BoxContainer/Bars"]
+[node name="FireBar" type="ProgressBar" parent="CanvasLayer/BoxContainer/Bars" unique_id=1198698475]
 visible = false
 custom_minimum_size = Vector2(51.485, 500)
 layout_mode = 2
@@ -134,66 +134,66 @@ rounded = true
 fill_mode = 3
 show_percentage = false
 
-[node name="Counters" type="HBoxContainer" parent="CanvasLayer"]
+[node name="Counters" type="HBoxContainer" parent="CanvasLayer" unique_id=822594572]
 offset_left = 53.0
 offset_top = 48.0
 offset_right = 1806.0
 offset_bottom = 149.0
 
-[node name="CountersLeft" type="HBoxContainer" parent="CanvasLayer/Counters"]
+[node name="CountersLeft" type="HBoxContainer" parent="CanvasLayer/Counters" unique_id=532385819]
 layout_mode = 2
 theme_override_constants/separation = 69
 
-[node name="WoodCounter" type="HBoxContainer" parent="CanvasLayer/Counters/CountersLeft"]
+[node name="WoodCounter" type="HBoxContainer" parent="CanvasLayer/Counters/CountersLeft" unique_id=695154391]
 layout_mode = 2
 theme_override_constants/separation = 14
 
-[node name="WoodCounterLabel" type="Label" parent="CanvasLayer/Counters/CountersLeft/WoodCounter"]
+[node name="WoodCounterLabel" type="Label" parent="CanvasLayer/Counters/CountersLeft/WoodCounter" unique_id=16008030]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 label_settings = SubResource("LabelSettings_veyyk")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Counters/CountersLeft/WoodCounter"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Counters/CountersLeft/WoodCounter" unique_id=413987909]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
 texture = ExtResource("3_a8i84")
 expand_mode = 2
 
-[node name="LeafCounter" type="HBoxContainer" parent="CanvasLayer/Counters/CountersLeft"]
+[node name="LeafCounter" type="HBoxContainer" parent="CanvasLayer/Counters/CountersLeft" unique_id=1135982200]
 layout_mode = 2
 theme_override_constants/separation = 19
 
-[node name="LeafCounterLabel" type="Label" parent="CanvasLayer/Counters/CountersLeft/LeafCounter"]
+[node name="LeafCounterLabel" type="Label" parent="CanvasLayer/Counters/CountersLeft/LeafCounter" unique_id=1224931486]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 label_settings = SubResource("LabelSettings_veyyk")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Counters/CountersLeft/LeafCounter"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Counters/CountersLeft/LeafCounter" unique_id=426332677]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 texture = ExtResource("4_lceoh")
 expand_mode = 2
 
-[node name="CashCounter" type="HBoxContainer" parent="CanvasLayer/Counters"]
+[node name="CashCounter" type="HBoxContainer" parent="CanvasLayer/Counters" unique_id=213962517]
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_constants/separation = 20
 
-[node name="CashCounterLabel" type="Label" parent="CanvasLayer/Counters/CashCounter"]
+[node name="CashCounterLabel" type="Label" parent="CanvasLayer/Counters/CashCounter" unique_id=1465560612]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 text = "0"
 label_settings = SubResource("LabelSettings_veyyk")
 
-[node name="CashIcon" type="TextureRect" parent="CanvasLayer/Counters/CashCounter"]
+[node name="CashIcon" type="TextureRect" parent="CanvasLayer/Counters/CashCounter" unique_id=1743366434]
 layout_mode = 2
 texture = ExtResource("5_a8i84")
 expand_mode = 3
 
-[node name="DayTimeCounter" type="HBoxContainer" parent="CanvasLayer"]
+[node name="DayTimeCounter" type="HBoxContainer" parent="CanvasLayer" unique_id=535850310]
 offset_left = 840.0
 offset_top = 23.0
 offset_right = 1061.0
@@ -201,13 +201,13 @@ offset_bottom = 202.0
 size_flags_horizontal = 6
 size_flags_vertical = 4
 
-[node name="DaytimeCounterLabel" type="Label" parent="CanvasLayer/DayTimeCounter"]
+[node name="DaytimeCounterLabel" type="Label" parent="CanvasLayer/DayTimeCounter" unique_id=979333051]
 layout_mode = 2
 size_flags_horizontal = 6
 text = "30"
 label_settings = SubResource("LabelSettings_r2bs2")
 
-[node name="DistanceCounter" type="HBoxContainer" parent="CanvasLayer"]
+[node name="DistanceCounter" type="HBoxContainer" parent="CanvasLayer" unique_id=41107223]
 offset_left = 1303.0
 offset_top = 949.0
 offset_right = 1877.0
@@ -215,7 +215,7 @@ offset_bottom = 1032.0
 size_flags_horizontal = 6
 size_flags_vertical = 4
 
-[node name="DistanceCounterLabel" type="Label" parent="CanvasLayer/DistanceCounter"]
+[node name="DistanceCounterLabel" type="Label" parent="CanvasLayer/DistanceCounter" unique_id=584461491]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 6

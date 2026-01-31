@@ -1,22 +1,22 @@
-[gd_scene load_steps=25 format=3 uid="uid://bynh34all6880"]
+[gd_scene format=3 uid="uid://bynh34all6880"]
 
 [ext_resource type="Script" uid="uid://b37fl6fic68b6" path="res://Scripts/campfire.gd" id="1_kfptp"]
-[ext_resource type="Texture2D" uid="uid://dca0rowinqt7o" path="res://Assets/Sprites/Campfire/DBfire1.png" id="2_p4mpn"]
-[ext_resource type="Texture2D" uid="uid://bein655lv51b4" path="res://Assets/Sprites/Campfire/DBfire2.png" id="3_1eon5"]
 [ext_resource type="FontFile" uid="uid://dg2rks2w45mwb" path="res://Assets/Fonts/Ghost Factory.ttf" id="3_hn5ug"]
-[ext_resource type="Texture2D" uid="uid://c7sux6rn8uyk1" path="res://Assets/Sprites/Campfire/DBfire3.png" id="4_7gmes"]
-[ext_resource type="Texture2D" uid="uid://ckx4m005b7owh" path="res://Assets/Sprites/Campfire/DBfire4.png" id="5_u651g"]
-[ext_resource type="Texture2D" uid="uid://brkka38l2pwoo" path="res://Assets/Sprites/Campfire/DBfire5.png" id="6_wthjg"]
-[ext_resource type="Texture2D" uid="uid://boplbb45cgvqt" path="res://Assets/Sprites/Campfire/DBfire6.png" id="7_ho0ra"]
-[ext_resource type="Texture2D" uid="uid://bxqincywv7b7" path="res://Assets/Sprites/Campfire/DBfire7.png" id="8_ys3ej"]
-[ext_resource type="Texture2D" uid="uid://bh2q4ol0xn7io" path="res://Assets/Sprites/Campfire/DBfire8.png" id="9_ppuef"]
-[ext_resource type="Texture2D" uid="uid://b7d6eddvexc6e" path="res://Assets/Sprites/Campfire/DBfire9.png" id="10_pa40k"]
-[ext_resource type="Texture2D" uid="uid://c42nu4r7n3t61" path="res://Assets/Sprites/Campfire/DBfireBASE.png" id="12_cfnti"]
-[ext_resource type="Texture2D" uid="uid://j5l3t58jw04r" path="res://Assets/Sprites/Campfire/DBash.png" id="13_1eon5"]
-[ext_resource type="Texture2D" uid="uid://8g2t1jd35sqj" path="res://Assets/Sprites/Campfire/DBsmolder1.png" id="13_b88dt"]
-[ext_resource type="Texture2D" uid="uid://cko3wstvmjjpu" path="res://Assets/Sprites/Campfire/DBsmolder2.png" id="14_tmrjs"]
-[ext_resource type="Texture2D" uid="uid://ccse3w5q44n35" path="res://Assets/Sprites/Campfire/DBsmolder3.png" id="15_p3u68"]
-[ext_resource type="Texture2D" uid="uid://fyi6d4go8qtq" path="res://Assets/Sprites/Campfire/DBsmolder4.png" id="16_he5d4"]
+[ext_resource type="Texture2D" uid="uid://dwudf0ueiaw1k" path="res://Assets/Sprites/v1.0/campfire/V2DBfire1.png" id="3_u651g"]
+[ext_resource type="Texture2D" uid="uid://c6lmcwub7swev" path="res://Assets/Sprites/v1.0/campfire/V2DBfire2.png" id="4_wthjg"]
+[ext_resource type="Texture2D" uid="uid://bvv37tqn8aniw" path="res://Assets/Sprites/v1.0/campfire/V2DBfire3.png" id="5_ho0ra"]
+[ext_resource type="Texture2D" uid="uid://c1rsq4iej7mre" path="res://Assets/Sprites/v1.0/campfire/V2DBfire4.png" id="6_ys3ej"]
+[ext_resource type="Texture2D" uid="uid://dmowoywqwxyaj" path="res://Assets/Sprites/v1.0/campfire/V2DBfire5.png" id="7_ppuef"]
+[ext_resource type="Texture2D" uid="uid://c4he0k5x7raqp" path="res://Assets/Sprites/v1.0/campfire/V2DBfire6.png" id="8_pa40k"]
+[ext_resource type="Texture2D" uid="uid://chwr3tbg4fb3e" path="res://Assets/Sprites/v1.0/campfire/V2DBfire7.png" id="9_cfnti"]
+[ext_resource type="Texture2D" uid="uid://dk3v8k8pp8y2k" path="res://Assets/Sprites/v1.0/campfire/V2DBfire8.png" id="10_b88dt"]
+[ext_resource type="Texture2D" uid="uid://dmqc1gd16y17d" path="res://Assets/Sprites/v1.0/campfire/V2DBfire9.png" id="11_tmrjs"]
+[ext_resource type="Texture2D" uid="uid://c17lhp4bt63cp" path="res://Assets/Sprites/v1.0/campfire/V2DBfireBASE.png" id="12_p3u68"]
+[ext_resource type="Texture2D" uid="uid://8g2t1jd35sqj" path="res://Assets/Sprites/v0.5/Campfire/DBsmolder1.png" id="13_b88dt"]
+[ext_resource type="Texture2D" uid="uid://cbmn7wbhmkmsq" path="res://Assets/Sprites/v1.0/campfire/V2DBash.png" id="13_he5d4"]
+[ext_resource type="Texture2D" uid="uid://cko3wstvmjjpu" path="res://Assets/Sprites/v0.5/Campfire/DBsmolder2.png" id="14_tmrjs"]
+[ext_resource type="Texture2D" uid="uid://ccse3w5q44n35" path="res://Assets/Sprites/v0.5/Campfire/DBsmolder3.png" id="15_p3u68"]
+[ext_resource type="Texture2D" uid="uid://fyi6d4go8qtq" path="res://Assets/Sprites/v0.5/Campfire/DBsmolder4.png" id="16_he5d4"]
 [ext_resource type="AudioStream" uid="uid://1kfgq88ht86g" path="res://Assets/Audio/SFX/ENV/FIRE  NIGHTTIME.mp3" id="18_7gmes"]
 [ext_resource type="Texture2D" uid="uid://bc6v50m08wf70" path="res://Assets/Sprites/lighttexture.png" id="19_u651g"]
 
@@ -28,31 +28,31 @@ font_size = 76
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_p4mpn")
+"texture": ExtResource("3_u651g")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_1eon5")
+"texture": ExtResource("4_wthjg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_7gmes")
+"texture": ExtResource("5_ho0ra")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_u651g")
+"texture": ExtResource("6_ys3ej")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_wthjg")
+"texture": ExtResource("7_ppuef")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_ho0ra")
+"texture": ExtResource("8_pa40k")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_ys3ej")
+"texture": ExtResource("9_cfnti")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_ppuef")
+"texture": ExtResource("10_b88dt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_pa40k")
+"texture": ExtResource("11_tmrjs")
 }],
 "loop": true,
 "name": &"idle",
@@ -63,7 +63,7 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("12_cfnti")
+"texture": ExtResource("12_p3u68")
 }],
 "loop": false,
 "name": &"base",
@@ -71,7 +71,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("13_1eon5")
+"texture": ExtResource("13_he5d4")
 }],
 "loop": false,
 "name": &"daytimeash",
@@ -101,16 +101,19 @@ radius = 216.17816
 [sub_resource type="CircleShape2D" id="CircleShape2D_txjls"]
 radius = 122.03688
 
-[node name="Campfire" type="Node2D"]
+[node name="Campfire" type="Node2D" unique_id=106704213]
 script = ExtResource("1_kfptp")
+wood_fuel_power = 200
+leaves_fuel_power = 50
+cash_fuel_power = 400
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=1535928390]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="InteractLabel" type="Label" parent="Control"]
+[node name="InteractLabel" type="Label" parent="Control" unique_id=1911329104]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.05
@@ -129,45 +132,45 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="FlameSprite" type="AnimatedSprite2D" parent="."]
+[node name="FlameSprite" type="AnimatedSprite2D" parent="." unique_id=1673064590]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(1, 39)
-scale = Vector2(0.076, 0.076)
+position = Vector2(-5.9604645e-08, 47.000008)
+scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_qcxes")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.8224038
-offset = Vector2(0, -650)
+offset = Vector2(0, -200)
 
-[node name="BaseSprite" type="AnimatedSprite2D" parent="."]
+[node name="BaseSprite" type="AnimatedSprite2D" parent="." unique_id=823031258]
 y_sort_enabled = true
-position = Vector2(1.0000001, -24.000004)
-scale = Vector2(0.087, 0.087)
+position = Vector2(1.1920929e-07, 67.999985)
+scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_vtsli")
-animation = &"smoulder"
+animation = &"base"
 autoplay = "base"
 
-[node name="WarmthArea" type="Area2D" parent="."]
+[node name="WarmthArea" type="Area2D" parent="." unique_id=1102099445]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WarmthArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WarmthArea" unique_id=1702138366]
 position = Vector2(2, -1)
 shape = SubResource("CircleShape2D_kfptp")
 debug_color = Color(0.842405, 0.37628525, 0.17186674, 0.41960785)
 
-[node name="InteractionArea" type="Area2D" parent="."]
+[node name="InteractionArea" type="Area2D" parent="." unique_id=604294698]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1101496016]
 shape = SubResource("CircleShape2D_txjls")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=918902890]
 position = Vector2(-1, 33)
 stream = ExtResource("18_7gmes")
 attenuation = 2.0
 
-[node name="CampLightOuter" type="PointLight2D" parent="."]
+[node name="CampLightOuter" type="PointLight2D" parent="." unique_id=1670737820]
 color = Color(0.6, 0.3137255, 0.09803922, 1)
 energy = 1.6
 shadow_enabled = true
@@ -175,7 +178,7 @@ shadow_color = Color(0.4216586, 0.31151327, 0.31830615, 0)
 texture = ExtResource("19_u651g")
 texture_scale = 0.8
 
-[node name="CampLightInner" type="PointLight2D" parent="."]
+[node name="CampLightInner" type="PointLight2D" parent="." unique_id=465467858]
 color = Color(0.6, 0.3137255, 0.09803922, 1)
 energy = 1.6
 shadow_enabled = true

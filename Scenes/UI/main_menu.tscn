@@ -1,7 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://iwhobf0k08w0"]
+[gd_scene format=3 uid="uid://iwhobf0k08w0"]
 
 [ext_resource type="Script" uid="uid://qik5olocp0rx" path="res://Scripts/main_menu.gd" id="1_u7lva"]
-[ext_resource type="Texture2D" uid="uid://jkygyuopd5pw" path="res://Assets/Sprites/Background/BGFull.png" id="2_mrfpk"]
+[ext_resource type="Texture2D" uid="uid://jkygyuopd5pw" path="res://Assets/Sprites/v0.5/Background/BGFull.png" id="2_mrfpk"]
 [ext_resource type="FontFile" uid="uid://dg2rks2w45mwb" path="res://Assets/Fonts/Ghost Factory.ttf" id="2_u7lva"]
 [ext_resource type="FontFile" uid="uid://dxwegbkjgdcue" path="res://Assets/Fonts/Adventurer.ttf" id="3_mrfpk"]
 [ext_resource type="AudioStream" uid="uid://42sy6vbj8b1t" path="res://Assets/Audio/SFX/ENV/FIRE & FOREST DAYTIME .mp3" id="5_mrfpk"]

@@ -1,14 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://dsgms5utqvxdd"]
+[gd_scene format=3 uid="uid://dsgms5utqvxdd"]
 
 [ext_resource type="Script" uid="uid://cafdbo1ehdt7y" path="res://Scripts/nighttime.gd" id="1_sku2a"]
-[ext_resource type="Texture2D" uid="uid://bhbo1wd3ypfm2" path="res://Assets/Sprites/Background/BGbackdrop.png" id="2_4m666"]
+[ext_resource type="Texture2D" uid="uid://bhbo1wd3ypfm2" path="res://Assets/Sprites/v0.5/Background/BGbackdrop.png" id="2_4m666"]
 [ext_resource type="PackedScene" uid="uid://bynh34all6880" path="res://Scenes/Classes/campfire.tscn" id="2_sku2a"]
-[ext_resource type="Texture2D" uid="uid://dymf7yp4knxe0" path="res://Assets/Sprites/Background/BGfartrees.png" id="3_64dvf"]
+[ext_resource type="Texture2D" uid="uid://dymf7yp4knxe0" path="res://Assets/Sprites/v0.5/Background/BGfartrees.png" id="3_64dvf"]
 [ext_resource type="PackedScene" uid="uid://dopp8fvghm770" path="res://Scenes/Classes/fuel_stack.tscn" id="3_vvxqm"]
-[ext_resource type="Texture2D" uid="uid://brdl71bvs3u4x" path="res://Assets/Sprites/Background/BGmidtrees.png" id="4_odigx"]
+[ext_resource type="Texture2D" uid="uid://brdl71bvs3u4x" path="res://Assets/Sprites/v0.5/Background/BGmidtrees.png" id="4_odigx"]
 [ext_resource type="PackedScene" uid="uid://d4ha2e6nrr8sc" path="res://Scenes/Classes/player_camera.tscn" id="4_qypt8"]
 [ext_resource type="PackedScene" uid="uid://cgu8hvhdien4h" path="res://Scenes/Classes/cooper_player.tscn" id="5_4m666"]
-[ext_resource type="Texture2D" uid="uid://cl08vmbg080wt" path="res://Assets/Sprites/Background/BGforeground.png" id="5_wpcm0"]
+[ext_resource type="Texture2D" uid="uid://cl08vmbg080wt" path="res://Assets/Sprites/v0.5/Background/BGforeground.png" id="5_wpcm0"]
 [ext_resource type="Texture2D" uid="uid://bc6v50m08wf70" path="res://Assets/Sprites/lighttexture.png" id="6_64dvf"]
 [ext_resource type="PackedScene" uid="uid://j2r4fuktajm2" path="res://Scenes/UI/pause_menu.tscn" id="11_odigx"]
 
@@ -27,78 +27,78 @@ polygon = PackedVector2Array(403, 830, 394, 785, 372, 706, 353, 613, 375, 467, 3
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_64dvf"]
 size = Vector2(40776, 77.5)
 
-[node name="Nighttime" type="Node2D"]
+[node name="Nighttime" type="Node2D" unique_id=2000264879]
 script = ExtResource("1_sku2a")
 
-[node name="ParallaxLayers" type="Node2D" parent="."]
+[node name="ParallaxLayers" type="Node2D" parent="." unique_id=2012819878]
 position = Vector2(5, 37)
 
-[node name="1_Sky" type="Parallax2D" parent="ParallaxLayers"]
+[node name="1_Sky" type="Parallax2D" parent="ParallaxLayers" unique_id=1527893342]
 scroll_scale = Vector2(0.1, 0.1)
 repeat_size = Vector2(1920, 0)
 repeat_times = 2
 
-[node name="1_Sky" type="Sprite2D" parent="ParallaxLayers/1_Sky"]
+[node name="1_Sky" type="Sprite2D" parent="ParallaxLayers/1_Sky" unique_id=529466491]
 position = Vector2(973, 549)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_4m666")
 
-[node name="2_Far" type="Parallax2D" parent="ParallaxLayers"]
+[node name="2_Far" type="Parallax2D" parent="ParallaxLayers" unique_id=1234463501]
 scroll_scale = Vector2(0.2, 0.2)
 repeat_size = Vector2(1920, 0)
 repeat_times = 2
 
-[node name="2_Far" type="Sprite2D" parent="ParallaxLayers/2_Far"]
+[node name="2_Far" type="Sprite2D" parent="ParallaxLayers/2_Far" unique_id=1880075914]
 position = Vector2(961, 539)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_64dvf")
 
-[node name="3_Mid" type="Parallax2D" parent="ParallaxLayers"]
+[node name="3_Mid" type="Parallax2D" parent="ParallaxLayers" unique_id=1490502930]
 scroll_scale = Vector2(0.5, 0.5)
 repeat_size = Vector2(1920, 0)
 repeat_times = 2
 
-[node name="3_Mid" type="Sprite2D" parent="ParallaxLayers/3_Mid"]
+[node name="3_Mid" type="Sprite2D" parent="ParallaxLayers/3_Mid" unique_id=829685961]
 position = Vector2(961, 551)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_odigx")
 
-[node name="4_Fore" type="Parallax2D" parent="ParallaxLayers"]
+[node name="4_Fore" type="Parallax2D" parent="ParallaxLayers" unique_id=1362158209]
 repeat_size = Vector2(3840, 0)
 
-[node name="BGForeground" type="Sprite2D" parent="ParallaxLayers/4_Fore"]
+[node name="BGForeground" type="Sprite2D" parent="ParallaxLayers/4_Fore" unique_id=1555304551]
 position = Vector2(1, 550)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_wpcm0")
 
-[node name="BGForeground_Mirrored" type="Sprite2D" parent="ParallaxLayers/4_Fore"]
+[node name="BGForeground_Mirrored" type="Sprite2D" parent="ParallaxLayers/4_Fore" unique_id=845555968]
 position = Vector2(1921, 551)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_wpcm0")
 flip_h = true
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=570072540]
 color = Color(0.27251634, 0.3033276, 0.45514232, 1)
 
-[node name="NightTimeOccluders" type="Node2D" parent="."]
+[node name="NightTimeOccluders" type="Node2D" parent="." unique_id=990118341]
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="NightTimeOccluders"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="NightTimeOccluders" unique_id=799837610]
 z_index = 1
 occluder = SubResource("OccluderPolygon2D_avkl6")
 
-[node name="LightOccluder2D2" type="LightOccluder2D" parent="NightTimeOccluders"]
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="NightTimeOccluders" unique_id=2008053004]
 z_index = 1
 occluder = SubResource("OccluderPolygon2D_lkhd1")
 
-[node name="LightOccluder2D3" type="LightOccluder2D" parent="NightTimeOccluders"]
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="NightTimeOccluders" unique_id=1953970770]
 z_index = 1
 occluder = SubResource("OccluderPolygon2D_15src")
 
-[node name="LightOccluder2D4" type="LightOccluder2D" parent="NightTimeOccluders"]
+[node name="LightOccluder2D4" type="LightOccluder2D" parent="NightTimeOccluders" unique_id=1815412019]
 z_index = 1
 occluder = SubResource("OccluderPolygon2D_x74px")
 
-[node name="CampLightOuter" type="PointLight2D" parent="NightTimeOccluders"]
+[node name="CampLightOuter" type="PointLight2D" parent="NightTimeOccluders" unique_id=1785155452]
 position = Vector2(963, 519)
 color = Color(0.6, 0.3137255, 0.09803922, 0.627451)
 energy = 1.85
@@ -106,62 +106,65 @@ shadow_enabled = true
 texture = ExtResource("6_64dvf")
 texture_scale = 0.2
 
-[node name="Campfire" parent="." instance=ExtResource("2_sku2a")]
+[node name="Campfire" parent="." unique_id=959606168 instance=ExtResource("2_sku2a")]
 unique_name_in_owner = true
 position = Vector2(958, 941)
+wood_fuel_power = 150
+cash_fuel_power = 300
+warmth_decay_rate = 35.0
 
-[node name="WarmthArea" parent="Campfire" index="3"]
+[node name="WarmthArea" parent="Campfire" index="3" unique_id=1102099445]
 visible = true
 
-[node name="InteractionArea" parent="Campfire" index="4"]
+[node name="InteractionArea" parent="Campfire" index="4" unique_id=604294698]
 visible = true
 
-[node name="CampLightOuter" parent="Campfire" index="6"]
+[node name="CampLightOuter" parent="Campfire" index="6" unique_id=1670737820]
 position = Vector2(8, 12)
 color = Color(0.6, 0.3137255, 0.09803922, 0.627451)
 energy = 2.0
 shadow_color = Color(0, 0, 0, 0)
 
-[node name="CampLightInner" parent="Campfire" index="7"]
+[node name="CampLightInner" parent="Campfire" index="7" unique_id=465467858]
 color = Color(0.85490197, 0.48235294, 0.12941177, 0.7647059)
 energy = 2.0
 shadow_enabled = false
 shadow_color = Color(0.14623713, 0.09620259, 0.09973722, 0)
 texture_scale = 0.1
 
-[node name="WoodStack" parent="." instance=ExtResource("3_vvxqm")]
+[node name="WoodStack" parent="." unique_id=520399719 instance=ExtResource("3_vvxqm")]
 position = Vector2(351, 981)
 is_wood = true
 
-[node name="LeavesStack" parent="." instance=ExtResource("3_vvxqm")]
-position = Vector2(1520, 978)
+[node name="LeavesStack" parent="." unique_id=2042289741 instance=ExtResource("3_vvxqm")]
+position = Vector2(1602, 977)
 is_leaves = true
 
-[node name="CashStack" parent="." instance=ExtResource("3_vvxqm")]
+[node name="CashStack" parent="." unique_id=131058994 instance=ExtResource("3_vvxqm")]
 position = Vector2(1273, 974)
 is_cash = true
 
-[node name="Camera2D" parent="." instance=ExtResource("4_qypt8")]
+[node name="Camera2D" parent="." unique_id=387589960 instance=ExtResource("4_qypt8")]
 position = Vector2(700, 924)
 limit_bottom = 1107
 
-[node name="CooperPlayer" parent="." instance=ExtResource("5_4m666")]
+[node name="CooperPlayer" parent="." unique_id=1540528429 instance=ExtResource("5_4m666")]
 position = Vector2(700, 924)
 
-[node name="CameraTransform" parent="CooperPlayer" index="4"]
+[node name="CameraTransform" parent="CooperPlayer" index="4" unique_id=1121178306]
 remote_path = NodePath("../../Camera2D")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=831162139]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=642721913]
 position = Vector2(23, 1078.75)
 shape = SubResource("RectangleShape2D_64dvf")
 
-[node name="NightTimeTimer" type="Timer" parent="."]
+[node name="NightTimeTimer" type="Timer" parent="." unique_id=1297999151]
 wait_time = 60.0
 one_shot = true
 
-[node name="PauseMenu" parent="." instance=ExtResource("11_odigx")]
+[node name="PauseMenu" parent="." unique_id=868525413 instance=ExtResource("11_odigx")]
 visible = false
 
 [connection signal="timeout" from="NightTimeTimer" to="." method="_on_night_time_timer_timeout"]

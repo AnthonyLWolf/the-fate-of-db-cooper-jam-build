@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dopp8fvghm770"]
+[gd_scene format=3 uid="uid://dopp8fvghm770"]
 
 [ext_resource type="Script" uid="uid://dxrqt6nffib2c" path="res://Scripts/fuel_stack.gd" id="1_6lo15"]
 [ext_resource type="Texture2D" uid="uid://quk7x22bprun" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/logspritePLACEHOLDER.png" id="1_kbk1r"]
@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://dxwegbkjgdcue" path="res://Assets/Fonts/Adventurer.ttf" id="4_wcjbu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6lo15"]
-radius = 50.08992
+radius = 137.23338
 
 [sub_resource type="LabelSettings" id="LabelSettings_wcjbu"]
 font = ExtResource("3_5tuqa")
@@ -16,19 +16,19 @@ font_size = 72
 font = ExtResource("4_wcjbu")
 font_size = 32
 
-[node name="FuelStack" type="Node2D"]
+[node name="FuelStack" type="Node2D" unique_id=41882391]
 script = ExtResource("1_6lo15")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1123160379]
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_kbk1r")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=9906505]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1439191232]
 shape = SubResource("CircleShape2D_6lo15")
 
-[node name="InteractLabelContainer" type="Control" parent="."]
+[node name="InteractLabelContainer" type="Control" parent="." unique_id=368385767]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -38.0
@@ -36,7 +36,7 @@ offset_top = -152.0
 offset_right = 38.0
 offset_bottom = -59.0
 
-[node name="InteractLabel" type="Label" parent="InteractLabelContainer"]
+[node name="InteractLabel" type="Label" parent="InteractLabelContainer" unique_id=2064322155]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,7 +52,7 @@ label_settings = SubResource("LabelSettings_wcjbu")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StashLabelContainer" type="Control" parent="."]
+[node name="StashLabelContainer" type="Control" parent="." unique_id=269935645]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -37.0
@@ -60,15 +60,15 @@ offset_top = 21.0
 offset_right = 39.0
 offset_bottom = 114.0
 
-[node name="StashLabel" type="Label" parent="StashLabelContainer"]
+[node name="StashLabel" type="Label" parent="StashLabelContainer" unique_id=1534901209]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -11.0
-offset_top = -8.0
+offset_top = 10.0
 offset_right = 11.0
-offset_bottom = 10.0
+offset_bottom = 28.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "E"

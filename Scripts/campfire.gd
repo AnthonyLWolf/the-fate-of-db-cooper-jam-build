@@ -2,30 +2,38 @@ extends Node2D
 
 # References
 @onready var interact_label: Label = $Control/InteractLabel
+@onready var warmth_area: Area2D = $WarmthArea
 @onready var warmth_shape: CircleShape2D = $WarmthArea/CollisionShape2D.shape
 @onready var flame_sprite: AnimatedSprite2D = $FlameSprite
 @onready var base_sprite: AnimatedSprite2D = $BaseSprite
 @onready var campfire_sfx_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var camplight_outer: PointLight2D = $CampLightOuter
 @onready var camplight_inner: PointLight2D = $CampLightInner
+@onready var night_time_timer: Timer = $"../NightTimeTimer"
+
 
 # Textures
-var campfire_base_texture = preload("res://Assets/Sprites/Campfire/DBfireBASE.png")
-var campfire_ash_texture = preload("res://Assets/Sprites/Campfire/DBash.png")
+var campfire_base_texture = preload("res://Assets/Sprites/v1.0/campfire/V2DBfireBASE.png")
+var campfire_ash_texture = preload("res://Assets/Sprites/v1.0/campfire/V2DBash.png")
 
 
 # Variables
-var web_build = true # NOTE: THIS IS FOR WEB EXPORTS, turn back to false for proper build testing
+var web_build = false # NOTE: THIS IS FOR WEB EXPORTS, turn back to false for proper build testing
+
+# Fuel variables
+@export var wood_fuel_power : int
+@export var leaves_fuel_power : int
+@export var cash_fuel_power : int
 
 # Warmth variables
-var warmth_decay_rate = 10.0
-var intensity_ratio = 0.5
+@export var warmth_decay_rate = 10.0
+@export var intensity_ratio = 0.5
 var base_flame_scale : Vector2
 var fire_intensity : float = GameConstants.MAX_WARMTH_RADIUS / 2
 
 # Cold variables
 var cold_amount : float = 25.0
-var cold_decay_rate : float = 5.0
+@export var cold_decay_rate : float = 5.0
 var cold_multiplier : float = min((float(GameManager.day) * cold_decay_rate), 40.0)
 
 var player : Node2D
@@ -40,12 +48,18 @@ func _ready() -> void:
 	base_flame_scale = flame_sprite.scale
 	SignalBus.ui_ready.connect(func(): UiManager.cold_bar.value = cold_amount)
 	
-	# TEST
+	# TESTING FEATURES
 	GameManager.current_state = GameManager.GameState.NIGHTTIME
+	GameManager.wood_count = 50
+	GameManager.leaf_count = 50
+	UiManager.daytime_counter_label.show()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	# TEST - DEBUG ONLY
+	UiManager.daytime_counter_label.text = str(round(night_time_timer.time_left))
 	
 	match GameManager.current_state:
 		# Daytime behaviour: animated differently
@@ -100,7 +114,7 @@ func _process(delta: float) -> void:
 				return
 			
 			if player.frozen:
-				fire_intensity -= warmth_decay_rate
+				fire_intensity = 0
 			
 			# Animates shape radius based on fire intensity
 			intensity_ratio = fire_intensity / GameConstants.MAX_WARMTH_RADIUS
@@ -119,6 +133,12 @@ func _process(delta: float) -> void:
 			
 			var target_radius = lerp(GameConstants.MIN_WARMTH_RADIUS, GameConstants.MAX_WARMTH_RADIUS, intensity_ratio)
 			warmth_shape.radius = target_radius
+			
+			# Disables collision on warmth shape to let player freeze when fire is at 0
+			if warmth_shape.radius <= 0:
+				warmth_area.collision_mask = 10
+			else:
+				warmth_area.collision_mask = 1
 			
 			# Cold mechanic
 			if !player_in_warmth_range:
@@ -147,14 +167,14 @@ func burn_fuel(fuel_type : String):
 	player.item_held.visible = false
 	match fuel_type:
 		"wood":
-			fire_intensity += 200
+			fire_intensity += wood_fuel_power
 			GameManager.wood_count -= 1
 		"leaves":
-			fire_intensity += 50
+			fire_intensity += leaves_fuel_power
 			GameManager.leaf_count -= 1
 		"cash":
-			fire_intensity += 400
-			var cash_to_burn = randi_range(15000, 25000)
+			fire_intensity += cash_fuel_power
+			var cash_to_burn = randi_range(10000, 30000)
 			SignalBus.cash_burned.emit(cash_to_burn)
 	
 	AudioManager.play_sfx(AudioManager.burn_resource_sfx, 0.0)
