@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pcbpnp3epgs4"
-path="res://.godot/imported/DBthermoEMPTY.png-cc9cd8db86d14b0c8d6fad17168072e0.ctex"
+uid="uid://cjj03nubhu282"
+path="res://.godot/imported/V2DBsmolder1.png-48e79b1f54cd51e9d563035515a97abd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/v1.0/coldmeter/DBthermoEMPTY.png"
-dest_files=["res://.godot/imported/DBthermoEMPTY.png-cc9cd8db86d14b0c8d6fad17168072e0.ctex"]
+source_file="res://Assets/Sprites/v1.0/campfire/V2DBsmolder1.png"
+dest_files=["res://.godot/imported/V2DBsmolder1.png-48e79b1f54cd51e9d563035515a97abd.ctex"]
 
 [params]
 
