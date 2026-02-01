@@ -1,16 +1,23 @@
 [gd_scene format=3 uid="uid://djb4ll76lnwam"]
 
 [ext_resource type="Script" uid="uid://dc5ucpt6j2dlj" path="res://Scripts/Singletons/ui_manager.gd" id="1_pgdt0"]
-[ext_resource type="Texture2D" uid="uid://pcbpnp3epgs4" path="res://Assets/Sprites/v1.0/coldmeter/DBthermoEMPTY.png" id="2_4j5c5"]
+[ext_resource type="Texture2D" uid="uid://ch07gy1bq4xcf" path="res://Assets/Sprites/v1.0/coldmeter/V2DBthermo.png" id="2_0ju5w"]
 [ext_resource type="FontFile" uid="uid://dg2rks2w45mwb" path="res://Assets/Fonts/Ghost Factory.ttf" id="3_7vhew"]
 [ext_resource type="Texture2D" uid="uid://dxjp5c44t38sj" path="res://Assets/Sprites/v0.5/Resources/woodpileFULL.png" id="3_a8i84"]
-[ext_resource type="Texture2D" uid="uid://c17lhp4bt63cp" path="res://Assets/Sprites/v1.0/campfire/V2DBfireBASE.png" id="3_ux1tn"]
+[ext_resource type="Texture2D" uid="uid://cajgv22a41srw" path="res://Assets/Sprites/v1.0/coldmeter/V2DBthermoRED.png" id="3_mi4oj"]
 [ext_resource type="Texture2D" uid="uid://c0ccha1agrq2k" path="res://Assets/Sprites/v0.5/Resources/leafstashFULL.png" id="4_lceoh"]
 [ext_resource type="FontFile" uid="uid://dxwegbkjgdcue" path="res://Assets/Fonts/Adventurer.ttf" id="5_7vhew"]
 [ext_resource type="Texture2D" uid="uid://bnt0p4jr0mku0" path="res://Assets/Sprites/v0.5/Tent-Cash/cashicon.png" id="5_a8i84"]
 [ext_resource type="Texture2D" uid="uid://cyybk3017wkr6" path="res://Assets/Sprites/v1.0/coldmeter/DBice1.png" id="9_0ju5w"]
 [ext_resource type="Texture2D" uid="uid://5p2lldlq46sd" path="res://Assets/Sprites/v1.0/coldmeter/DBice2.png" id="10_mi4oj"]
 [ext_resource type="Texture2D" uid="uid://cf3xen1xqya4v" path="res://Assets/Sprites/v1.0/coldmeter/DBice3.png" id="11_jhhdm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lceoh"]
+font = ExtResource("5_7vhew")
+font_size = 31
+font_color = Color(0.6745098, 0.8156863, 0.9372549, 1)
+shadow_size = 6
+shadow_color = Color(0.14509805, 0.30980393, 0.44705883, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbmfk"]
 bg_color = Color(0.14536136, 0.30987722, 0.44640958, 1)
@@ -30,13 +37,6 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 shadow_color = Color(0.24705882, 0.46666667, 0.9882353, 0.9607843)
 shadow_size = 5
-
-[sub_resource type="LabelSettings" id="LabelSettings_lceoh"]
-font = ExtResource("5_7vhew")
-font_size = 31
-font_color = Color(0.6745098, 0.8156863, 0.9372549, 1)
-shadow_size = 6
-shadow_color = Color(0.14509805, 0.30980393, 0.44705883, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4j5c5"]
 bg_color = Color(0.8235294, 0.38039216, 0.24705882, 1)
@@ -105,8 +105,29 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 34
 
-[node name="ColdBar" type="ProgressBar" parent="CanvasLayer/BoxContainer/Bars" unique_id=664925037]
+[node name="ColdBar" type="TextureProgressBar" parent="CanvasLayer/BoxContainer/Bars" unique_id=1334662269]
 unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+value = 66.0
+rounded = true
+fill_mode = 3
+texture_under = ExtResource("2_0ju5w")
+texture_over = ExtResource("2_0ju5w")
+texture_progress = ExtResource("3_mi4oj")
+
+[node name="Label" type="Label" parent="CanvasLayer/BoxContainer/Bars/ColdBar" unique_id=190387697]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 173.0
+offset_right = 249.0
+offset_bottom = 212.0
+text = "Warmth"
+label_settings = SubResource("LabelSettings_lceoh")
+
+[node name="ColdBarOld" type="ProgressBar" parent="CanvasLayer/BoxContainer/Bars" unique_id=664925037]
+visible = false
 custom_minimum_size = Vector2(51.485, 500)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -117,27 +138,6 @@ value = 32.0
 rounded = true
 fill_mode = 3
 show_percentage = false
-
-[node name="Label" type="Label" parent="CanvasLayer/BoxContainer/Bars/ColdBar" unique_id=190387697]
-layout_mode = 0
-offset_left = 90.0
-offset_top = 219.0
-offset_right = 239.0
-offset_bottom = 258.0
-text = "Warmth"
-label_settings = SubResource("LabelSettings_lceoh")
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/BoxContainer/Bars" unique_id=1334662269]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 8
-value = 66.0
-rounded = true
-fill_mode = 3
-texture_under = ExtResource("2_4j5c5")
-texture_progress = ExtResource("3_ux1tn")
-texture_progress_offset = Vector2(-1.05, 500)
 
 [node name="FireBar" type="ProgressBar" parent="CanvasLayer/BoxContainer/Bars" unique_id=1198698475]
 visible = false

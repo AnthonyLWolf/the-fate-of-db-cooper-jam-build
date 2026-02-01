@@ -103,7 +103,7 @@ func _process(delta: float) -> void:
 			if !campfire_sfx_player.playing:
 				campfire_sfx_player.play()
 			
-			UiManager.cold_bar.value = warmth_amount # TODO: Replace with thermometer
+			UiManager.cold_bar.value = warmth_amount
 			
 			# Activates and modulates textures
 			frozen_t_1.modulate.a = remap(warmth_amount, 75.0, 50.0, 0.0, 0.2)
@@ -125,8 +125,7 @@ func _process(delta: float) -> void:
 				player.breath_sfx.stop()
 				night_time_timer.stop()
 				SignalBus.froze_to_death.emit()
-				#TODO: Add optimised texture -> base_sprite.play("smoulder")
-				base_sprite.play("base")
+				base_sprite.play("smoulder")
 				return
 			
 			if player.frozen:

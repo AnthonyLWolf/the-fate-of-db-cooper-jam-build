@@ -113,9 +113,6 @@ leaves_fuel_power = 80
 cash_fuel_power = 300
 warmth_decay_rate = 30.0
 
-[node name="BaseSprite" parent="Campfire" index="2" unique_id=823031258]
-animation = &"smoulder"
-
 [node name="WarmthArea" parent="Campfire" index="3" unique_id=1102099445]
 visible = true
 
@@ -157,6 +154,7 @@ position = Vector2(700, 924)
 
 [node name="AnimatedSprite2D" parent="CooperPlayer" index="1" unique_id=94498408]
 animation = &"idle"
+frame_progress = 0.0
 
 [node name="CameraTransform" parent="CooperPlayer" index="4" unique_id=1121178306]
 remote_path = NodePath("../../Camera2D")

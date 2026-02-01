@@ -1,7 +1,7 @@
 extends Control
 
 @onready var daytime_counter_label: Label = $CanvasLayer/DayTimeCounter/DaytimeCounterLabel
-@onready var cold_bar: ProgressBar = %ColdBar
+@onready var cold_bar: TextureProgressBar = %ColdBar
 @onready var wood_counter_label: Label = %WoodCounterLabel
 @onready var leaf_counter_label: Label = %LeafCounterLabel
 @onready var cash_counter_label: Label = %CashCounterLabel

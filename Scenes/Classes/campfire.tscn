@@ -12,11 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://dk3v8k8pp8y2k" path="res://Assets/Sprites/v1.0/campfire/V2DBfire8.png" id="10_b88dt"]
 [ext_resource type="Texture2D" uid="uid://dmqc1gd16y17d" path="res://Assets/Sprites/v1.0/campfire/V2DBfire9.png" id="11_tmrjs"]
 [ext_resource type="Texture2D" uid="uid://c17lhp4bt63cp" path="res://Assets/Sprites/v1.0/campfire/V2DBfireBASE.png" id="12_p3u68"]
-[ext_resource type="Texture2D" uid="uid://8g2t1jd35sqj" path="res://Assets/Sprites/v0.5/Campfire/DBsmolder1.png" id="13_b88dt"]
 [ext_resource type="Texture2D" uid="uid://cbmn7wbhmkmsq" path="res://Assets/Sprites/v1.0/campfire/V2DBash.png" id="13_he5d4"]
-[ext_resource type="Texture2D" uid="uid://cko3wstvmjjpu" path="res://Assets/Sprites/v0.5/Campfire/DBsmolder2.png" id="14_tmrjs"]
-[ext_resource type="Texture2D" uid="uid://ccse3w5q44n35" path="res://Assets/Sprites/v0.5/Campfire/DBsmolder3.png" id="15_p3u68"]
-[ext_resource type="Texture2D" uid="uid://fyi6d4go8qtq" path="res://Assets/Sprites/v0.5/Campfire/DBsmolder4.png" id="16_he5d4"]
+[ext_resource type="Texture2D" uid="uid://cjj03nubhu282" path="res://Assets/Sprites/v1.0/campfire/V2DBsmolder1.png" id="14_u651g"]
+[ext_resource type="Texture2D" uid="uid://cdpuxshite7k2" path="res://Assets/Sprites/v1.0/campfire/V2DBsmolder2.png" id="15_wthjg"]
+[ext_resource type="Texture2D" uid="uid://clxk45wbpgnky" path="res://Assets/Sprites/v1.0/campfire/V2DBsmolder3.png" id="16_ho0ra"]
+[ext_resource type="Texture2D" uid="uid://dymrxkv6dj0jh" path="res://Assets/Sprites/v1.0/campfire/V2DBsmolder4.png" id="17_ys3ej"]
 [ext_resource type="AudioStream" uid="uid://1kfgq88ht86g" path="res://Assets/Audio/SFX/ENV/FIRE  NIGHTTIME.mp3" id="18_7gmes"]
 [ext_resource type="Texture2D" uid="uid://bc6v50m08wf70" path="res://Assets/Sprites/lighttexture.png" id="19_u651g"]
 
@@ -79,16 +79,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("13_b88dt")
+"texture": ExtResource("14_u651g")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_tmrjs")
+"texture": ExtResource("15_wthjg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_p3u68")
+"texture": ExtResource("16_ho0ra")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_he5d4")
+"texture": ExtResource("17_ys3ej")
 }],
 "loop": true,
 "name": &"smoulder",
@@ -148,8 +148,9 @@ y_sort_enabled = true
 position = Vector2(1.1920929e-07, 67.999985)
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_vtsli")
-animation = &"base"
+animation = &"smoulder"
 autoplay = "base"
+frame_progress = 0.91066295
 
 [node name="WarmthArea" type="Area2D" parent="." unique_id=1102099445]
 visible = false
