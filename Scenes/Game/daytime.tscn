@@ -81,12 +81,13 @@ position = Vector2(2208, 954)
 is_cash = true
 
 [node name="Camera2D" parent="." unique_id=1372507959 instance=ExtResource("4_sy7ho")]
-position = Vector2(1623, 886)
+position = Vector2(1913, 918)
+editor_draw_limits = false
 
 [node name="CooperPlayer" parent="." unique_id=2018715790 instance=ExtResource("5_xoeny")]
-position = Vector2(1623, 886)
+position = Vector2(1913, 918)
 
-[node name="CameraTransform" parent="CooperPlayer" index="4"]
+[node name="CameraTransform" parent="CooperPlayer" index="4" unique_id=1121178306]
 remote_path = NodePath("../../Camera2D")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1346970235]

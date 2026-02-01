@@ -17,8 +17,11 @@
 [ext_resource type="Texture2D" uid="uid://c1mv4c84x0hf8" path="res://Assets/Sprites/v1.0/player/idle/V2DBSpriteIDLE2.png" id="14_1hrn4"]
 [ext_resource type="Texture2D" uid="uid://btqfw2l4vaqx5" path="res://Assets/Sprites/v1.0/player/idle/V2DBSpriteIDLE3.png" id="15_4ybsm"]
 [ext_resource type="Texture2D" uid="uid://c2sbmfyvytma0" path="res://Assets/Sprites/v1.0/player/idle/V2DBSpriteIDLE4.png" id="16_th7i3"]
+[ext_resource type="Texture2D" uid="uid://dsl4kmduxhf1g" path="res://Assets/Sprites/v1.0/player/parachute/DBSpritePARA1.png" id="17_frfok"]
 [ext_resource type="Texture2D" uid="uid://cb8vrt4bdi0bx" path="res://Assets/Sprites/v1.0/player/walk/V2DBSpriteWALK1.png" id="17_ursb1"]
+[ext_resource type="Texture2D" uid="uid://dugphgspd3bql" path="res://Assets/Sprites/v1.0/player/parachute/DBSpritePARA2.png" id="18_q20uv"]
 [ext_resource type="Texture2D" uid="uid://bem22i0wki488" path="res://Assets/Sprites/v1.0/player/walk/V2DBSpriteWALK2.png" id="18_tthlx"]
+[ext_resource type="Texture2D" uid="uid://bhex3phkog5qe" path="res://Assets/Sprites/v1.0/player/parachute/DBSpritePARA3.png" id="19_fkv3w"]
 [ext_resource type="Texture2D" uid="uid://cbr5squ42hato" path="res://Assets/Sprites/v1.0/player/walk/V2DBSpriteWALK3.png" id="19_y8mh6"]
 [ext_resource type="Texture2D" uid="uid://bslmr1bd0s3cw" path="res://Assets/Sprites/v1.0/player/walk/V2DBSpriteWALK4.png" id="20_o4mii"]
 [ext_resource type="Texture2D" uid="uid://dptw3xfv3kiqn" path="res://Assets/Sprites/v1.0/player/walk/V2DBSpriteWALK5.png" id="21_5eoyp"]
@@ -84,6 +87,20 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_frfok")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_q20uv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_fkv3w")
+}],
+"loop": true,
+"name": &"parachute",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -172,8 +189,9 @@ texture = ExtResource("2_kvkwn")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=94498408]
 scale = Vector2(0.35, 0.35)
 sprite_frames = SubResource("SpriteFrames_270ak")
-animation = &"death"
+animation = &"parachute"
 autoplay = "idle"
+frame_progress = 0.79155326
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1605770928]
 position = Vector2(-1.6060002, 9.635993)

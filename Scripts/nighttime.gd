@@ -28,6 +28,8 @@ func _nighttime_setup():
 	
 	player = get_tree().get_first_node_in_group("Player")
 	
+	SignalBus.zoom_out.emit()
+	
 	night_time_timer.start(GameConstants.NIGHTTIME_LENGTH)
 
 func play_ambience_sfx():
@@ -59,6 +61,8 @@ func _on_night_time_timer_timeout() -> void:
 		await get_tree().create_timer(3.0).timeout
 		AudioManager.stop_all_players()
 		SceneController.load_scene(SceneController.transition_screen)
-	else:
-		return
+	elif GameManager.day == GameConstants.MAX_DAYS:
+		player.is_movement_locked = true
+		var end_storm_dialogue = "I made it! Storm's passing."
+		SignalBus.send_dialogue.emit(end_storm_dialogue)
 	

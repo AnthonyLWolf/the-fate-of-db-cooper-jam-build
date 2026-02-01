@@ -38,12 +38,21 @@ func daytime_setup() -> void:
 	# Spawns resources at random distance from the campfire
 	spawn_resources(GameManager.day)
 	
-	# Grabs player just in case
+	# Grabs player just in case and handles behaviour
 	player = get_tree().get_first_node_in_group("Player")
 	
-	# Starts daytime timer
+	## Parachuting functionality, cool for flavour but buggy
+	#if GameManager.day == 1:
+		#SignalBus.parachute.emit()
+	
+	# Emits zoom out signal for camera
 	await get_tree().create_timer(1.0).timeout
+	SignalBus.zoom_out.emit()
+	
+	# Sends dialogue depending on day
 	send_daily_dialogue()
+	
+	# Starts daily timer after dialogue is read
 	await get_tree().create_timer(3.0).timeout
 	daytime_timer.start(GameConstants.DAYTIME_LENGTH)
 

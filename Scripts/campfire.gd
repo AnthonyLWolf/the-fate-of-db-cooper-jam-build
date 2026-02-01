@@ -16,8 +16,7 @@ var campfire_base_texture = preload("res://Assets/Sprites/v1.0/campfire/V2DBfire
 var campfire_ash_texture = preload("res://Assets/Sprites/v1.0/campfire/V2DBash.png")
 
 
-# Variables
-var web_build = false # NOTE: THIS IS FOR WEB EXPORTS, turn back to false for proper build testing
+## Variables
 
 # Fuel variables
 @export var wood_fuel_power : int
@@ -31,7 +30,7 @@ var base_flame_scale : Vector2
 var fire_intensity : float = GameConstants.MAX_WARMTH_RADIUS / 2
 
 # Cold variables
-var cold_amount : float = 25.0
+var warmth_amount : float = 50.0
 @export var cold_decay_rate : float = 5.0
 var cold_multiplier : float = min((float(GameManager.day) * cold_decay_rate), 40.0)
 
@@ -60,15 +59,14 @@ func _ready() -> void:
 	frozen_t_2.modulate.a = 0.0
 	frozen_t_3.modulate.a = 0.0
 	
-	SignalBus.ui_ready.connect(func(): UiManager.cold_bar.value = cold_amount)
+	SignalBus.ui_ready.connect(func(): UiManager.cold_bar.value = warmth_amount)
 	
 	if GameManager.current_state == GameManager.GameState.NIGHTTIME:
 		night_time_timer = $"../NightTimeTimer"
 	
 	# TESTING FEATURES
 	#GameManager.current_state = GameManager.GameState.NIGHTTIME
-	#GameManager.wood_count = 50
-	#GameManager.leaf_count = 50
+	#GameManager.day = 4
 	#UiManager.daytime_counter_label.show()
 
 
@@ -93,35 +91,27 @@ func _process(delta: float) -> void:
 			flame_sprite.visible = true
 			flame_sprite.play("idle")
 			
-			# Disables dynamic lighting for web builds
-			if !web_build:
-				camplight_outer.visible = true
-				camplight_inner.visible = true
-			elif web_build:
-				camplight_outer.visible = false
-				camplight_inner.visible = false
-			
 			# Animates campfire light
 			var flicker = randf_range(-0.05, 0.05)
 			camplight_outer.energy = (intensity_ratio + flicker) * 1.5
 			
 			var light_scale_target = intensity_ratio * 0.5
-			camplight_inner.texture_scale = max(light_scale_target, 0.02)
+			camplight_inner.texture_scale = max(light_scale_target, 1.3)
 			camplight_inner.energy = intensity_ratio * 2.0
 			
 			# Plays campfire SFX spatially
 			if !campfire_sfx_player.playing:
 				campfire_sfx_player.play()
 			
-			UiManager.cold_bar.value = cold_amount
+			UiManager.cold_bar.value = warmth_amount # TODO: Replace with thermometer
 			
 			# Activates and modulates textures
-			frozen_t_1.modulate.a = remap(cold_amount, 25.0, 50.0, 0.0, 0.2)
-			frozen_t_2.modulate.a = remap(cold_amount, 50.0, 75.0, 0.0, 0.2)
-			frozen_t_3.modulate.a = remap(cold_amount, 75.0, 100.0, 0.0, 1.0)
+			frozen_t_1.modulate.a = remap(warmth_amount, 75.0, 50.0, 0.0, 0.2)
+			frozen_t_2.modulate.a = remap(warmth_amount, 50.0, 25.0, 0.0, 0.2)
+			frozen_t_3.modulate.a = remap(warmth_amount, 25.0, 0.0, 0.0, 1.0)
 			
 			# Checks if player is freezing to death and plays sound if so
-			if cold_amount >= 75 && !player_freezing:
+			if warmth_amount <= 25 && !player_freezing:
 				player_freezing = true
 				player.breath_sfx.stream = AudioManager.player_cold_breath
 				player.breath_sfx.play(0.2)
@@ -130,13 +120,13 @@ func _process(delta: float) -> void:
 					player.breath_sfx.stop()
 			
 			# Instantly checks if cold amount warrants a game over each frame
-			# TODO: Invert cold amount function
-			if cold_amount >= GameConstants.MAX_COLD_AMOUNT && !player.frozen:
+			if warmth_amount <= GameConstants.MIN_WARMTH_AMOUNT && !player.frozen:
 				player.frozen = true
 				player.breath_sfx.stop()
 				night_time_timer.stop()
 				SignalBus.froze_to_death.emit()
-				base_sprite.play("smoulder")
+				#TODO: Add optimised texture -> base_sprite.play("smoulder")
+				base_sprite.play("base")
 				return
 			
 			if player.frozen:
@@ -169,15 +159,15 @@ func _process(delta: float) -> void:
 			
 			# Cold mechanic
 			if !player_in_warmth_range:
-				cold_amount += cold_multiplier * delta
+				warmth_amount -= cold_multiplier * delta
 			if player_in_warmth_range:
-				cold_amount -= (cold_multiplier / 2) * intensity_ratio * delta
+				warmth_amount += (cold_multiplier / 2) * intensity_ratio * delta
 			
 			# Clamping cold
-			if cold_amount < 0:
-				cold_amount = 0
-			elif cold_amount > 100:
-				cold_amount = 100
+			if warmth_amount < 0:
+				warmth_amount = 0
+			elif warmth_amount > 100:
+				warmth_amount = 100
 				
 			# Handles burning of fuel
 			if Input.is_action_just_pressed("interact") && player_in_interaction_range && player.holding_item:

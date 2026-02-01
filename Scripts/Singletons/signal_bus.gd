@@ -13,8 +13,12 @@ signal nighttime_start
 signal nighttime_end
 signal transition
 
+# Camera signals
+signal zoom_out
+
 # Player signals
 signal send_dialogue
+signal parachute
 
 # End condition
 signal out_of_cash

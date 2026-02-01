@@ -9,7 +9,7 @@ const STARTING_CASH = 200000
 const SINGLE_CASH_STACK = 10000
 
 const DAYTIME_LENGTH = 30.0
-const NIGHTTIME_LENGTH = 30.0
+const NIGHTTIME_LENGTH = 40.0
 const TRANSITION_LENGTH = 5.0
 
 const MAX_DAYS = 5
@@ -17,8 +17,8 @@ const MAX_DAYS = 5
 const MIN_WARMTH_RADIUS = 0.0
 const MAX_WARMTH_RADIUS = 600.0
 
-const MIN_COLD_AMOUNT = 30.0
-const MAX_COLD_AMOUNT = 100.0
+const MIN_WARMTH_AMOUNT = 0.0
+const MAX_WARMTH_AMOUNT = 100.0
 
 
 # Called when the node enters the scene tree for the first time.

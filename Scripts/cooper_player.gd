@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var player_sfx: AudioStreamPlayer2D = $PlayerSFX
 @onready var breath_sfx: AudioStreamPlayer2D = $BreathSFX
+@onready var camera_transform: RemoteTransform2D = $CameraTransform
 
 
 # Player variables
@@ -16,6 +17,7 @@ extends CharacterBody2D
 @export var jump_velocity = -400.0
 
 var current_weight : int = 0
+var parachuting = false
 var carrying_items = false
 var holding_item = false
 var is_movement_locked = false
@@ -30,6 +32,7 @@ var inventory = {
 }
 
 func _ready() -> void:
+	#SignalBus.parachute.connect(parachute_in)
 	SignalBus.pickup_requested.connect(pickup_item)
 	SignalBus.send_dialogue.connect(_display_dialogue)
 	item_held.visible = false
@@ -39,6 +42,18 @@ func _ready() -> void:
 		base_speed += daytime_acceleration
 
 func _physics_process(delta: float) -> void:
+	
+	## Parachuting functionality if we want to
+	#if parachuting:
+		#if is_on_floor():
+			#parachuting = false
+			#is_movement_locked = false
+		#player_sfx.stop()
+		#velocity.y += get_gravity().y * delta
+		#velocity.x = move_toward(velocity.x, 0, base_speed)
+		#player_weight_label.visible = false
+		#move_and_slide()
+		#return
 	
 	if dying:
 		velocity.x = move_toward(velocity.x, 0, base_speed)
@@ -58,7 +73,7 @@ func _physics_process(delta: float) -> void:
 		player_sfx.stop()
 		animated_sprite_2d.play("idle")
 		velocity.y += get_gravity().y * delta
-		velocity.x = 0
+		velocity.x = move_toward(velocity.x, 0, base_speed)
 		player_weight_label.visible = false
 		move_and_slide()
 		return
@@ -112,6 +127,14 @@ func _physics_process(delta: float) -> void:
 		
 	# Calculate distance from campfire
 	calculate_distance(%Campfire)
+
+func parachute_in():
+	pass
+	## Could implement for flavour
+	#if !parachuting:
+		#is_movement_locked = true
+		#animated_sprite_2d.play("parachute")
+		#parachuting = true
 
 # Handles different pickups based on the inventory
 func pickup_item(fuel_type: String, sender: Node2D):

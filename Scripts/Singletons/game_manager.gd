@@ -54,6 +54,7 @@ func _process(delta: float) -> void:
 	if day == GameConstants.MAX_DAYS && current_state != GameState.WIN:
 		current_state = GameState.WIN
 		survived = true
+		await get_tree().create_timer(2.0).timeout
 		SceneController.load_scene(SceneController.game_over_screen)
 		
 

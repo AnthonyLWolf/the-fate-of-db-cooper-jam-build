@@ -99,19 +99,22 @@ z_index = 1
 occluder = SubResource("OccluderPolygon2D_x74px")
 
 [node name="CampLightOuter" type="PointLight2D" parent="NightTimeOccluders" unique_id=1785155452]
-position = Vector2(963, 519)
+position = Vector2(973, 478)
 color = Color(0.6, 0.3137255, 0.09803922, 0.627451)
 energy = 1.85
 shadow_enabled = true
 texture = ExtResource("6_64dvf")
-texture_scale = 0.2
 
 [node name="Campfire" parent="." unique_id=959606168 instance=ExtResource("2_sku2a")]
 unique_name_in_owner = true
 position = Vector2(958, 941)
+wood_fuel_power = 180
 leaves_fuel_power = 80
-cash_fuel_power = 350
-warmth_decay_rate = 25.0
+cash_fuel_power = 300
+warmth_decay_rate = 30.0
+
+[node name="BaseSprite" parent="Campfire" index="2" unique_id=823031258]
+animation = &"smoulder"
 
 [node name="WarmthArea" parent="Campfire" index="3" unique_id=1102099445]
 visible = true
@@ -122,15 +125,16 @@ visible = true
 [node name="CampLightOuter" parent="Campfire" index="6" unique_id=1670737820]
 position = Vector2(8, 12)
 color = Color(0.6, 0.3137255, 0.09803922, 0.627451)
-energy = 2.0
+energy = 1.0
 shadow_color = Color(0, 0, 0, 0)
+texture_scale = 2.0
 
 [node name="CampLightInner" parent="Campfire" index="7" unique_id=465467858]
 color = Color(0.85490197, 0.48235294, 0.12941177, 0.7647059)
-energy = 2.0
+energy = 1.0
 shadow_enabled = false
 shadow_color = Color(0.14623713, 0.09620259, 0.09973722, 0)
-texture_scale = 0.1
+texture_scale = 2.0
 
 [node name="WoodStack" parent="." unique_id=520399719 instance=ExtResource("3_vvxqm")]
 position = Vector2(520, 979)
