@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://8k78re1xuv7l"]
+[gd_scene format=3 uid="uid://8k78re1xuv7l"]
 
-[ext_resource type="Texture2D" uid="uid://wept5orkq522" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/DBbackgroundconceptPLACEHOLDER.png" id="1_f1w0d"]
+[ext_resource type="Texture2D" uid="uid://wept5orkq522" path="res://Assets/Sprites/DBbackgroundconceptPLACEHOLDER.png" id="1_f1w0d"]
 [ext_resource type="PackedScene" uid="uid://cgu8hvhdien4h" path="res://Scenes/Classes/cooper_player.tscn" id="3_f1w0d"]
 [ext_resource type="PackedScene" uid="uid://dopp8fvghm770" path="res://Scenes/Classes/fuel_stack.tscn" id="4_5kn0a"]
 [ext_resource type="PackedScene" uid="uid://d4ha2e6nrr8sc" path="res://Scenes/Classes/player_camera.tscn" id="5_5kn0a"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://csukumyyn3u87"]
 
-[ext_resource type="Texture2D" uid="uid://wept5orkq522" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/DBbackgroundconceptPLACEHOLDER.png" id="1_ok6i5"]
+[ext_resource type="Texture2D" uid="uid://wept5orkq522" path="res://Assets/Sprites/DBbackgroundconceptPLACEHOLDER.png" id="1_ok6i5"]
 [ext_resource type="Script" uid="uid://boiuqf0edn212" path="res://Scripts/game_over.gd" id="1_wpovb"]
 [ext_resource type="FontFile" uid="uid://dg2rks2w45mwb" path="res://Assets/Fonts/Ghost Factory.ttf" id="2_4p3hf"]
 [ext_resource type="FontFile" uid="uid://dxwegbkjgdcue" path="res://Assets/Fonts/Adventurer.ttf" id="3_wpovb"]

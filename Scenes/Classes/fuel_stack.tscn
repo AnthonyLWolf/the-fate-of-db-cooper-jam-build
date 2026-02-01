@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dopp8fvghm770"]
 
 [ext_resource type="Script" uid="uid://dxrqt6nffib2c" path="res://Scripts/fuel_stack.gd" id="1_6lo15"]
-[ext_resource type="Texture2D" uid="uid://quk7x22bprun" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/logspritePLACEHOLDER.png" id="1_kbk1r"]
+[ext_resource type="Texture2D" uid="uid://dxshr1mlnivps" path="res://Assets/Sprites/v1.0/resources/V2woodresource1.png" id="2_wcjbu"]
 [ext_resource type="FontFile" uid="uid://dg2rks2w45mwb" path="res://Assets/Fonts/Ghost Factory.ttf" id="3_5tuqa"]
 [ext_resource type="FontFile" uid="uid://dxwegbkjgdcue" path="res://Assets/Fonts/Adventurer.ttf" id="4_wcjbu"]
 
@@ -21,7 +21,7 @@ script = ExtResource("1_6lo15")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1123160379]
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("1_kbk1r")
+texture = ExtResource("2_wcjbu")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=9906505]
 

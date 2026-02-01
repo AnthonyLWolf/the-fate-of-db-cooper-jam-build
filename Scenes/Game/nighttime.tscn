@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://dsgms5utqvxdd"]
 
 [ext_resource type="Script" uid="uid://cafdbo1ehdt7y" path="res://Scripts/nighttime.gd" id="1_sku2a"]
-[ext_resource type="Texture2D" uid="uid://bhbo1wd3ypfm2" path="res://Assets/Sprites/v0.5/Background/BGbackdrop.png" id="2_4m666"]
+[ext_resource type="Texture2D" uid="uid://bhbo1wd3ypfm2" path="res://Assets/Sprites/v1.0/background/BGbackdrop.png" id="2_4m666"]
 [ext_resource type="PackedScene" uid="uid://bynh34all6880" path="res://Scenes/Classes/campfire.tscn" id="2_sku2a"]
-[ext_resource type="Texture2D" uid="uid://dymf7yp4knxe0" path="res://Assets/Sprites/v0.5/Background/BGfartrees.png" id="3_64dvf"]
+[ext_resource type="Texture2D" uid="uid://dymf7yp4knxe0" path="res://Assets/Sprites/v1.0/background/BGfartrees.png" id="3_64dvf"]
 [ext_resource type="PackedScene" uid="uid://dopp8fvghm770" path="res://Scenes/Classes/fuel_stack.tscn" id="3_vvxqm"]
-[ext_resource type="Texture2D" uid="uid://brdl71bvs3u4x" path="res://Assets/Sprites/v0.5/Background/BGmidtrees.png" id="4_odigx"]
+[ext_resource type="Texture2D" uid="uid://brdl71bvs3u4x" path="res://Assets/Sprites/v1.0/background/BGmidtrees.png" id="4_odigx"]
 [ext_resource type="PackedScene" uid="uid://d4ha2e6nrr8sc" path="res://Scenes/Classes/player_camera.tscn" id="4_qypt8"]
 [ext_resource type="PackedScene" uid="uid://cgu8hvhdien4h" path="res://Scenes/Classes/cooper_player.tscn" id="5_4m666"]
-[ext_resource type="Texture2D" uid="uid://cl08vmbg080wt" path="res://Assets/Sprites/v0.5/Background/BGforeground.png" id="5_wpcm0"]
+[ext_resource type="Texture2D" uid="uid://cl08vmbg080wt" path="res://Assets/Sprites/v1.0/background/BGforeground.png" id="5_wpcm0"]
 [ext_resource type="Texture2D" uid="uid://bc6v50m08wf70" path="res://Assets/Sprites/lighttexture.png" id="6_64dvf"]
 [ext_resource type="PackedScene" uid="uid://j2r4fuktajm2" path="res://Scenes/UI/pause_menu.tscn" id="11_odigx"]
 
@@ -151,6 +151,9 @@ limit_bottom = 1107
 
 [node name="CooperPlayer" parent="." unique_id=1540528429 instance=ExtResource("5_4m666")]
 position = Vector2(700, 924)
+
+[node name="ItemHeld" parent="CooperPlayer" index="0" unique_id=740756531]
+texture = null
 
 [node name="AnimatedSprite2D" parent="CooperPlayer" index="1" unique_id=94498408]
 animation = &"idle"

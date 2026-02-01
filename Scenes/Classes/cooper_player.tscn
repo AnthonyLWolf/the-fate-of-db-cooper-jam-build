@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cgu8hvhdien4h"]
 
 [ext_resource type="Script" uid="uid://dojlbddrg2bp7" path="res://Scripts/cooper_player.gd" id="1_wf0wr"]
-[ext_resource type="Texture2D" uid="uid://quk7x22bprun" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/logspritePLACEHOLDER.png" id="2_kvkwn"]
+[ext_resource type="Texture2D" uid="uid://dxshr1mlnivps" path="res://Assets/Sprites/v1.0/resources/V2woodresource1.png" id="2_frfok"]
 [ext_resource type="Texture2D" uid="uid://dvrdvvuaw2xj4" path="res://Assets/Sprites/v1.0/player/freeze/V2DBSpriteFREEZE10.png" id="3_agnsg"]
 [ext_resource type="Texture2D" uid="uid://cejtllibl6fwg" path="res://Assets/Sprites/v1.0/player/freeze/V2DBSpriteFREEZE1.png" id="4_hxcbb"]
 [ext_resource type="FontFile" uid="uid://dxwegbkjgdcue" path="res://Assets/Fonts/Adventurer.ttf" id="4_rkfyh"]
@@ -184,7 +184,7 @@ daytime_acceleration = 100.0
 [node name="ItemHeld" type="Sprite2D" parent="." unique_id=740756531]
 position = Vector2(-2, -156)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_kvkwn")
+texture = ExtResource("2_frfok")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=94498408]
 scale = Vector2(0.35, 0.35)

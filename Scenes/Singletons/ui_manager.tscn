@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://dc5ucpt6j2dlj" path="res://Scripts/Singletons/ui_manager.gd" id="1_pgdt0"]
 [ext_resource type="Texture2D" uid="uid://ch07gy1bq4xcf" path="res://Assets/Sprites/v1.0/coldmeter/V2DBthermo.png" id="2_0ju5w"]
 [ext_resource type="FontFile" uid="uid://dg2rks2w45mwb" path="res://Assets/Fonts/Ghost Factory.ttf" id="3_7vhew"]
-[ext_resource type="Texture2D" uid="uid://dxjp5c44t38sj" path="res://Assets/Sprites/v0.5/Resources/woodpileFULL.png" id="3_a8i84"]
 [ext_resource type="Texture2D" uid="uid://cajgv22a41srw" path="res://Assets/Sprites/v1.0/coldmeter/V2DBthermoRED.png" id="3_mi4oj"]
-[ext_resource type="Texture2D" uid="uid://c0ccha1agrq2k" path="res://Assets/Sprites/v0.5/Resources/leafstashFULL.png" id="4_lceoh"]
 [ext_resource type="FontFile" uid="uid://dxwegbkjgdcue" path="res://Assets/Fonts/Adventurer.ttf" id="5_7vhew"]
-[ext_resource type="Texture2D" uid="uid://bnt0p4jr0mku0" path="res://Assets/Sprites/v0.5/Tent-Cash/cashicon.png" id="5_a8i84"]
+[ext_resource type="Texture2D" uid="uid://hmbj4t0qvoi6" path="res://Assets/Sprites/v1.0/resources/V2woodpiletarpFULL.png" id="6_0ju5w"]
+[ext_resource type="Texture2D" uid="uid://dcwhw1qf5w4ka" path="res://Assets/Sprites/v1.0/resources/V2leafstashFULL.png" id="7_mi4oj"]
+[ext_resource type="Texture2D" uid="uid://c1pq21nw5l7lw" path="res://Assets/Sprites/v1.0/resources/V2cashicon.png" id="8_jhhdm"]
 [ext_resource type="Texture2D" uid="uid://cyybk3017wkr6" path="res://Assets/Sprites/v1.0/coldmeter/DBice1.png" id="9_0ju5w"]
 [ext_resource type="Texture2D" uid="uid://5p2lldlq46sd" path="res://Assets/Sprites/v1.0/coldmeter/DBice2.png" id="10_mi4oj"]
 [ext_resource type="Texture2D" uid="uid://cf3xen1xqya4v" path="res://Assets/Sprites/v1.0/coldmeter/DBice3.png" id="11_jhhdm"]
@@ -175,7 +175,7 @@ label_settings = SubResource("LabelSettings_veyyk")
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Counters/CountersLeft/WoodCounter" unique_id=413987909]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
-texture = ExtResource("3_a8i84")
+texture = ExtResource("6_0ju5w")
 expand_mode = 2
 
 [node name="LeafCounter" type="HBoxContainer" parent="CanvasLayer/Counters/CountersLeft" unique_id=1135982200]
@@ -191,7 +191,7 @@ label_settings = SubResource("LabelSettings_veyyk")
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Counters/CountersLeft/LeafCounter" unique_id=426332677]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-texture = ExtResource("4_lceoh")
+texture = ExtResource("7_mi4oj")
 expand_mode = 2
 
 [node name="CashCounter" type="HBoxContainer" parent="CanvasLayer/Counters" unique_id=213962517]
@@ -208,7 +208,7 @@ label_settings = SubResource("LabelSettings_veyyk")
 
 [node name="CashIcon" type="TextureRect" parent="CanvasLayer/Counters/CashCounter" unique_id=1743366434]
 layout_mode = 2
-texture = ExtResource("5_a8i84")
+texture = ExtResource("8_jhhdm")
 expand_mode = 3
 
 [node name="DayTimeCounter" type="HBoxContainer" parent="CanvasLayer" unique_id=535850310]
