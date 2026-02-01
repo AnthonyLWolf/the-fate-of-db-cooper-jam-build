@@ -109,9 +109,9 @@ texture_scale = 0.2
 [node name="Campfire" parent="." unique_id=959606168 instance=ExtResource("2_sku2a")]
 unique_name_in_owner = true
 position = Vector2(958, 941)
-wood_fuel_power = 150
-cash_fuel_power = 300
-warmth_decay_rate = 35.0
+leaves_fuel_power = 80
+cash_fuel_power = 350
+warmth_decay_rate = 25.0
 
 [node name="WarmthArea" parent="Campfire" index="3" unique_id=1102099445]
 visible = true
@@ -133,7 +133,7 @@ shadow_color = Color(0.14623713, 0.09620259, 0.09973722, 0)
 texture_scale = 0.1
 
 [node name="WoodStack" parent="." unique_id=520399719 instance=ExtResource("3_vvxqm")]
-position = Vector2(351, 981)
+position = Vector2(520, 979)
 is_wood = true
 
 [node name="LeavesStack" parent="." unique_id=2042289741 instance=ExtResource("3_vvxqm")]
@@ -150,6 +150,9 @@ limit_bottom = 1107
 
 [node name="CooperPlayer" parent="." unique_id=1540528429 instance=ExtResource("5_4m666")]
 position = Vector2(700, 924)
+
+[node name="AnimatedSprite2D" parent="CooperPlayer" index="1" unique_id=94498408]
+animation = &"idle"
 
 [node name="CameraTransform" parent="CooperPlayer" index="4" unique_id=1121178306]
 remote_path = NodePath("../../Camera2D")

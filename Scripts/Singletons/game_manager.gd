@@ -103,6 +103,7 @@ func _out_of_cash():
 func reset_game():
 	previous_phase = GameManager.GameState.GAMESTART # NOTE: Technically incorrect, but necessary to avoid flow bugs and refactoring
 	UiManager.hide_all_labels()
+	UiManager.hide_frozen_textures()
 	day = 1
 	wood_count = 0
 	leaf_count = 0

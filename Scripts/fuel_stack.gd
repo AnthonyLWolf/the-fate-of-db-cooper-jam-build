@@ -105,19 +105,19 @@ func _process(delta: float) -> void:
 						player.holding_item = true
 					# Handles putting back items if they're not used
 					else:
-						if is_wood && GameManager.wood_count > 0:
+						if is_wood && GameManager.wood_count > 0 && player.inventory["wood"] > 0:
 							player.item_held.visible = false
 							player.inventory["wood"] -= 1
 							stack_count += 1
 							player.holding_item = false
 							AudioManager.play_sfx(AudioManager.wood_sfx, 0.63)
-						if is_leaves && GameManager.leaf_count > 0:
+						if is_leaves && GameManager.leaf_count > 0 && player.inventory["leaves"] > 0:
 							player.item_held.visible = false
 							player.inventory["leaves"] -= 1
 							stack_count += 1
 							player.holding_item = false
 							AudioManager.play_sfx(AudioManager.leaves_sfx, 0.70)
-						if is_cash && GameManager.cash_count > 0:
+						if is_cash && GameManager.cash_count > 0 && player.inventory["cash"] > 0:
 							player.item_held.visible = false
 							player.inventory["cash"] -= 1
 							player.holding_item = false

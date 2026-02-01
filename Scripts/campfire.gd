@@ -9,8 +9,7 @@ extends Node2D
 @onready var campfire_sfx_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var camplight_outer: PointLight2D = $CampLightOuter
 @onready var camplight_inner: PointLight2D = $CampLightInner
-@onready var night_time_timer: Timer = $"../NightTimeTimer"
-
+var night_time_timer : Timer
 
 # Textures
 var campfire_base_texture = preload("res://Assets/Sprites/v1.0/campfire/V2DBfireBASE.png")
@@ -36,6 +35,11 @@ var cold_amount : float = 25.0
 @export var cold_decay_rate : float = 5.0
 var cold_multiplier : float = min((float(GameManager.day) * cold_decay_rate), 40.0)
 
+# Cold texture variables
+var frozen_t_1
+var frozen_t_2
+var frozen_t_3
+
 var player : Node2D
 var player_in_interaction_range = false
 var player_in_warmth_range = false
@@ -46,20 +50,33 @@ func _ready() -> void:
 	interact_label.visible = false
 	player = get_tree().get_nodes_in_group("Player")[0]
 	base_flame_scale = flame_sprite.scale
+	
+	# Grabs transparency values of frozen textures for opacity modulation, then resets it on ready
+	frozen_t_1 = UiManager.frozen_texture_1
+	frozen_t_2 = UiManager.frozen_texture_2
+	frozen_t_3 = UiManager.frozen_texture_3
+	
+	frozen_t_1.modulate.a = 0.0
+	frozen_t_2.modulate.a = 0.0
+	frozen_t_3.modulate.a = 0.0
+	
 	SignalBus.ui_ready.connect(func(): UiManager.cold_bar.value = cold_amount)
 	
+	if GameManager.current_state == GameManager.GameState.NIGHTTIME:
+		night_time_timer = $"../NightTimeTimer"
+	
 	# TESTING FEATURES
-	GameManager.current_state = GameManager.GameState.NIGHTTIME
-	GameManager.wood_count = 50
-	GameManager.leaf_count = 50
-	UiManager.daytime_counter_label.show()
+	#GameManager.current_state = GameManager.GameState.NIGHTTIME
+	#GameManager.wood_count = 50
+	#GameManager.leaf_count = 50
+	#UiManager.daytime_counter_label.show()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
 	# TEST - DEBUG ONLY
-	UiManager.daytime_counter_label.text = str(round(night_time_timer.time_left))
+	# UiManager.daytime_counter_label.text = str(round(night_time_timer.time_left))
 	
 	match GameManager.current_state:
 		# Daytime behaviour: animated differently
@@ -93,22 +110,31 @@ func _process(delta: float) -> void:
 			camplight_inner.energy = intensity_ratio * 2.0
 			
 			# Plays campfire SFX spatially
-			if campfire_sfx_player.playing:
-				campfire_sfx_player.stop()
-			campfire_sfx_player.play()
+			if !campfire_sfx_player.playing:
+				campfire_sfx_player.play()
 			
 			UiManager.cold_bar.value = cold_amount
+			
+			# Activates and modulates textures
+			frozen_t_1.modulate.a = remap(cold_amount, 25.0, 50.0, 0.0, 0.2)
+			frozen_t_2.modulate.a = remap(cold_amount, 50.0, 75.0, 0.0, 0.2)
+			frozen_t_3.modulate.a = remap(cold_amount, 75.0, 100.0, 0.0, 1.0)
 			
 			# Checks if player is freezing to death and plays sound if so
 			if cold_amount >= 75 && !player_freezing:
 				player_freezing = true
 				player.breath_sfx.stream = AudioManager.player_cold_breath
 				player.breath_sfx.play(0.2)
+			else:
+				if player.breath_sfx.playing:
+					player.breath_sfx.stop()
 			
 			# Instantly checks if cold amount warrants a game over each frame
+			# TODO: Invert cold amount function
 			if cold_amount >= GameConstants.MAX_COLD_AMOUNT && !player.frozen:
 				player.frozen = true
 				player.breath_sfx.stop()
+				night_time_timer.stop()
 				SignalBus.froze_to_death.emit()
 				base_sprite.play("smoulder")
 				return
@@ -120,9 +146,7 @@ func _process(delta: float) -> void:
 			intensity_ratio = fire_intensity / GameConstants.MAX_WARMTH_RADIUS
 			fire_intensity -= warmth_decay_rate * delta
 			# Shrinks sprite based on fire intensity
-			flame_sprite.scale = (base_flame_scale * max(intensity_ratio, 0.1)) * 2
-			if flame_sprite.scale.x < 0 || flame_sprite.scale.y < 0:
-				flame_sprite.scale = Vector2(0,0)
+			flame_sprite.scale = (base_flame_scale * max(intensity_ratio, 0.01)) * 2
 				
 			
 			# Failsafe clamp for fire intensity
@@ -137,6 +161,9 @@ func _process(delta: float) -> void:
 			# Disables collision on warmth shape to let player freeze when fire is at 0
 			if warmth_shape.radius <= 0:
 				warmth_area.collision_mask = 10
+				flame_sprite.scale = Vector2(0,0)
+				if campfire_sfx_player.playing:
+					campfire_sfx_player.stop()
 			else:
 				warmth_area.collision_mask = 1
 			
@@ -144,7 +171,7 @@ func _process(delta: float) -> void:
 			if !player_in_warmth_range:
 				cold_amount += cold_multiplier * delta
 			if player_in_warmth_range:
-				cold_amount -= (cold_multiplier / 2) * delta
+				cold_amount -= (cold_multiplier / 2) * intensity_ratio * delta
 			
 			# Clamping cold
 			if cold_amount < 0:

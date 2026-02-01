@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://csukumyyn3u87"]
+[gd_scene format=3 uid="uid://csukumyyn3u87"]
 
 [ext_resource type="Texture2D" uid="uid://wept5orkq522" path="res://Assets/PlaceholderSprites/Game Jam Placeholder Sprites/DBbackgroundconceptPLACEHOLDER.png" id="1_ok6i5"]
 [ext_resource type="Script" uid="uid://boiuqf0edn212" path="res://Scripts/game_over.gd" id="1_wpovb"]
@@ -22,7 +22,7 @@ bg_color = Color(0.13725491, 0.25490198, 0.37254903, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w88jv"]
 bg_color = Color(0.18719208, 0.33196062, 0.48181367, 1)
 
-[node name="GameOver" type="Control"]
+[node name="GameOver" type="Control" unique_id=1209674926]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,7 +31,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wpovb")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1233960910]
 layout_mode = 0
 offset_left = -50.0
 offset_top = -43.0
@@ -40,18 +40,18 @@ offset_bottom = 1281.0
 texture = ExtResource("1_ok6i5")
 expand_mode = 1
 
-[node name="NightTint" type="CanvasModulate" parent="TextureRect"]
+[node name="NightTint" type="CanvasModulate" parent="TextureRect" unique_id=1029001015]
 color = Color(0.38177937, 0.461246, 0.5989667, 1)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1418098966]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=471250900]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1924.0
 offset_bottom = 1082.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control" unique_id=1813083435]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,7 +60,7 @@ offset_top = 64.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="EndGameLabel" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="EndGameLabel" type="Label" parent="CanvasLayer/Control/VBoxContainer" unique_id=1409376171]
 custom_minimum_size = Vector2(1200, 300)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -72,7 +72,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="ScoreLabel" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/Control/VBoxContainer" unique_id=2051605865]
 custom_minimum_size = Vector2(1200, 300)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -83,13 +83,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer" unique_id=1564678422]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_constants/separation = 173
 
-[node name="PlayAgainButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+[node name="PlayAgainButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer" unique_id=2064238230]
 custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -101,7 +101,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_5i2ib")
 theme_override_styles/hover = SubResource("StyleBoxFlat_w88jv")
 text = "PLAY AGAIN"
 
-[node name="MainMenuButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+[node name="MainMenuButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer" unique_id=358081962]
 custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -113,7 +113,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_5i2ib")
 theme_override_styles/hover = SubResource("StyleBoxFlat_w88jv")
 text = "MAIN MENU"
 
-[node name="QuitButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+[node name="QuitButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer" unique_id=1320765579]
 custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 size_flags_horizontal = 4

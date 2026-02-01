@@ -8,7 +8,13 @@ extends Control
 @onready var counters: HBoxContainer = $CanvasLayer/Counters
 @onready var distance_counter_label: Label = %DistanceCounterLabel
 
-var labels
+# Frozen textures
+@onready var frozen_texture_1: TextureRect = $CanvasLayer/Control/FrozenTexture1
+@onready var frozen_texture_2: TextureRect = $CanvasLayer/Control/FrozenTexture2
+@onready var frozen_texture_3: TextureRect = $CanvasLayer/Control/FrozenTexture3
+
+var frozen_textures = []
+var labels = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,6 +34,14 @@ func _ready() -> void:
 		cash_counter_label
 	]
 	
+	frozen_textures = [
+		frozen_texture_1,
+		frozen_texture_2,
+		frozen_texture_3
+	]
+	
+	
+	hide_frozen_textures()
 	distance_counter_label.visible = false
 
 
@@ -48,6 +62,10 @@ func hide_all_labels():
 	daytime_counter_label.visible = false
 	cold_bar.visible = false
 	distance_counter_label.visible = false
+
+func hide_frozen_textures():
+	for texture in frozen_textures:
+		texture.modulate.a = 0.0
 
 func show_nighttime_labels():
 	counters.visible = true

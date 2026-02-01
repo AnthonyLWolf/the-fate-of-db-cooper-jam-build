@@ -53,7 +53,7 @@ func spawn_resources(current_day : int):
 	spawn_count = max(spawn_count, 20)
 	
 	# Divides the forest in chunks to avoid spawn clusters
-	var forest_width = 10000
+	var forest_width = 7500
 	var step_size = forest_width / spawn_count # Very clever solution!
 	
 	for i in range(spawn_count):

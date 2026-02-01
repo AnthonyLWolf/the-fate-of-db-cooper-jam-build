@@ -40,18 +40,21 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	
+	if dying:
+		velocity.x = move_toward(velocity.x, 0, base_speed)
+		velocity.y += get_gravity().y * delta
+		move_and_slide()
+		return
+	
 	if frozen && !dying:
 		dying = true
+		player_sfx.stop()
 		animated_sprite_2d.play("freeze")
-		await get_tree().create_timer(3.0).timeout
-		animated_sprite_2d.position += Vector2(0.0,50)
-		animated_sprite_2d.play("death")
-		# Loads game over screen
-		SceneController.load_scene(SceneController.game_over_screen)
+		death_sequence()
 		return
 	
 	# Locks movement
-	if is_movement_locked && !frozen:
+	if is_movement_locked:
 		player_sfx.stop()
 		animated_sprite_2d.play("idle")
 		velocity.y += get_gravity().y * delta
@@ -140,6 +143,15 @@ func pickup_item(fuel_type: String, sender: Node2D):
 	
 	# Updates current_weight
 	current_weight = (inventory["wood"] * GameConstants.WOOD_WEIGHT) + (inventory["leaves"] * GameConstants.LEAF_WEIGHT)
+
+func death_sequence():
+	await get_tree().create_timer(3.0).timeout
+	animated_sprite_2d.position += Vector2(0.0,50)
+	animated_sprite_2d.play("death")
+	
+	# Loads game over screen
+	SceneController.load_scene(SceneController.game_over_screen)
+	
 
 func calculate_distance(home : Node2D):
 	var player_position = global_position.x

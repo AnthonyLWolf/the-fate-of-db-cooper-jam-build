@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://djb4ll76lnwam"]
 
 [ext_resource type="Script" uid="uid://dc5ucpt6j2dlj" path="res://Scripts/Singletons/ui_manager.gd" id="1_pgdt0"]
+[ext_resource type="Texture2D" uid="uid://pcbpnp3epgs4" path="res://Assets/Sprites/v1.0/coldmeter/DBthermoEMPTY.png" id="2_4j5c5"]
 [ext_resource type="FontFile" uid="uid://dg2rks2w45mwb" path="res://Assets/Fonts/Ghost Factory.ttf" id="3_7vhew"]
 [ext_resource type="Texture2D" uid="uid://dxjp5c44t38sj" path="res://Assets/Sprites/v0.5/Resources/woodpileFULL.png" id="3_a8i84"]
+[ext_resource type="Texture2D" uid="uid://c17lhp4bt63cp" path="res://Assets/Sprites/v1.0/campfire/V2DBfireBASE.png" id="3_ux1tn"]
 [ext_resource type="Texture2D" uid="uid://c0ccha1agrq2k" path="res://Assets/Sprites/v0.5/Resources/leafstashFULL.png" id="4_lceoh"]
 [ext_resource type="FontFile" uid="uid://dxwegbkjgdcue" path="res://Assets/Fonts/Adventurer.ttf" id="5_7vhew"]
 [ext_resource type="Texture2D" uid="uid://bnt0p4jr0mku0" path="res://Assets/Sprites/v0.5/Tent-Cash/cashicon.png" id="5_a8i84"]
+[ext_resource type="Texture2D" uid="uid://cyybk3017wkr6" path="res://Assets/Sprites/v1.0/coldmeter/DBice1.png" id="9_0ju5w"]
+[ext_resource type="Texture2D" uid="uid://5p2lldlq46sd" path="res://Assets/Sprites/v1.0/coldmeter/DBice2.png" id="10_mi4oj"]
+[ext_resource type="Texture2D" uid="uid://cf3xen1xqya4v" path="res://Assets/Sprites/v1.0/coldmeter/DBice3.png" id="11_jhhdm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbmfk"]
 bg_color = Color(0.14536136, 0.30987722, 0.44640958, 1)
@@ -89,10 +94,11 @@ script = ExtResource("1_pgdt0")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2018164839]
 
 [node name="BoxContainer" type="BoxContainer" parent="CanvasLayer" unique_id=931842828]
-offset_left = 56.0
-offset_top = 83.0
-offset_right = 1802.0
-offset_bottom = 1037.7462
+offset_left = 50.0
+offset_top = 56.0
+offset_right = 1796.0
+offset_bottom = 1029.0
+size_flags_horizontal = 4
 
 [node name="Bars" type="HBoxContainer" parent="CanvasLayer/BoxContainer" unique_id=1592211469]
 layout_mode = 2
@@ -120,6 +126,18 @@ offset_right = 239.0
 offset_bottom = 258.0
 text = "Cold"
 label_settings = SubResource("LabelSettings_lceoh")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/BoxContainer/Bars" unique_id=1334662269]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+value = 66.0
+rounded = true
+fill_mode = 3
+texture_under = ExtResource("2_4j5c5")
+texture_progress = ExtResource("3_ux1tn")
+texture_progress_offset = Vector2(-1.05, 500)
 
 [node name="FireBar" type="ProgressBar" parent="CanvasLayer/BoxContainer/Bars" unique_id=1198698475]
 visible = false
@@ -221,3 +239,45 @@ layout_mode = 2
 size_flags_horizontal = 6
 text = "DISTANCE FROM HOME"
 label_settings = SubResource("LabelSettings_a8i84")
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=322997465]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 0.994
+offset_bottom = 6.4799805
+
+[node name="FrozenTexture1" type="TextureRect" parent="CanvasLayer/Control" unique_id=1827491501]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("9_0ju5w")
+expand_mode = 1
+
+[node name="FrozenTexture2" type="TextureRect" parent="CanvasLayer/Control" unique_id=843649301]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("10_mi4oj")
+expand_mode = 1
+
+[node name="FrozenTexture3" type="TextureRect" parent="CanvasLayer/Control" unique_id=887306760]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("11_jhhdm")
+expand_mode = 1
