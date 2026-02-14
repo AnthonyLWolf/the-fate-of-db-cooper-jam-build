@@ -28,6 +28,7 @@ polygon = PackedVector2Array(403, 830, 394, 785, 372, 706, 353, 613, 375, 467, 3
 size = Vector2(40776, 77.5)
 
 [node name="Nighttime" type="Node2D" unique_id=2000264879]
+position = Vector2(-142, 0)
 script = ExtResource("1_sku2a")
 
 [node name="ParallaxLayers" type="Node2D" parent="." unique_id=2012819878]
@@ -134,23 +135,23 @@ shadow_color = Color(0.14623713, 0.09620259, 0.09973722, 0)
 texture_scale = 2.0
 
 [node name="WoodStack" parent="." unique_id=520399719 instance=ExtResource("3_vvxqm")]
-position = Vector2(520, 979)
+position = Vector2(344, 968)
 is_wood = true
 
 [node name="LeavesStack" parent="." unique_id=2042289741 instance=ExtResource("3_vvxqm")]
-position = Vector2(1602, 977)
+position = Vector2(602, 964)
 is_leaves = true
 
 [node name="CashStack" parent="." unique_id=131058994 instance=ExtResource("3_vvxqm")]
-position = Vector2(1273, 974)
+position = Vector2(1249, 957)
 is_cash = true
 
 [node name="Camera2D" parent="." unique_id=387589960 instance=ExtResource("4_qypt8")]
-position = Vector2(700, 924)
+position = Vector2(834, 924)
 limit_bottom = 1107
 
 [node name="CooperPlayer" parent="." unique_id=1540528429 instance=ExtResource("5_4m666")]
-position = Vector2(700, 924)
+position = Vector2(834, 924)
 
 [node name="ItemHeld" parent="CooperPlayer" index="0" unique_id=740756531]
 texture = null

@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://dxwegbkjgdcue" path="res://Assets/Fonts/Adventurer.ttf" id="4_wcjbu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6lo15"]
-radius = 137.23338
+radius = 92.070625
 
 [sub_resource type="LabelSettings" id="LabelSettings_wcjbu"]
 font = ExtResource("3_5tuqa")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://j2r4fuktajm2"]
+[gd_scene format=3 uid="uid://j2r4fuktajm2"]
 
 [ext_resource type="Script" uid="uid://btx6brq5loust" path="res://Scripts/pause_menu.gd" id="1_rrvs5"]
 [ext_resource type="FontFile" uid="uid://dg2rks2w45mwb" path="res://Assets/Fonts/Ghost Factory.ttf" id="2_8rf44"]
@@ -8,16 +8,47 @@
 font = ExtResource("2_8rf44")
 font_size = 116
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r2i2h"]
+bg_color = Color(0.03137255, 0.09019608, 0.18431373, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+shadow_color = Color(0.008088805, 0.028603557, 0.08123813, 1)
+shadow_size = 10
+shadow_offset = Vector2(6.795, 5.235)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oykix"]
+bg_color = Color(0.13725491, 0.25490198, 0.37254903, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdnb7"]
+bg_color = Color(0.10980392, 0.1882353, 0.2901961, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
 [sub_resource type="LabelSettings" id="LabelSettings_oykix"]
 font = ExtResource("2_8rf44")
 font_size = 56
 
-[node name="PauseMenu" type="CanvasLayer"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_702e2"]
+bg_color = Color(0.13725491, 0.25490198, 0.37254903, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=64453856]
 process_mode = 3
 layer = 100
 script = ExtResource("1_rrvs5")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1938754882]
 anchors_preset = -1
 anchor_left = 0.12708333
 anchor_top = 0.11574074
@@ -30,7 +61,7 @@ size_flags_vertical = 3
 color = Color(0.07058824, 0.15686275, 0.22745098, 0.6666667)
 metadata/_edit_use_anchors_ = true
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=314540010]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -41,61 +72,70 @@ offset_bottom = -199.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=85332521]
 layout_mode = 2
 theme_override_constants/separation = 49
 
-[node name="PauseContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+[node name="PauseContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1468531442]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="PausedLabel" type="Label" parent="CenterContainer/VBoxContainer/PauseContainer"]
+[node name="PausedLabel" type="Label" parent="CenterContainer/VBoxContainer/PauseContainer" unique_id=514504491]
 layout_mode = 2
 text = "PAUSED"
 label_settings = SubResource("LabelSettings_r2i2h")
 horizontal_alignment = 1
 
-[node name="Resume" type="Button" parent="CenterContainer/VBoxContainer/PauseContainer"]
+[node name="Resume" type="Button" parent="CenterContainer/VBoxContainer/PauseContainer" unique_id=2119824035]
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("3_r2i2h")
 theme_override_font_sizes/font_size = 31
+theme_override_styles/normal = SubResource("StyleBoxFlat_r2i2h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_oykix")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kdnb7")
 text = "Resume"
 
-[node name="VolContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+[node name="VolContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1684704076]
 layout_mode = 2
 
-[node name="VolumeLabel" type="Label" parent="CenterContainer/VBoxContainer/VolContainer"]
+[node name="VolumeLabel" type="Label" parent="CenterContainer/VBoxContainer/VolContainer" unique_id=1612146278]
 layout_mode = 2
 text = "VOLUME"
 label_settings = SubResource("LabelSettings_oykix")
 horizontal_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="CenterContainer/VBoxContainer/VolContainer"]
+[node name="HSlider" type="HSlider" parent="CenterContainer/VBoxContainer/VolContainer" unique_id=2127740182]
 layout_mode = 2
 max_value = 1.0
 step = 0.1
 
-[node name="QuitButtonContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+[node name="QuitButtonContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=719626608]
 layout_mode = 2
 theme_override_constants/separation = 19
 
-[node name="MenuButton" type="Button" parent="CenterContainer/VBoxContainer/QuitButtonContainer"]
+[node name="MenuButton" type="Button" parent="CenterContainer/VBoxContainer/QuitButtonContainer" unique_id=1647513467]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("3_r2i2h")
 theme_override_font_sizes/font_size = 31
+theme_override_styles/normal = SubResource("StyleBoxFlat_r2i2h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_702e2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kdnb7")
 text = "Main Menu"
 
-[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer/QuitButtonContainer"]
+[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer/QuitButtonContainer" unique_id=1885172806]
 custom_minimum_size = Vector2(120, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("3_r2i2h")
 theme_override_font_sizes/font_size = 31
+theme_override_styles/normal = SubResource("StyleBoxFlat_r2i2h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_702e2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kdnb7")
 text = "Quit"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButtonContainer/MenuButton" to="." method="_on_menu_button_pressed"]

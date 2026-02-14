@@ -19,6 +19,7 @@ var survived : bool = false
 var player : Node2D
 
 enum GameState {
+	INTRO,
 	GAMESTART,
 	DAYTIME,
 	NIGHTTIME,

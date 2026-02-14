@@ -12,12 +12,37 @@ font_size = 186
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gih0s"]
 bg_color = Color(0.03137255, 0.09019608, 0.18431373, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+shadow_color = Color(0.008088805, 0.028603557, 0.08123813, 1)
+shadow_size = 10
+shadow_offset = Vector2(6.795, 5.235)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k33u3"]
 bg_color = Color(0.13725491, 0.25490198, 0.37254903, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wqme5"]
-bg_color = Color(0.2864444, 0.42314798, 0.5754906, 1)
+bg_color = Color(0.18719208, 0.33196062, 0.48181367, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jewm6"]
+bg_color = Color(0.03137255, 0.09019608, 0.18431373, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+shadow_color = Color(0.008088805, 0.028603557, 0.08123813, 1)
+shadow_size = 10
+shadow_offset = Vector2(6.795, 5.235)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4pqbp"]
 bg_color = Color(0.048266537, 0.110051535, 0.20747656, 1)
@@ -44,7 +69,7 @@ bg_color = Color(0.10980392, 0.1882353, 0.2901961, 1)
 font = ExtResource("3_mrfpk")
 font_size = 57
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" unique_id=2138407729]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,7 +78,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u7lva")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1178764478]
 layout_mode = 0
 offset_left = -50.0
 offset_top = -43.0
@@ -62,18 +87,18 @@ offset_bottom = 1281.0
 texture = ExtResource("2_mrfpk")
 expand_mode = 1
 
-[node name="NightTint" type="CanvasModulate" parent="TextureRect"]
+[node name="NightTint" type="CanvasModulate" parent="TextureRect" unique_id=1196700583]
 color = Color(0.38177937, 0.461246, 0.5989667, 1)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1729291881]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1931187138]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1924.0
 offset_bottom = 1082.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control" unique_id=169921410]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -81,7 +106,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GameTitleLabel" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="GameTitleLabel" type="Label" parent="CanvasLayer/Control/VBoxContainer" unique_id=523101116]
 custom_minimum_size = Vector2(1200, 300)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -91,13 +116,13 @@ D.B. COOPER"
 label_settings = SubResource("LabelSettings_4pqbp")
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer" unique_id=1865849198]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_constants/separation = 48
 
-[node name="StartButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+[node name="StartButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer" unique_id=1580676847]
 custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -109,43 +134,43 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_k33u3")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wqme5")
 text = "START"
 
-[node name="HowToPlayButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+[node name="HowToPlayButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer" unique_id=1912941179]
 custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_fonts/font = ExtResource("3_mrfpk")
 theme_override_font_sizes/font_size = 45
-theme_override_styles/normal = SubResource("StyleBoxFlat_gih0s")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jewm6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_k33u3")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wqme5")
 text = "HOW TO PLAY"
 
-[node name="CreditsButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+[node name="CreditsButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer" unique_id=44268775]
 custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_fonts/font = ExtResource("3_mrfpk")
 theme_override_font_sizes/font_size = 45
-theme_override_styles/normal = SubResource("StyleBoxFlat_gih0s")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jewm6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_k33u3")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wqme5")
 text = "CREDITS"
 
-[node name="QuitButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+[node name="QuitButton" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer" unique_id=1147422618]
 custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_fonts/font = ExtResource("3_mrfpk")
 theme_override_font_sizes/font_size = 45
-theme_override_styles/normal = SubResource("StyleBoxFlat_gih0s")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jewm6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_k33u3")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wqme5")
 text = "QUIT"
 
-[node name="HiddenMenus" type="Control" parent="CanvasLayer"]
+[node name="HiddenMenus" type="Control" parent="CanvasLayer" unique_id=1429970033]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 51.0
@@ -155,7 +180,7 @@ offset_bottom = 1013.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="HowToPanel" type="Panel" parent="CanvasLayer/HiddenMenus"]
+[node name="HowToPanel" type="Panel" parent="CanvasLayer/HiddenMenus" unique_id=656604466]
 visible = false
 layout_mode = 0
 offset_left = 5.0
@@ -164,7 +189,7 @@ offset_right = 1821.0
 offset_bottom = 981.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4pqbp")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HiddenMenus/HowToPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HiddenMenus/HowToPanel" unique_id=200379712]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -177,20 +202,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 29
 
-[node name="Title" type="Label" parent="CanvasLayer/HiddenMenus/HowToPanel/VBoxContainer"]
+[node name="Title" type="Label" parent="CanvasLayer/HiddenMenus/HowToPanel/VBoxContainer" unique_id=884846619]
 layout_mode = 2
 text = "HOW TO PLAY"
 label_settings = SubResource("LabelSettings_mrfpk")
 horizontal_alignment = 2
 
-[node name="GameDescription" type="Label" parent="CanvasLayer/HiddenMenus/HowToPanel/VBoxContainer"]
+[node name="GameDescription" type="Label" parent="CanvasLayer/HiddenMenus/HowToPanel/VBoxContainer" unique_id=568102279]
 custom_minimum_size = Vector2(1750, 0)
 layout_mode = 2
 text = "On November 24, 1971, an unidentified man hijacked Northwest Orient Airlines Flight 305, flying from Portland, Oregon, to Seattle, Washington.
-
-After obtaining $200,000 in ransom and releasing the passengers, the man opened the aircraft's doors and parachuted to an uncertain fate, over a remote forest in Southwest Washington.
-
-He became known as D.B. Cooper.
 
 Congratulations. That man is now you.
 
@@ -198,7 +219,7 @@ Can you help him wait out a blizzard while keeping all his cash?"
 label_settings = SubResource("LabelSettings_k33u3")
 autowrap_mode = 2
 
-[node name="Controls" type="Label" parent="CanvasLayer/HiddenMenus/HowToPanel/VBoxContainer"]
+[node name="Controls" type="Label" parent="CanvasLayer/HiddenMenus/HowToPanel/VBoxContainer" unique_id=2010634614]
 custom_minimum_size = Vector2(1750, 0)
 layout_mode = 2
 text = "
@@ -210,7 +231,7 @@ Pro tip: Try to stay warm at night! ;)"
 label_settings = SubResource("LabelSettings_lrjdf")
 autowrap_mode = 2
 
-[node name="HowToBackButton" type="Button" parent="CanvasLayer/HiddenMenus/HowToPanel"]
+[node name="HowToBackButton" type="Button" parent="CanvasLayer/HiddenMenus/HowToPanel" unique_id=1511769728]
 layout_mode = 0
 offset_left = 1405.0
 offset_top = 864.0
@@ -222,7 +243,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_mrfpk")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lrjdf")
 text = "Back"
 
-[node name="CreditsPanel" type="Panel" parent="CanvasLayer/HiddenMenus"]
+[node name="CreditsPanel" type="Panel" parent="CanvasLayer/HiddenMenus" unique_id=1913430452]
 visible = false
 layout_mode = 0
 offset_left = 5.0
@@ -231,7 +252,7 @@ offset_right = 1821.0
 offset_bottom = 981.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4pqbp")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HiddenMenus/CreditsPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HiddenMenus/CreditsPanel" unique_id=1377448129]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -244,20 +265,20 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 29
 
-[node name="Title" type="Label" parent="CanvasLayer/HiddenMenus/CreditsPanel/VBoxContainer"]
+[node name="Title" type="Label" parent="CanvasLayer/HiddenMenus/CreditsPanel/VBoxContainer" unique_id=1273667534]
 layout_mode = 2
 text = "CREDITS"
 label_settings = SubResource("LabelSettings_mrfpk")
 horizontal_alignment = 2
 
-[node name="CreditsDescription" type="Label" parent="CanvasLayer/HiddenMenus/CreditsPanel/VBoxContainer"]
+[node name="CreditsDescription" type="Label" parent="CanvasLayer/HiddenMenus/CreditsPanel/VBoxContainer" unique_id=1376836319]
 custom_minimum_size = Vector2(1750, 0)
 layout_mode = 2
 text = "\"The Fate of D.B. Cooper\" was developed in just about 2 days for the Micro Jam 052: Winter. It was inspired by the legendary story of D.B. Cooper and created by 3 people."
 label_settings = SubResource("LabelSettings_gih0s")
 autowrap_mode = 2
 
-[node name="Controls" type="Label" parent="CanvasLayer/HiddenMenus/CreditsPanel/VBoxContainer"]
+[node name="Controls" type="Label" parent="CanvasLayer/HiddenMenus/CreditsPanel/VBoxContainer" unique_id=1881265292]
 custom_minimum_size = Vector2(1750, 0)
 layout_mode = 2
 text = "
@@ -268,7 +289,7 @@ Credits:
 label_settings = SubResource("LabelSettings_gih0s")
 autowrap_mode = 2
 
-[node name="CreditsBackButton" type="Button" parent="CanvasLayer/HiddenMenus/CreditsPanel"]
+[node name="CreditsBackButton" type="Button" parent="CanvasLayer/HiddenMenus/CreditsPanel" unique_id=1082536488]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -287,7 +308,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_mrfpk")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lrjdf")
 text = "Back"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1987210398]
 stream = ExtResource("5_mrfpk")
 autoplay = true
 

@@ -32,6 +32,10 @@ func _process(delta: float) -> void:
 func _next_phase() -> void:
 	if GameManager.day != GameConstants.MAX_DAYS:
 		match GameManager.previous_phase:
+			GameManager.GameState.INTRO:
+				GameManager.current_state = GameManager.GameState.DAYTIME
+				AudioManager.fade_to_day()
+				SceneController.load_scene(SceneController.daytime_scene)
 			GameManager.GameState.GAMESTART: # Start the game
 				GameManager.current_state = GameManager.GameState.DAYTIME
 				AudioManager.fade_to_day()
@@ -44,6 +48,8 @@ func _next_phase() -> void:
 				GameManager.current_state = GameManager.GameState.DAYTIME
 				AudioManager.fade_to_day()
 				SceneController.load_scene(SceneController.daytime_scene)
+	else:
+		return
 
 
 func _on_transition_timer_timeout() -> void:

@@ -1,0 +1,169 @@
+[gd_scene format=3 uid="uid://ltarrcof53vm"]
+
+[ext_resource type="Script" uid="uid://e66phwokqmxj" path="res://Scripts/intro_scene.gd" id="1_d3wvj"]
+[ext_resource type="LabelSettings" uid="uid://curnqfvybf5w8" path="res://new_label_settings.res" id="1_tbpc8"]
+[ext_resource type="FontFile" uid="uid://dxwegbkjgdcue" path="res://Assets/Fonts/Adventurer.ttf" id="2_d3wvj"]
+[ext_resource type="Texture2D" uid="uid://cxi2ny6ty8slv" path="res://Assets/EndScreens/covernoDB.png" id="4_bjy3f"]
+[ext_resource type="AudioStream" uid="uid://babdsk8yhd4jw" path="res://Assets/Audio/SFX/ENV/WIND IN TREES .mp3" id="5_hbntd"]
+[ext_resource type="Texture2D" uid="uid://dsl4kmduxhf1g" path="res://Assets/Sprites/v1.0/player/parachute/DBSpritePARA1.png" id="6_bjy3f"]
+[ext_resource type="Texture2D" uid="uid://dugphgspd3bql" path="res://Assets/Sprites/v1.0/player/parachute/DBSpritePARA2.png" id="7_ibkcj"]
+[ext_resource type="Texture2D" uid="uid://bhex3phkog5qe" path="res://Assets/Sprites/v1.0/player/parachute/DBSpritePARA3.png" id="8_p058y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hbntd"]
+bg_color = Color(0.03137255, 0.09019608, 0.18431373, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+shadow_color = Color(0.008088805, 0.028603557, 0.08123813, 1)
+shadow_size = 10
+shadow_offset = Vector2(6.795, 5.235)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_61u6e"]
+bg_color = Color(0.13725491, 0.25490198, 0.37254903, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fukdj"]
+bg_color = Color(0.18719208, 0.33196062, 0.48181367, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ogof2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_bjy3f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ibkcj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_p058y")
+}],
+"loop": true,
+"name": &"cooperintro",
+"speed": 5.0
+}]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ibkcj"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1000, 1000, 1)
+gravity = Vector3(-1000, 200, 0)
+scale_max = 3.0
+collision_mode = 1
+collision_friction = 0.1
+collision_bounce = 0.5
+
+[node name="IntroScene" type="Control" unique_id=1797974825]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d3wvj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=541775153]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1899598820]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -406.0
+offset_right = 960.0
+offset_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Text1" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=1309608194]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(1920, 200)
+layout_mode = 2
+size_flags_vertical = 3
+text = "TEXT 1"
+label_settings = ExtResource("1_tbpc8")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Text2" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=246588648]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(1920, 200)
+layout_mode = 2
+size_flags_vertical = 3
+text = "TEXT 2"
+label_settings = ExtResource("1_tbpc8")
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 2
+
+[node name="SkipButton" type="Button" parent="CanvasLayer" unique_id=532512045]
+custom_minimum_size = Vector2(400, 100)
+offset_left = 1454.0
+offset_top = 939.0
+offset_right = 1854.0
+offset_bottom = 1039.0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("2_d3wvj")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_hbntd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_61u6e")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fukdj")
+text = "SKIP"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1536185081]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_bjy3f")
+expand_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="TextureRect" unique_id=328342310]
+color = Color(0.65423185, 0.6542321, 0.65423197, 1)
+
+[node name="TextTimer" type="Timer" parent="." unique_id=1613449533]
+
+[node name="IntroWindSFX" type="AudioStreamPlayer" parent="." unique_id=575017061]
+stream = ExtResource("5_hbntd")
+autoplay = true
+bus = &"SFX"
+
+[node name="CooperParachute" type="AnimatedSprite2D" parent="." unique_id=1764504691]
+position = Vector2(-166, 278)
+scale = Vector2(0.3813793, 0.3813793)
+sprite_frames = SubResource("SpriteFrames_ogof2")
+animation = &"cooperintro"
+autoplay = "cooperintro"
+frame_progress = 0.41057518
+
+[node name="Emitters" type="Node2D" parent="." unique_id=2035809537]
+position = Vector2(1093, 544)
+
+[node name="Blizzard" type="GPUParticles2D" parent="Emitters" unique_id=1543453587 groups=["Emitters"]]
+light_mask = 2
+z_index = 6
+position = Vector2(11, 12)
+amount = 2000
+lifetime = 2.0
+preprocess = 2.0
+speed_scale = 5.0
+trail_lifetime = 0.01
+trail_sections = 2
+trail_section_subdivisions = 2
+process_material = SubResource("ParticleProcessMaterial_ibkcj")
+
+[connection signal="pressed" from="CanvasLayer/SkipButton" to="." method="_on_skip_button_pressed"]
+[connection signal="timeout" from="TextTimer" to="." method="_on_text_timer_timeout"]

@@ -18,8 +18,8 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_start_button_pressed() -> void:
-	GameManager.current_state = GameManager.GameState.GAMESTART
-	SceneController.load_scene(SceneController.transition_screen)
+	GameManager.current_state = GameManager.GameState.INTRO
+	SceneController.load_scene(SceneController.intro_screen)
 
 func _on_how_to_play_button_pressed() -> void:
 	hidden_menus.show()

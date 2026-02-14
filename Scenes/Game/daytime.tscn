@@ -68,16 +68,16 @@ flip_h = true
 unique_name_in_owner = true
 position = Vector2(1914, 885)
 
-[node name="FuelStack" parent="." unique_id=921044428 instance=ExtResource("3_olxus")]
+[node name="WoodStack" parent="." unique_id=921044428 instance=ExtResource("3_olxus")]
 position = Vector2(1631, 950)
 is_wood = true
 
-[node name="FuelStack2" parent="." unique_id=1740785750 instance=ExtResource("3_olxus")]
-position = Vector2(2456, 960)
+[node name="LeavesStack" parent="." unique_id=1740785750 instance=ExtResource("3_olxus")]
+position = Vector2(2442, 938)
 is_leaves = true
 
-[node name="FuelStack3" parent="." unique_id=79264695 instance=ExtResource("3_olxus")]
-position = Vector2(2208, 954)
+[node name="CashStack" parent="." unique_id=79264695 instance=ExtResource("3_olxus")]
+position = Vector2(2163, 938)
 is_cash = true
 
 [node name="Camera2D" parent="." unique_id=1372507959 instance=ExtResource("4_sy7ho")]
